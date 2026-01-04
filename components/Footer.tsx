@@ -84,11 +84,9 @@ const Footer: React.FC<FooterProps> = ({ onNavigate }) => {
             <div className="container mx-auto px-6 py-16">
                 <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-10 text-center md:text-left">
                     <div className="sm:col-span-2 lg:col-span-1 flex flex-col items-center text-center md:items-center md:text-center">
-                         <form action="https://vellaperfumeria.com" method="GET" target="_top">
-                            <button type="submit" className="inline-block hover:opacity-80 transition-opacity mb-4 cursor-pointer">
-                                <img src="https://i0.wp.com/vellaperfumeria.com/wp-content/uploads/2025/06/1000003724-removebg-preview.png" alt="Vellaperfumeria Logo" className="h-36 w-auto mx-auto" />
-                            </button>
-                        </form>
+                         <a href="https://vellaperfumeria.com" className="inline-block hover:opacity-80 transition-opacity mb-4 cursor-pointer">
+                            <img src="https://i0.wp.com/vellaperfumeria.com/wp-content/uploads/2025/06/1000003724-removebg-preview.png" alt="Vellaperfumeria Logo" className="h-36 w-auto mx-auto" />
+                        </a>
                         <h2 className="text-xl font-bold tracking-wider text-white">Vellaperfumeria</h2>
                         <p className="text-gray-400 text-sm mt-2">
                             Tu esencia, tu belleza, tu tienda.
@@ -99,14 +97,12 @@ const Footer: React.FC<FooterProps> = ({ onNavigate }) => {
                         <h3 className="text-base font-bold tracking-widest uppercase mb-4 text-white">Navegación</h3>
                         <ul className="space-y-2 text-sm">
                            <li>
-                                <form action="https://vellaperfumeria.com" method="GET" target="_top">
-                                    <button
-                                        type="submit"
-                                        className="text-gray-400 hover:text-white transition-colors hover:underline"
-                                    >
-                                        Inicio
-                                    </button>
-                                </form>
+                                <a
+                                    href="https://vellaperfumeria.com"
+                                    className="text-gray-400 hover:text-white transition-colors hover:underline"
+                                >
+                                    Inicio
+                                </a>
                             </li>
                            <FooterLink onClick={() => onNavigate('products', 'all')}>Tienda</FooterLink>
                            <FooterLink onClick={() => onNavigate('products', 'skincare')}>Cuidado Facial</FooterLink>
@@ -133,9 +129,9 @@ const Footer: React.FC<FooterProps> = ({ onNavigate }) => {
                         <h3 className="text-base font-bold tracking-widest uppercase mb-4 text-white">Síguenos</h3>
                         <div className="flex justify-center md:justify-start space-x-4 text-white mb-6">
                            <span className="cursor-pointer hover:opacity-80 transition-all duration-300 transform hover:scale-110" aria-label="Threads"><ThreadsIcon /></span>
-                           <span className="cursor-pointer hover:opacity-80 transition-all duration-300 transform hover:scale-110" aria-label="Instagram"><InstagramIcon /></span>
+                           <a href="https://www.instagram.com/vellaperfumeria/" target="_blank" rel="noopener noreferrer" className="cursor-pointer hover:opacity-80 transition-all duration-300 transform hover:scale-110" aria-label="Instagram"><InstagramIcon /></a>
                            <span className="cursor-pointer hover:opacity-80 transition-all duration-300 transform hover:scale-110" aria-label="Facebook"><FacebookIcon /></span>
-                           <span className="cursor-pointer hover:opacity-80 transition-all duration-300 transform hover:scale-110" aria-label="WhatsApp"><WhatsAppIcon /></span>
+                           <a href="https://wa.me/34661202616" target="_blank" rel="noopener noreferrer" className="cursor-pointer hover:opacity-80 transition-all duration-300 transform hover:scale-110" aria-label="WhatsApp"><WhatsAppIcon /></a>
                         </div>
                         
                         <h3 className="text-base font-bold tracking-widest uppercase mb-4 text-white">Métodos de Pago</h3>

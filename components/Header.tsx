@@ -42,7 +42,7 @@ const Header: React.FC<HeaderProps> = ({ onNavigate, currency, onCurrencyChange,
     }, []);
 
     const navItems = [
-        { label: 'Inicio', view: 'home' as View },
+        { label: 'Inicio', href: 'https://vellaperfumeria.com' },
         { label: 'Diagnóstico de Piel', view: 'skinDiagnostic' as View, hasMega: false },
         { label: 'Cuidado Facial', view: 'products' as View, payload: 'skincare', hasMega: true },
         { label: 'Perfumería', view: 'products' as View, payload: 'perfume', hasMega: true },
@@ -73,10 +73,10 @@ const Header: React.FC<HeaderProps> = ({ onNavigate, currency, onCurrencyChange,
 
                 <div className="flex items-center gap-3 shrink-0">
                     <a href="https://www.instagram.com/vellaperfumeria/" target="_blank" rel="noopener noreferrer" className="flex items-center gap-3 group transition-all">
-                        <span className="text-[10px] font-black uppercase tracking-widest hidden md:inline group-hover:text-pink-700">@vellaperfumeria</span>
                         <div className="bg-black/5 p-1.5 rounded-full group-hover:bg-black group-hover:text-white transition-all">
                             <InstagramIcon className="w-4 h-4" />
                         </div>
+                        <span className="text-[10px] font-black uppercase tracking-widest hidden md:inline group-hover:text-pink-700">@vellaperfumeria</span>
                     </a>
                 </div>
             </div>
@@ -91,7 +91,7 @@ const Header: React.FC<HeaderProps> = ({ onNavigate, currency, onCurrencyChange,
                 </div>
 
                 <div className="absolute left-1/2 -translate-x-1/2 top-1/2 -translate-y-1/2 z-10 text-center">
-                    <button onClick={() => onNavigate('home')} className="flex flex-col items-center group">
+                    <a href="https://vellaperfumeria.com" className="flex flex-col items-center group">
                         <img 
                             src="https://i0.wp.com/vellaperfumeria.com/wp-content/uploads/2025/06/1000003724-removebg-preview.png" 
                             alt="Logo" 
@@ -100,7 +100,7 @@ const Header: React.FC<HeaderProps> = ({ onNavigate, currency, onCurrencyChange,
                         <span className="text-[11px] font-black tracking-[0.6em] uppercase italic mt-2 text-black transition-colors group-hover:text-pink-600">
                             Vella <span className="text-pink-600 group-hover:text-black transition-colors">Perfumeria</span>
                         </span>
-                    </button>
+                    </a>
                 </div>
 
                 <div className="flex-1 flex justify-end items-center space-x-8">
@@ -124,18 +124,28 @@ const Header: React.FC<HeaderProps> = ({ onNavigate, currency, onCurrencyChange,
                     <div 
                         key={item.label} 
                         className="h-full flex items-center"
-                        onMouseEnter={() => item.hasMega && setActiveMenu(item.label)}
+                        onMouseEnter={() => (item as any).hasMega && setActiveMenu(item.label)}
                         onMouseLeave={() => setActiveMenu(null)}
                     >
-                        <button 
-                            onClick={() => onNavigate(item.view, item.payload)}
-                            className={`text-[10px] font-black uppercase tracking-[0.4em] transition-all relative group h-full flex items-center ${activeMenu === item.label ? 'text-[#FAE1EF]' : 'text-white/90 hover:text-white'}`}
-                        >
-                            {item.label}
-                            <span className={`absolute bottom-0 left-0 w-full h-[3px] bg-[#FAE1EF] transition-transform duration-500 origin-left ${activeMenu === item.label ? 'scale-x-100' : 'scale-x-0 group-hover:scale-x-100'}`}></span>
-                        </button>
+                        {item.href ? (
+                            <a 
+                                href={item.href}
+                                className="text-[10px] font-black uppercase tracking-[0.4em] transition-all relative group h-full flex items-center text-white/90 hover:text-white"
+                            >
+                                {item.label}
+                                <span className="absolute bottom-0 left-0 w-full h-[3px] bg-[#FAE1EF] transition-transform duration-500 origin-left scale-x-0 group-hover:scale-x-100"></span>
+                            </a>
+                        ) : (
+                            <button 
+                                onClick={() => onNavigate(item.view!, item.payload)}
+                                className={`text-[10px] font-black uppercase tracking-[0.4em] transition-all relative group h-full flex items-center ${activeMenu === item.label ? 'text-[#FAE1EF]' : 'text-white/90 hover:text-white'}`}
+                            >
+                                {item.label}
+                                <span className={`absolute bottom-0 left-0 w-full h-[3px] bg-[#FAE1EF] transition-transform duration-500 origin-left ${activeMenu === item.label ? 'scale-x-100' : 'scale-x-0 group-hover:scale-x-100'}`}></span>
+                            </button>
+                        )}
                         
-                        {item.hasMega && activeMenu === item.label && (
+                        {(item as any).hasMega && activeMenu === item.label && (
                             <div className="fixed top-[164px] md:top-[196px] left-0 w-full bg-black text-white shadow-[0_50px_100px_rgba(0,0,0,1)] animate-fade-in-down z-50 border-t border-white/10">
                                 <div className="container mx-auto grid grid-cols-6 gap-10 p-16">
                                     {item.label === 'Cuidado Facial' ? (
@@ -188,7 +198,7 @@ const Header: React.FC<HeaderProps> = ({ onNavigate, currency, onCurrencyChange,
                                             <div className="space-y-6 text-left">
                                                 <h3 className="text-[#FAE1EF] font-black text-[11px] tracking-[0.4em] uppercase border-b border-white/10 pb-2">Explorar {item.label}</h3>
                                                 <ul className="space-y-4 text-[10px] tracking-[0.2em] font-bold uppercase text-gray-400">
-                                                    <li className="hover:text-white cursor-pointer transition-colors" onClick={() => onNavigate('products', item.payload)}>Ver Colección Completa</li>
+                                                    <li className="hover:text-white cursor-pointer transition-colors" onClick={() => onNavigate('products', (item as any).payload)}>Ver Colección Completa</li>
                                                     <li className="hover:text-white cursor-pointer transition-colors" onClick={() => onNavigate('ofertas')}>Mejores Ofertas</li>
                                                 </ul>
                                             </div>
