@@ -2,6 +2,43 @@
 import type { Product } from './types';
 
 export const allProducts: Product[] = [
+    // --- ENVOLTORIOS Y BOLSAS ORIFLAME ---
+    {
+        id: 47250,
+        name: "Bolsa de Regalo Turquesa Mediana",
+        brand: "Oriflame",
+        price: 1.99,
+        imageUrl: "https://media-cdn.oriflame.com/productImage?externalMediaId=product-management-media%2FProducts%2F47250%2F47250_1.png",
+        description: "Elegante bolsa de regalo en el icónico color turquesa de Oriflame. Perfecta para fragancias y sets medianos.",
+        stock: 500,
+        category: 'accessories',
+        productType: 'Accesorio',
+        tag: 'SET'
+    },
+    {
+        id: 47251,
+        name: "Caja de Regalo Premium Navidad",
+        brand: "Oriflame",
+        price: 3.50,
+        imageUrl: "https://media-cdn.oriflame.com/productImage?externalMediaId=product-management-media%2FProducts%2F47251%2F47251_1.png",
+        description: "Caja rígida con diseño festivo 2026. Ideal para crear tus propios cofres de regalo personalizados.",
+        stock: 300,
+        category: 'accessories',
+        productType: 'Caja Regalo',
+        tag: 'NOVEDAD'
+    },
+    {
+        id: 47252,
+        name: "Papel de Seda Oriflame (Pack 5 hojas)",
+        brand: "Oriflame",
+        price: 0.99,
+        imageUrl: "https://media-cdn.oriflame.com/productImage?externalMediaId=product-management-media%2FProducts%2F47252%2F47252_1.png",
+        description: "El toque final perfecto. Papel de seda suave para proteger y embellecer tus regalos.",
+        stock: 1000,
+        category: 'accessories',
+        productType: 'Accesorio'
+    },
+
     // --- COLECCIÓN COFRES ESSENZA NAVIDAD 2026 ---
     {
         id: 42502,
@@ -510,4 +547,138 @@ export const allProducts: Product[] = [
         id: 48569,
         name: "Collar Magical Midnights",
         brand: "Oriflame",
-        price: 11.54
+        price: 11.54,
+        regularPrice: 30.00,
+        imageUrl: "https://media-cdn.oriflame.com/productImage?externalMediaId=product-management-media%2FProducts%2F48569%2F48569_1.png",
+        description: "Collar a juego con la colección Magical Midnights, ideal para regalar.",
+        stock: 50,
+        category: 'accessories',
+        subCategory: 'Magical Midnights',
+        productType: 'Collar',
+        tag: 'NOVEDAD'
+    },
+    {
+        id: 47200,
+        name: "Crema de Manos Wonder Tale",
+        brand: "Oriflame",
+        price: 9.24,
+        imageUrl: "https://media-cdn.oriflame.com/productImage?externalMediaId=product-management-media%2FProducts%2F47200%2F47200_1.png",
+        description: "Suaviza tus manos con esta crema nutritiva de absorción rápida.",
+        stock: 120,
+        category: 'personal-care',
+        subCategory: 'Wonder Tale',
+        productType: 'Higiene',
+        tag: 'NOVEDAD'
+    },
+    {
+        id: 47185,
+        name: "Bálsamo de Labios Glitter THE ONE",
+        brand: "The ONE",
+        price: 6.54,
+        regularPrice: 17.00,
+        imageUrl: "https://media-cdn.oriflame.com/productImage?externalMediaId=product-management-media%2FProducts%2F47185%2F47185_1.png",
+        description: "Protección labial con un acabado chispeante y sutil.",
+        stock: 110,
+        category: 'makeup',
+        subCategory: 'THE ONE',
+        productType: 'Bálsamo',
+        tag: 'NOVEDAD'
+    },
+    {
+        id: 48035,
+        name: "Reloj Wild Wood para Él",
+        brand: "Oriflame",
+        price: 38.49,
+        imageUrl: "https://media-cdn.oriflame.com/productImage?externalMediaId=product-management-media%2FProducts%2F48035%2F48035_1.png",
+        description: "Reloj robusto para hombre con acabados inspirados en la naturaleza.",
+        stock: 35,
+        category: 'accessories',
+        subCategory: 'Wild Wood',
+        productType: 'Reloj',
+        tag: 'NOVEDAD'
+    },
+    {
+        id: 48565,
+        name: "Jabonera Magnolia",
+        brand: "Oriflame",
+        price: 11.54,
+        regularPrice: 18.00,
+        imageUrl: "https://media-cdn.oriflame.com/productImage?externalMediaId=product-management-media%2FProducts%2F48565%2F48565_1.png",
+        description: "Jabonera de cerámica con diseño floral exclusivo.",
+        stock: 45,
+        category: 'accessories',
+        subCategory: 'Wonder Tale',
+        productType: 'Accesorio',
+        tag: 'NOVEDAD'
+    },
+    {
+        id: 48574,
+        name: "Set de 3 Pares de Pendientes Winter's Embrace",
+        brand: "Oriflame",
+        price: 6.92,
+        regularPrice: 14.99,
+        imageUrl: "https://media-cdn.oriflame.com/productImage?externalMediaId=product-management-media%2FProducts%2F48574%2F48574_1.png",
+        description: "Tres estilos diferentes para combinar según tu outfit invernal.",
+        stock: 70,
+        category: 'accessories',
+        subCategory: "Winter's Embrace",
+        productType: 'Pendientes',
+        tag: 'NOVEDAD'
+    },
+    {
+        id: 48577,
+        name: "Set de 7 Pares de Pendientes Winter's Embrace",
+        brand: "Oriflame",
+        price: 10.00,
+        regularPrice: 17.99,
+        imageUrl: "https://media-cdn.oriflame.com/productImage?externalMediaId=product-management-media%2FProducts%2F48577%2F48577_1.png",
+        description: "Un pendiente para cada día de la semana en este set completo de invierno.",
+        stock: 55,
+        category: 'accessories',
+        subCategory: "Winter's Embrace",
+        productType: 'Pendientes',
+        tag: 'NOVEDAD'
+    },
+    {
+        id: 48576,
+        name: "Antifaz Magical Midnights",
+        brand: "Oriflame",
+        price: 10.00,
+        regularPrice: 17.99,
+        imageUrl: "https://media-cdn.oriflame.com/productImage?externalMediaId=product-management-media%2FProducts%2F48576%2F48576_1.png",
+        description: "Descanso absoluto con este antifaz de satén acolchado.",
+        stock: 65,
+        category: 'accessories',
+        subCategory: 'Magical Midnights',
+        productType: 'Antifaz',
+        tag: 'NOVEDAD'
+    },
+    {
+        id: 48540,
+        name: "Manta Winter's Embrace",
+        brand: "Oriflame",
+        price: 16.93,
+        regularPrice: 37.00,
+        imageUrl: "https://media-cdn.oriflame.com/productImage?externalMediaId=product-management-media%2FProducts%2F48540%2F48540_1.png",
+        description: "Manta ultra suave para disfrutar de tus momentos de relax en casa.",
+        stock: 45,
+        category: 'accessories',
+        subCategory: "Winter's Embrace",
+        productType: 'Manta',
+        tag: 'NOVEDAD'
+    },
+    {
+        id: 48048,
+        name: "Calcetines Winter's Embrace",
+        brand: "Oriflame",
+        price: 6.54,
+        regularPrice: 14.00,
+        imageUrl: "https://media-cdn.oriflame.com/productImage?externalMediaId=product-management-media%2FProducts%2F48048%2F48048_1.png",
+        description: "Calcetines térmicos con diseño nórdico para mantener tus pies calientes.",
+        stock: 130,
+        category: 'accessories',
+        subCategory: "Winter's Embrace",
+        productType: 'Calcetines',
+        tag: 'NOVEDAD'
+    }
+];

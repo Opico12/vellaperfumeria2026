@@ -2,7 +2,7 @@
 import React, { useState, useEffect, useCallback } from 'react';
 // Types
 import type { View, Product, CartItem } from './types';
-import type { Currency } from './components/currency';
+import type { Currency } from './currency';
 import { blogPosts } from './components/blogData';
 // Components
 import Header from './components/Header';
@@ -12,6 +12,8 @@ import ShopPage from './components/ShopPage';
 import ProductDetailPage from './components/ProductDetailPage';
 import CartSidebar from './components/CartSidebar';
 import OfertasPage from './components/OfertasPage';
+import RegalosPage from './components/RegalosPage';
+import SkinDiagnosticPage from './components/SkinDiagnosticPage';
 import AsistenteIAPage from './components/AsistenteIAPage';
 import CatalogPage from './components/CatalogPage';
 import BlogPage from './components/BlogPage';
@@ -79,6 +81,8 @@ const App: React.FC = () => {
             case 'products': return <ShopPage initialCategory={view.payload || 'all'} currency={currency} onAddToCart={handleAddToCart} onQuickAddToCart={handleAddToCart} onProductSelect={handleProductSelect} onQuickView={setQuickViewProduct} />;
             case 'productDetail': return <ProductDetailPage product={view.payload} currency={currency} onAddToCart={handleAddToCart} onQuickAddToCart={handleAddToCart} onProductSelect={handleProductSelect} onQuickView={setQuickViewProduct} />;
             case 'ofertas': return <OfertasPage currency={currency} onAddToCart={handleAddToCart} onQuickAddToCart={handleAddToCart} onProductSelect={handleProductSelect} onQuickView={setQuickViewProduct} />;
+            case 'regalos': return <RegalosPage onNavigate={handleNavigate} onProductSelect={handleProductSelect} onAddToCart={handleAddToCart} onQuickAddToCart={handleAddToCart} currency={currency} onQuickView={setQuickViewProduct} />;
+            case 'skinDiagnostic': return <SkinDiagnosticPage />;
             case 'ia': return <AsistenteIAPage />;
             case 'catalog': return <CatalogPage />;
             case 'blog': return <BlogPage posts={blogPosts} onSelectPost={(p) => handleNavigate('blogPost', p)} />;
