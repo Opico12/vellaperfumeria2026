@@ -8,6 +8,13 @@ interface HeroCarouselProps {
 
 const slides = [
     {
+        imageUrl: 'https://images.unsplash.com/photo-1544816155-12df9643f363?ixlib=rb-4.0.3&auto=format&fit=crop&w=1920&q=80',
+        title: 'Navidad 2026: Magia en Turquesa',
+        subtitle: 'DESCUBRE LOS COFRES DE REGALO MÁS EXCLUSIVOS DE ORIFLAME',
+        buttonText: 'VER REGALOS',
+        view: 'ofertas' as View,
+    },
+    {
         imageUrl: 'https://media-cdn.oriflame.com/digitalPromotionsMedia/images/banner-media/ES/20899847/20866148.jpg',
         title: 'La Nueva Era de la Elegancia',
         subtitle: 'COLECCIÓN PRIVÉE 2026: DIVINE DARK VELVET',
@@ -20,13 +27,6 @@ const slides = [
         subtitle: 'HASTA -50% EN SELECCIÓN DE TEMPORADA',
         buttonText: 'VER OFERTAS',
         view: 'ofertas' as View,
-    },
-    {
-        imageUrl: 'https://media-cdn.oriflame.com/digitalPromotionsMedia/images/banner-media/ES/20899692/21035391.jpg',
-        title: 'Exclusiva 2026: Beauty Revelations',
-        subtitle: 'NUEVO CALENDARIO DE BELLEZA 2026',
-        buttonText: 'RESERVAR AHORA',
-        view: 'catalog' as View,
     },
 ];
 
@@ -72,10 +72,10 @@ const HeroCarousel: React.FC<HeroCarouselProps> = ({ onNavigate }) => {
                             className="absolute inset-0 bg-cover bg-center"
                             style={{ backgroundImage: `url(${slide.imageUrl})` }}
                         />
-                        <div className="absolute inset-0 bg-black/30" />
+                        <div className="absolute inset-0 bg-black/40" />
                         <div className="absolute inset-0 flex items-center justify-center text-center">
                             <div className="max-w-4xl px-6">
-                                <span className="text-white text-[10px] font-black tracking-[0.6em] uppercase mb-6 block animate-fade-in">Temporada 2026</span>
+                                <span className="text-white text-[10px] font-black tracking-[0.6em] uppercase mb-6 block animate-fade-in">Navidad 2026</span>
                                 <h2 className="text-5xl md:text-7xl font-serif italic text-white mb-8 leading-tight drop-shadow-2xl">
                                     {slide.title}
                                 </h2>
