@@ -19,8 +19,8 @@ import CatalogPage from './components/CatalogPage';
 import BlogPage from './components/BlogPage';
 import BlogPostPage from './components/BlogPostPage';
 import QuickViewModal from './components/QuickViewModal';
-import Breadcrumbs, { type BreadcrumbItem } from './components/Breadcrumbs';
 import CheckoutPage from './components/CheckoutPage';
+import BottomNavBar from './components/BottomNavBar';
 
 type AppView = {
     current: View;
@@ -104,12 +104,12 @@ const App: React.FC = () => {
                 onCartClick={() => setIsCartOpen(true)}
             />
             
-             <main className={`flex-grow relative ${isCatalogView ? 'h-screen overflow-hidden' : 'py-8'}`}>
+             <main className={`flex-grow relative ${isCatalogView ? 'h-screen overflow-hidden pt-[140px] md:pt-[190px]' : 'pt-[140px] md:pt-[210px] pb-20 md:pb-8'}`}>
                 {renderContent()}
 
-                <aside className="fixed bottom-8 right-8 z-[60] flex flex-col gap-5 items-end">
+                <aside className="fixed bottom-20 md:bottom-8 right-6 md:right-8 z-[60] flex flex-col gap-5 items-end">
                     <a href="https://wa.me/34661202616" target="_blank" rel="noopener noreferrer" className="bg-[#25D366] text-white p-4 rounded-full shadow-lg hover:scale-110 transition-transform"><WhatsAppIcon /></a>
-                    <button onClick={() => handleNavigate('ia')} className="bg-black text-white px-8 py-4 rounded-full shadow-lg flex items-center gap-4 hover:-translate-y-2 transition-transform">
+                    <button onClick={() => handleNavigate('ia')} className="bg-black text-white px-8 py-4 rounded-full shadow-lg flex items-center gap-4 hover:-translate-y-2 transition-transform border border-white/10">
                         <span className="w-2 h-2 rounded-full animate-pulse" style={{ backgroundColor: orchidPink }}></span>
                         <span className="text-[10px] font-black tracking-widest uppercase">Beauty AI</span>
                     </button>
@@ -117,6 +117,12 @@ const App: React.FC = () => {
             </main>
             
             {!isCatalogView && <Footer onNavigate={handleNavigate} />}
+
+            <BottomNavBar 
+                onNavigate={handleNavigate} 
+                currentView={view.current} 
+                currentCategory={view.payload || 'all'} 
+            />
 
             <CartSidebar 
                 isOpen={isCartOpen} 

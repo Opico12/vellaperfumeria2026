@@ -2,7 +2,6 @@
 import React, { useState, useEffect } from 'react';
 import type { View } from './types';
 import type { Currency } from './currency';
-import { allProducts } from './products';
 
 // --- ICONOS ---
 const BagIcon = () => (
@@ -51,75 +50,76 @@ const Header: React.FC<HeaderProps> = ({ onNavigate, currency, onCurrencyChange,
     ];
 
     return (
-        <header className={`w-full fixed top-0 left-0 z-[100] transition-all duration-500 ${isScrolled ? 'bg-white shadow-lg' : 'bg-white'}`}>
-            {/* BARRA DE PROMOCIONES */}
-            <div className="w-full bg-[#FAE1EF] text-black py-2 md:py-3 px-6 md:px-12 flex items-center justify-between border-b border-black/10">
-                <div className="flex items-center gap-3 shrink-0">
-                    <div className="bg-black/5 p-1.5 rounded-full">
-                        <PhoneIcon className="w-4 h-4 text-black" />
+        <header className={`w-full fixed top-0 left-0 z-[100] transition-all duration-500 ${isScrolled ? 'shadow-[0_10px_30px_rgba(0,0,0,0.5)]' : ''}`}>
+            {/* BARRA DE PROMOCIONES - NEGRA */}
+            <div className="w-full bg-black text-white py-2 md:py-3 px-4 md:px-12 flex items-center justify-between border-b border-white/10">
+                <div className="flex items-center gap-2 md:gap-3 shrink-0">
+                    <div className="bg-white/5 p-1 rounded-full">
+                        <PhoneIcon className="w-3.5 h-3.5 text-[#FAE1EF]" />
                     </div>
-                    <a href="tel:+34661202616" className="text-[10px] font-black uppercase tracking-widest hover:text-pink-700 transition-colors hidden sm:block">
+                    <a href="tel:+34661202616" className="text-[9px] font-black uppercase tracking-widest hover:text-[#FAE1EF] transition-colors">
                         +34 661 202 616
                     </a>
                 </div>
 
-                <div className="flex-grow overflow-hidden mx-4 md:mx-12">
-                    <div className="flex whitespace-nowrap animate-marquee text-[10px] font-black tracking-[0.4em] uppercase items-center">
+                <div className="flex-grow overflow-hidden mx-2 md:mx-12">
+                    <div className="flex whitespace-nowrap animate-marquee text-[9px] font-black tracking-[0.3em] uppercase items-center text-white/80">
                         <span className="mx-8">✨ NUEVA COLECCIÓN 2026 DISPONIBLE ✨</span>
-                        <span className="mx-8">🎁 ENVÍO GRATIS EN PEDIDOS +35€ 🎁</span>
+                        <span className="mx-8 text-[#FAE1EF]">🎁 ENVÍO GRATIS EN PEDIDOS +35€ 🎁</span>
                         <span className="mx-8">🔬 PRUEBA NUESTRO DIAGNÓSTICO DE PIEL NOVAGE+ 🔬</span>
                     </div>
                 </div>
 
-                <div className="flex items-center gap-3 shrink-0">
-                    <a href="https://www.instagram.com/vellaperfumeria/" target="_blank" rel="noopener noreferrer" className="flex items-center gap-3 group transition-all">
-                        <div className="bg-black/5 p-1.5 rounded-full group-hover:bg-black group-hover:text-white transition-all">
-                            <InstagramIcon className="w-4 h-4" />
+                <div className="flex items-center gap-2 md:gap-3 shrink-0">
+                    <a href="https://www.instagram.com/vellaperfumeria/" target="_blank" rel="noopener noreferrer" className="flex items-center gap-2 group transition-all">
+                        <span className="text-[9px] font-black uppercase tracking-widest hidden md:inline group-hover:text-[#FAE1EF]">@vellaperfumeria</span>
+                        <div className="bg-white/5 p-1 rounded-full group-hover:bg-[#FAE1EF] group-hover:text-black transition-all">
+                            <InstagramIcon className="w-3.5 h-3.5" />
                         </div>
-                        <span className="text-[10px] font-black uppercase tracking-widest hidden md:inline group-hover:text-pink-700">@vellaperfumeria</span>
                     </a>
                 </div>
             </div>
 
-            {/* Fila Logo */}
-            <div className="w-full px-6 md:px-12 h-20 md:h-28 flex items-center relative border-b border-gray-100 bg-white">
+            {/* FILA LOGO - NEGRA */}
+            <div className="w-full px-4 md:px-12 h-20 md:h-28 flex items-center relative border-b border-white/5 bg-black text-white">
                 <div className="hidden lg:flex flex-1 justify-start">
-                    <button onClick={() => onNavigate('ia')} className="text-[10px] font-black uppercase tracking-widest bg-black text-white px-5 py-2.5 rounded-full transition-all flex items-center gap-2 hover:bg-[#FAE1EF] hover:text-black">
-                        <span className="w-2 h-2 bg-[#FAE1EF] rounded-full animate-pulse"></span>
+                    <button onClick={() => onNavigate('ia')} className="text-[10px] font-black uppercase tracking-widest bg-[#FAE1EF] text-black px-5 py-2.5 rounded-full transition-all flex items-center gap-2 hover:bg-white">
+                        <span className="w-2 h-2 bg-pink-600 rounded-full animate-pulse"></span>
                         Beauty AI
                     </button>
                 </div>
 
-                <div className="absolute left-1/2 -translate-x-1/2 top-1/2 -translate-y-1/2 z-10 text-center">
+                <div className="absolute left-1/2 -translate-x-1/2 top-1/2 -translate-y-1/2 z-10 text-center w-full max-w-[180px] md:max-w-none">
                     <a href="https://vellaperfumeria.com" className="flex flex-col items-center group">
                         <img 
                             src="https://i0.wp.com/vellaperfumeria.com/wp-content/uploads/2025/06/1000003724-removebg-preview.png" 
                             alt="Logo" 
-                            className="h-14 md:h-20 w-auto transition-transform group-hover:scale-110 duration-700" 
+                            className="h-12 md:h-20 w-auto transition-transform group-hover:scale-110 duration-700 invert brightness-0" 
+                            style={{ filter: 'brightness(0) invert(1)' }}
                         />
-                        <span className="text-[11px] font-black tracking-[0.6em] uppercase italic mt-2 text-black transition-colors group-hover:text-pink-600">
-                            Vella <span className="text-pink-600 group-hover:text-black transition-colors">Perfumeria</span>
+                        <span className="text-[9px] md:text-[11px] font-black tracking-[0.4em] md:tracking-[0.6em] uppercase italic mt-1 text-white transition-colors group-hover:text-[#FAE1EF]">
+                            Vella <span className="text-[#FAE1EF]">Perfumeria</span>
                         </span>
                     </a>
                 </div>
 
-                <div className="flex-1 flex justify-end items-center space-x-8">
-                    <div className="hidden lg:block text-black">
-                        <select value={currency} onChange={(e) => onCurrencyChange(e.target.value as Currency)} className="bg-transparent text-[10px] font-black uppercase tracking-widest focus:outline-none cursor-pointer border-b border-black/10 py-1">
-                            <option value="EUR">EUR €</option>
-                            <option value="USD">USD $</option>
+                <div className="flex-1 flex justify-end items-center space-x-4 md:space-x-8">
+                    <div className="hidden lg:block text-white">
+                        <select value={currency} onChange={(e) => onCurrencyChange(e.target.value as Currency)} className="bg-transparent text-[10px] font-black uppercase tracking-widest focus:outline-none cursor-pointer border-b border-white/20 py-1">
+                            <option value="EUR" className="bg-black">EUR €</option>
+                            <option value="USD" className="bg-black">USD $</option>
                         </select>
                     </div>
-                    <button onClick={onCartClick} className="relative p-2 text-black hover:text-pink-600 transition-colors flex items-center gap-2 group">
+                    <button onClick={onCartClick} className="relative p-2 text-white hover:text-[#FAE1EF] transition-colors flex items-center gap-2 group">
                         <BagIcon />
-                        {cartCount > 0 && <span className="absolute -top-1 -right-1 bg-black text-white text-[8px] font-black w-4 h-4 flex items-center justify-center rounded-full group-hover:bg-pink-600">{cartCount}</span>}
+                        {cartCount > 0 && <span className="absolute -top-1 -right-1 bg-[#FAE1EF] text-black text-[8px] font-black w-4 h-4 flex items-center justify-center rounded-full">{cartCount}</span>}
                         <span className="hidden lg:inline text-[9px] font-black uppercase tracking-widest">Mi Bolsa</span>
                     </button>
                 </div>
             </div>
 
-            {/* NAV BAR NEGRA CON MEGA MENÚ */}
-            <nav className="w-full bg-black hidden lg:flex items-center justify-center space-x-10 h-14 border-b border-white/10 relative">
+            {/* NAV BAR NEGRA - ANCHO COMPLETO (Solo Escritorio) */}
+            <nav className="w-full bg-black hidden lg:flex items-center justify-center space-x-10 h-14 relative border-b border-white/5">
                 {navItems.map((item) => (
                     <div 
                         key={item.label} 
@@ -130,7 +130,7 @@ const Header: React.FC<HeaderProps> = ({ onNavigate, currency, onCurrencyChange,
                         {item.href ? (
                             <a 
                                 href={item.href}
-                                className="text-[10px] font-black uppercase tracking-[0.4em] transition-all relative group h-full flex items-center text-white/90 hover:text-white"
+                                className="text-[10px] font-black uppercase tracking-[0.4em] transition-all relative group h-full flex items-center text-white/90 hover:text-[#FAE1EF]"
                             >
                                 {item.label}
                                 <span className="absolute bottom-0 left-0 w-full h-[3px] bg-[#FAE1EF] transition-transform duration-500 origin-left scale-x-0 group-hover:scale-x-100"></span>
@@ -146,7 +146,7 @@ const Header: React.FC<HeaderProps> = ({ onNavigate, currency, onCurrencyChange,
                         )}
                         
                         {(item as any).hasMega && activeMenu === item.label && (
-                            <div className="fixed top-[164px] md:top-[196px] left-0 w-full bg-black text-white shadow-[0_50px_100px_rgba(0,0,0,1)] animate-fade-in-down z-50 border-t border-white/10">
+                            <div className="fixed top-[184px] md:top-[216px] left-0 w-full bg-black text-white shadow-[0_50px_100px_rgba(0,0,0,1)] animate-fade-in-down z-50 border-t border-white/10">
                                 <div className="container mx-auto grid grid-cols-6 gap-10 p-16">
                                     {item.label === 'Cuidado Facial' ? (
                                         <>
@@ -173,23 +173,6 @@ const Header: React.FC<HeaderProps> = ({ onNavigate, currency, onCurrencyChange,
                                                     <h3 className="text-2xl font-black mb-4 uppercase tracking-tighter italic">Tu rutina Novage+ <br/> comienza aquí</h3>
                                                     <p className="text-gray-400 text-xs font-light leading-relaxed mb-6">"Utiliza nuestro asesor digital para encontrar exactamente lo que tu piel necesita en este momento."</p>
                                                     <button onClick={() => onNavigate('products', 'skincare')} className="text-[9px] font-black text-[#FAE1EF] uppercase tracking-widest hover:underline">Ver lotes expertos &rarr;</button>
-                                                </div>
-                                            </div>
-                                        </>
-                                    ) : item.label === 'Regalos' ? (
-                                        <>
-                                            <div className="space-y-6 text-left col-span-1">
-                                                <h3 className="text-[#FAE1EF] font-black text-[11px] tracking-[0.4em] uppercase border-b border-white/10 pb-2">Ideas Regalo</h3>
-                                                <ul className="space-y-4 text-[10px] tracking-[0.2em] font-bold uppercase text-gray-400">
-                                                    <li className="hover:text-white cursor-pointer transition-colors" onClick={() => onNavigate('regalos')}>Envoltorios de Lujo</li>
-                                                    <li className="hover:text-white cursor-pointer transition-colors" onClick={() => onNavigate('regalos')}>Sets de Perfumes</li>
-                                                    <li className="hover:text-white cursor-pointer transition-colors" onClick={() => onNavigate('ofertas')}>Ofertas Especiales</li>
-                                                </ul>
-                                            </div>
-                                            <div className="col-span-5 flex items-center justify-center">
-                                                <div className="text-center max-w-xl">
-                                                    <p className="text-gray-500 italic text-2xl font-serif mb-8">"Regala una experiencia sensorial inolvidable con nuestros envoltorios icónicos en turquesa y oro."</p>
-                                                    <button onClick={() => onNavigate('regalos')} className="text-[9px] font-black tracking-[0.5em] uppercase border-2 border-white px-12 py-4 hover:bg-[#FAE1EF] hover:text-black hover:border-[#FAE1EF] transition-all">IR A REGALOS</button>
                                                 </div>
                                             </div>
                                         </>
