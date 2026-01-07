@@ -43,7 +43,7 @@ const Header: React.FC<HeaderProps> = ({ onNavigate, cartCount, onCartClick, cur
 
     return (
         <header className="w-full fixed top-0 left-0 z-[100] shadow-2xl font-sans">
-            {/* BARRA SUPERIOR CON INSTAGRAM Y TELÉFONO */}
+            {/* Barra promocional rosa */}
             <div className="w-full bg-[#FAE1EF] py-2 px-6 flex items-center justify-between text-black border-b border-black/10">
                 <div className="flex items-center gap-6">
                     <a href="https://www.instagram.com/vellaperfumeria/" target="_blank" rel="noopener noreferrer" className="flex items-center gap-2 text-[10px] font-black uppercase tracking-widest hover:text-pink-600 transition-colors">
@@ -60,21 +60,18 @@ const Header: React.FC<HeaderProps> = ({ onNavigate, cartCount, onCartClick, cur
                 </div>
             </div>
 
-            {/* BARRA DE LOGO */}
+            {/* Barra de logo blanca */}
             <div className="w-full bg-white px-6 md:px-12 h-20 md:h-24 flex items-center justify-between border-b border-gray-100">
                 <div className="flex-1 flex items-center gap-6">
-                    <button 
-                        onClick={() => onNavigate('ia')} 
-                        className="hidden md:flex bg-black text-white text-[9px] font-black uppercase tracking-widest px-6 py-3 rounded-full hover:bg-pink-600 transition-all shadow-lg items-center gap-3"
-                    >
+                    <button onClick={() => onNavigate('ia')} className="hidden md:flex bg-black text-white text-[9px] font-black uppercase px-6 py-3 rounded-full hover:bg-pink-600 transition-all shadow-lg items-center gap-3">
                         <span className="w-1.5 h-1.5 bg-pink-400 rounded-full animate-pulse"></span>
-                        Asistente Beauty IA
+                        Beauty IA
                     </button>
                     <div className="hidden lg:block">
                         <select 
-                            value={currency}
+                            value={currency} 
                             onChange={(e) => onCurrencyChange(e.target.value as Currency)}
-                            className="bg-gray-50 border border-gray-100 text-[9px] font-black uppercase tracking-widest px-3 py-1.5 rounded-sm focus:outline-none focus:ring-1 focus:ring-pink-300 transition-all cursor-pointer"
+                            className="bg-gray-50 border border-gray-100 text-[9px] font-black px-3 py-1.5 rounded-sm focus:outline-none focus:ring-1 focus:ring-pink-300 cursor-pointer"
                         >
                             <option value="EUR">EUR (€)</option>
                             <option value="USD">USD ($)</option>
@@ -84,11 +81,7 @@ const Header: React.FC<HeaderProps> = ({ onNavigate, cartCount, onCartClick, cur
                 
                 <div className="flex-shrink-0">
                     <button onClick={() => onNavigate('home')} className="flex flex-col items-center group">
-                        <img 
-                            src="https://i0.wp.com/vellaperfumeria.com/wp-content/uploads/2025/06/1000003724-removebg-preview.png" 
-                            alt="Vella" 
-                            className="h-12 md:h-16 transition-transform group-hover:scale-105 duration-700" 
-                        />
+                        <img src="https://i0.wp.com/vellaperfumeria.com/wp-content/uploads/2025/06/1000003724-removebg-preview.png" alt="Vella" className="h-12 md:h-16 transition-transform group-hover:scale-105 duration-700" />
                         <span className="text-[9px] font-black uppercase tracking-[0.8em] mt-1 text-black">Vellaperfumería</span>
                     </button>
                 </div>
@@ -101,12 +94,11 @@ const Header: React.FC<HeaderProps> = ({ onNavigate, cartCount, onCartClick, cur
                                 {cartCount}
                             </span>
                         )}
-                        <span className="hidden md:inline ml-2 text-[9px] font-black uppercase tracking-widest">Mi Bolsa</span>
                     </button>
                 </div>
             </div>
 
-            {/* MENÚ NEGRO FULL-WIDTH (VIBRANTE) */}
+            {/* MENÚ NEGRO FULL-WIDTH */}
             <nav className="w-full bg-black h-14 md:h-16 relative">
                 <div className="h-full w-full max-w-7xl mx-auto px-6 flex items-center justify-center md:justify-start space-x-2 md:space-x-8">
                     {navItems.map((item) => (
@@ -124,46 +116,44 @@ const Header: React.FC<HeaderProps> = ({ onNavigate, cartCount, onCartClick, cur
                                 {item.hasMega && (
                                     <svg className={`w-3 h-3 ml-2 transition-transform duration-300 ${activeMenu === item.label ? 'rotate-180 text-pink-400' : 'opacity-40'}`} fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="3" d="M19 9l-7 7-7-7" /></svg>
                                 )}
-                                <span className={`absolute bottom-0 left-0 h-[3px] bg-pink-500 transition-all duration-500 ${activeMenu === item.label ? 'w-full' : 'w-0'}`}></span>
                             </button>
 
-                            {/* MEGA MENÚ (COLORIDO) */}
+                            {/* MEGA MENÚ DESPLEGABLE */}
                             {item.hasMega && activeMenu === item.label && (
-                                <div className="fixed top-[142px] md:top-[176px] left-0 w-full bg-black/95 backdrop-blur-xl border-t border-white/10 shadow-[0_40px_100px_rgba(0,0,0,0.8)] animate-mega-in z-[101]">
+                                <div className="fixed top-[138px] md:top-[172px] left-0 w-full bg-black/98 backdrop-blur-3xl border-t border-white/10 shadow-2xl animate-mega-in z-[101]">
                                     <div className="w-full max-w-7xl mx-auto py-16 px-12 grid grid-cols-12 gap-16">
                                         <div className="col-span-3 space-y-10 border-r border-white/5 pr-12 text-left">
-                                            <h4 className="text-pink-500 text-[13px] font-black uppercase tracking-[0.5em] border-b border-white/10 pb-4">Nuestras Rutinas</h4>
+                                            <h4 className="text-pink-500 text-[13px] font-black uppercase tracking-[0.5em] pb-4">Destacados</h4>
                                             <ul className="space-y-6 text-white/80 text-[11px] font-bold uppercase tracking-[0.2em]">
-                                                <li className="hover:text-pink-400 cursor-pointer transition-colors" onClick={() => onNavigate('products', 'skincare')}>Novage+ Bio-Energía</li>
-                                                <li className="hover:text-pink-400 cursor-pointer transition-colors" onClick={() => onNavigate('products', 'skincare')}>Colección Diamond</li>
-                                                <li className="hover:text-pink-400 cursor-pointer transition-colors" onClick={() => onNavigate('products', 'makeup')}>Giordani Gold Lujo</li>
-                                                <li className="hover:text-pink-400 cursor-pointer transition-colors" onClick={() => onNavigate('products', 'all')}>Catálogo Digital 2026</li>
+                                                <li className="flex items-center justify-between group cursor-pointer" onClick={() => onNavigate('products', 'skincare')}>
+                                                    <span>Novage+ Bio-Energía</span>
+                                                    <span className="bg-zinc-700 text-gray-300 text-[8px] px-3 py-1.5 rounded-sm hover:bg-zinc-600 transition-colors">Ver página</span>
+                                                </li>
+                                                <li className="flex items-center justify-between group cursor-pointer" onClick={() => onNavigate('products', 'makeup')}>
+                                                    <span>Giordani Gold Lujo</span>
+                                                    <span className="bg-zinc-700 text-gray-300 text-[8px] px-3 py-1.5 rounded-sm hover:bg-zinc-600 transition-colors">Ver página</span>
+                                                </li>
                                             </ul>
                                         </div>
                                         <div className="col-span-3 space-y-10 border-r border-white/5 pr-12 text-left">
-                                            <h4 className="text-pink-500 text-[13px] font-black uppercase tracking-[0.5em] border-b border-white/10 pb-4">Servicios VIP</h4>
+                                            <h4 className="text-pink-500 text-[13px] font-black uppercase tracking-[0.5em] pb-4">Inspiración</h4>
                                             <ul className="space-y-6 text-white/80 text-[11px] font-bold uppercase tracking-[0.2em]">
-                                                <li className="hover:text-pink-400 cursor-pointer transition-colors" onClick={() => onNavigate('skinDiagnostic')}>Diagnóstico Facial IA</li>
-                                                <li className="hover:text-pink-400 cursor-pointer transition-colors" onClick={() => onNavigate('ia')}>Asistente Personal</li>
-                                                <li className="hover:text-pink-400 cursor-pointer transition-colors" onClick={() => onNavigate('ofertas')}>Ventas Flash</li>
-                                                <li className="hover:text-pink-400 cursor-pointer transition-colors" onClick={() => onNavigate('blog')}>Consejos de Belleza</li>
+                                                <li className="flex items-center justify-between group cursor-pointer" onClick={() => onNavigate('catalog')}>
+                                                    <span>Catálogo 2026</span>
+                                                    <span className="bg-zinc-700 text-gray-300 text-[8px] px-3 py-1.5 rounded-sm hover:bg-zinc-600 transition-colors">Ver página</span>
+                                                </li>
+                                                <li className="flex items-center justify-between group cursor-pointer" onClick={() => onNavigate('skinDiagnostic')}>
+                                                    <span>Skin Advisor IA</span>
+                                                    <span className="bg-zinc-700 text-gray-300 text-[8px] px-3 py-1.5 rounded-sm hover:bg-zinc-600 transition-colors">Ver página</span>
+                                                </li>
                                             </ul>
                                         </div>
-                                        <div className="col-span-6 flex items-center justify-end">
-                                            <div className="relative group/promo overflow-hidden rounded-sm w-full h-full max-h-[300px] shadow-2xl">
-                                                <img 
-                                                    src="https://images.unsplash.com/photo-1596704017254-9b121068fb31?auto=format&fit=crop&w=1200&q=80" 
-                                                    className="w-full h-full object-cover opacity-80 group-hover/promo:scale-105 group-hover/promo:opacity-100 transition-all duration-700" 
-                                                    alt="Promo" 
-                                                />
-                                                <div className="absolute inset-0 bg-gradient-to-t from-black via-black/20 to-transparent flex flex-col items-center justify-center p-12 text-center">
-                                                    <h3 className="text-4xl font-serif italic text-white mb-6 tracking-tight">El Lujo Sueco <br/> en tu Piel</h3>
-                                                    <button 
-                                                        onClick={() => onNavigate('products', 'all')}
-                                                        className="bg-[#FAE1EF] text-black text-[10px] font-black uppercase tracking-[0.4em] px-12 py-5 hover:bg-white transition-all shadow-2xl"
-                                                    >
-                                                        VER NOVEDADES
-                                                    </button>
+                                        <div className="col-span-6">
+                                            <div className="relative group overflow-hidden rounded-sm w-full h-full max-h-[300px]">
+                                                <img src="https://images.unsplash.com/photo-1596704017254-9b121068fb31?auto=format&fit=crop&w=1200&q=80" className="w-full h-full object-cover opacity-70 group-hover:opacity-100 transition-all duration-700" alt="Promo" />
+                                                <div className="absolute inset-0 flex flex-col items-center justify-center p-8 bg-black/40">
+                                                    <h3 className="text-3xl font-serif italic text-white mb-6">Novedades 2026</h3>
+                                                    <button onClick={() => onNavigate('products', 'all')} className="bg-zinc-700 text-gray-200 text-[10px] font-black px-10 py-4 hover:bg-pink-600 transition-all uppercase tracking-[0.4em]">Ver página completa</button>
                                                 </div>
                                             </div>
                                         </div>
@@ -176,10 +166,7 @@ const Header: React.FC<HeaderProps> = ({ onNavigate, cartCount, onCartClick, cur
             </nav>
 
             <style>{`
-                @keyframes mega-in { 
-                    from { opacity: 0; transform: translateY(-10px); } 
-                    to { opacity: 1; transform: translateY(0); } 
-                }
+                @keyframes mega-in { from { opacity: 0; transform: translateY(-10px); } to { opacity: 1; transform: translateY(0); } }
                 .animate-mega-in { animation: mega-in 0.4s cubic-bezier(0.2, 1, 0.2, 1) forwards; }
             `}</style>
         </header>
