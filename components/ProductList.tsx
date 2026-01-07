@@ -17,28 +17,41 @@ const ProductList: React.FC<{
     onQuickView: (product: Product) => void;
 }> = ({ onNavigate, onProductSelect, onAddToCart, onQuickAddToCart, currency, onQuickView }) => {
     
-    // FILTROS TOTALES POR SECCIONES ESTRATÉGICAS
-    const onColourHot = allProducts.filter(p => p.subCategory === 'OnColour');
-    const magnoliaVip = allProducts.filter(p => p.subCategory === 'Milk & Honey Gold');
-    const premiumSkincare = allProducts.filter(p => p.category === 'skincare');
+    // Filtrado manual para asegurar CERO REPETICIÓN en la home
+    // Sección 1: OnColour (Maquillaje)
+    const section1OnColour = allProducts.filter(p => p.subCategory === 'OnColour').slice(0, 4);
+    
+    // Sección 2: Cuidado Orgánico (Diferente a la sección 1)
+    const section2Magnolia = allProducts.filter(p => 
+        p.subCategory === 'Milk & Honey Gold' && 
+        p.category === 'personal-care' &&
+        !section1OnColour.some(s1 => s1.id === p.id)
+    ).slice(0, 2);
+    
+    // Sección 3: Premium (Diferente a las anteriores)
+    const section3Premium = allProducts.filter(p => 
+        (p.subCategory === 'Giordani Gold' || p.subCategory === 'Novage+') &&
+        !section1OnColour.some(s1 => s1.id === p.id) &&
+        !section2Magnolia.some(s2 => s2.id === p.id)
+    ).slice(0, 4);
 
     return (
         <div className="space-y-32 pb-20">
             <HeroBanner onNavigate={onNavigate} />
 
-            {/* SECCIÓN 1: MEGA OFERTAS ONCOLOUR (+100 PRODUCTOS) */}
+            {/* SECCIÓN 1 */}
             <div className="container mx-auto px-4 md:px-12">
                 <section>
                     <div className="flex flex-col md:flex-row justify-between items-end mb-16 gap-6">
                         <div className="text-left">
-                            <span className="text-pink-600 text-[10px] font-black tracking-[0.7em] uppercase mb-4 block underline underline-offset-8 decoration-black">Edición 2026 Sin Límites</span>
+                            <span className="text-pink-600 text-[10px] font-black tracking-[0.7em] uppercase mb-4 block underline underline-offset-8 decoration-black">Tendencia 2026</span>
                             <h3 className="text-4xl md:text-7xl font-black text-black tracking-tighter uppercase italic">Universo <span className="text-pink-600">OnColour</span></h3>
-                            <p className="mt-4 text-gray-400 font-light italic text-sm tracking-widest max-w-2xl uppercase">Explora nuestro catálogo infinito de color. Pigmentación pura y ofertas agresivas en todo el inventario de maquillaje.</p>
+                            <p className="mt-4 text-gray-400 font-light italic text-sm tracking-widest max-w-2xl uppercase">Color vibrante sin compromisos. La esencia de Estocolmo en tu neceser.</p>
                         </div>
-                        <button onClick={() => onNavigate('products', 'makeup')} className="bg-black text-white text-[9px] font-black uppercase tracking-[0.4em] px-8 py-4 hover:bg-pink-600 transition-all shadow-lg">VER TODO ONCOLOUR</button>
+                        <button onClick={() => onNavigate('products', 'makeup')} className="bg-black text-white text-[9px] font-black uppercase tracking-[0.4em] px-8 py-4 hover:bg-pink-600 transition-all shadow-lg">VER MAQUILLAJE</button>
                     </div>
                     <div className="grid grid-cols-2 lg:grid-cols-4 gap-8 md:gap-12">
-                        {onColourHot.slice(0, 12).map(product => (
+                        {section1OnColour.map(product => (
                             <ProductCard
                                 key={product.id}
                                 product={product}
@@ -53,20 +66,20 @@ const ProductList: React.FC<{
                 </section>
             </div>
 
-            {/* SECCIÓN 2: MILK & HONEY MAGNOLIA (REGALOS SUPREMOS) */}
-            <div className="w-full bg-[#FAE1EF]/20 py-32 border-y border-pink-100 relative overflow-hidden">
+            {/* SECCIÓN 2 */}
+            <div className="w-full bg-[#FAE1EF]/20 py-32 border-y border-pink-100">
                 <div className="container mx-auto px-4 md:px-12">
                     <section>
-                        <div className="flex flex-col md:flex-row items-center gap-16 mb-24">
+                        <div className="flex flex-col md:flex-row items-center gap-16">
                             <div className="md:w-1/2 text-left">
-                                <h3 className="text-5xl md:text-8xl font-black text-black tracking-tighter uppercase italic mb-8 leading-none">Magnolia <br/> <span className="text-pink-600">Essence</span></h3>
+                                <h3 className="text-5xl md:text-8xl font-black text-black tracking-tighter uppercase italic mb-8 leading-none">Cuidado <br/> <span className="text-pink-600">Orgánico</span></h3>
                                 <p className="text-gray-500 text-lg font-light italic tracking-widest uppercase mb-10 leading-relaxed">
-                                    La elegancia de la magnolia se une a la nutrición de la leche y la miel orgánica. El regalo perfecto para quienes buscan lo extraordinario en su piel.
+                                    Extractos de leche y miel pura para una nutrición que atraviesa los sentidos.
                                 </p>
-                                <button onClick={() => onNavigate('regalos')} className="bg-black text-white text-[10px] font-black uppercase tracking-widest px-10 py-5 hover:bg-pink-600 transition-all shadow-xl">IR A SECCIÓN REGALOS</button>
+                                <button onClick={() => onNavigate('products', 'personal-care')} className="bg-black text-white text-[10px] font-black uppercase tracking-widest px-10 py-5 hover:bg-pink-600 transition-all shadow-xl">DESCUBRIR LÍNEA</button>
                             </div>
                             <div className="md:w-1/2 grid grid-cols-2 gap-8">
-                                {magnoliaVip.map(product => (
+                                {section2Magnolia.map(product => (
                                     <ProductCard
                                         key={product.id}
                                         product={product}
@@ -83,15 +96,15 @@ const ProductList: React.FC<{
                 </div>
             </div>
 
-            {/* SECCIÓN 3: CIENCIA FACIAL PREMIUM */}
+            {/* SECCIÓN 3 */}
             <div className="container mx-auto px-4 md:px-12">
                 <section>
                     <div className="text-center mb-24">
-                         <span className="text-pink-600 text-[10px] font-black tracking-[0.8em] uppercase mb-6 block">Tratamientos Estocolmo Novage+</span>
-                         <h3 className="text-4xl md:text-6xl font-black text-black tracking-tighter uppercase italic">Ciencia <span className="text-pink-600">Facial VIP</span></h3>
+                         <span className="text-pink-600 text-[10px] font-black tracking-[0.8em] uppercase mb-6 block">Exclusividad Vellaperfumería</span>
+                         <h3 className="text-4xl md:text-6xl font-black text-black tracking-tighter uppercase italic">Lujo <span className="text-pink-600">Sin Límites</span></h3>
                     </div>
                     <div className="grid grid-cols-2 lg:grid-cols-4 gap-8 md:gap-12">
-                        {premiumSkincare.map(product => (
+                        {section3Premium.map(product => (
                             <ProductCard
                                 key={product.id}
                                 product={product}

@@ -1,9 +1,10 @@
 
 import React, { useState, useEffect, useCallback } from 'react';
-import type { View } from './types';
+import type { View, Product } from './types';
+import { allProducts } from './products';
 
 interface HeroCarouselProps {
-    onNavigate: (view: View) => void;
+    onNavigate: (view: View, payload?: any) => void;
 }
 
 const slides = [
@@ -19,7 +20,8 @@ const slides = [
         title: 'La Nueva Era de la Elegancia',
         subtitle: 'COLECCIÓN PRIVÉE 2026: DIVINE DARK VELVET',
         buttonText: 'DESCUBRIR',
-        view: 'productDetail' as View,
+        view: 'products' as View, // Cambiado de productDetail a products para mayor seguridad
+        payload: 'perfume'
     },
     {
         imageUrl: 'https://media-cdn.oriflame.com/digitalPromotionsMedia/images/banner-media/ES/20900001/20866153.jpg',
@@ -59,7 +61,7 @@ const HeroCarousel: React.FC<HeroCarouselProps> = ({ onNavigate }) => {
     }, [nextSlide]);
     
     return (
-        <div className="w-full bg-white">
+        <div className="w-full bg-white font-sans">
              <div className="relative h-[70vh] min-h-[500px] w-full overflow-hidden">
                 {slides.map((slide, index) => (
                     <div
@@ -75,7 +77,7 @@ const HeroCarousel: React.FC<HeroCarouselProps> = ({ onNavigate }) => {
                         <div className="absolute inset-0 bg-black/40" />
                         <div className="absolute inset-0 flex items-center justify-center text-center">
                             <div className="max-w-4xl px-6">
-                                <span className="text-white text-[10px] font-black tracking-[0.6em] uppercase mb-6 block animate-fade-in">Navidad 2026</span>
+                                <span className="text-white text-[10px] font-black tracking-[0.6em] uppercase mb-6 block animate-fade-in">Temporada 2026</span>
                                 <h2 className="text-5xl md:text-7xl font-serif italic text-white mb-8 leading-tight drop-shadow-2xl">
                                     {slide.title}
                                 </h2>
@@ -83,7 +85,7 @@ const HeroCarousel: React.FC<HeroCarouselProps> = ({ onNavigate }) => {
                                     {slide.subtitle}
                                 </p>
                                 <button
-                                    onClick={() => onNavigate(slide.view)}
+                                    onClick={() => onNavigate(slide.view, slide.payload)}
                                     className="bg-white text-black text-[10px] font-black tracking-[0.4em] px-12 py-5 uppercase hover:bg-pink-600 hover:text-white transition-all duration-500 shadow-2xl"
                                 >
                                     {slide.buttonText}
@@ -93,23 +95,23 @@ const HeroCarousel: React.FC<HeroCarouselProps> = ({ onNavigate }) => {
                     </div>
                 ))}
                 
-                {/* Navigation Arrows - Minimalist */}
+                {/* Navegación */}
                 <button 
                     onClick={prevSlide}
                     className="absolute left-8 top-1/2 -translate-y-1/2 text-white/50 hover:text-white transition-colors p-2"
-                    aria-label="Previous"
+                    aria-label="Anterior"
                 >
                     <ChevronLeftIcon />
                 </button>
                 <button 
                     onClick={nextSlide}
                     className="absolute right-8 top-1/2 -translate-y-1/2 text-white/50 hover:text-white transition-colors p-2"
-                    aria-label="Next"
+                    aria-label="Siguiente"
                 >
                     <ChevronRightIcon />
                 </button>
 
-                {/* Progress Indicators */}
+                {/* Indicadores */}
                 <div className="absolute bottom-10 left-1/2 -translate-x-1/2 flex space-x-4">
                     {slides.map((_, index) => (
                         <button

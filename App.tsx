@@ -1,10 +1,8 @@
 
 import React, { useState, useEffect, useCallback } from 'react';
-// Types
-import type { View, Product, CartItem } from './types';
-import type { Currency } from './currency';
+import type { View, Product, CartItem } from './components/types';
+import type { Currency } from './components/currency';
 import { blogPosts } from './components/blogData';
-// Components
 import Header from './components/Header';
 import Footer from './components/Footer';
 import ProductList from './components/ProductList';
@@ -77,18 +75,30 @@ const App: React.FC = () => {
 
     const renderContent = () => {
         switch (view.current) {
-            case 'home': return <ProductList onNavigate={handleNavigate} onProductSelect={handleProductSelect} onAddToCart={handleAddToCart} onQuickAddToCart={handleAddToCart} currency={currency} onQuickView={setQuickViewProduct} />;
-            case 'products': return <ShopPage initialCategory={view.payload || 'all'} currency={currency} onAddToCart={handleAddToCart} onQuickAddToCart={handleAddToCart} onProductSelect={handleProductSelect} onQuickView={setQuickViewProduct} />;
-            case 'productDetail': return <ProductDetailPage product={view.payload} currency={currency} onAddToCart={handleAddToCart} onQuickAddToCart={handleAddToCart} onProductSelect={handleProductSelect} onQuickView={setQuickViewProduct} />;
-            case 'ofertas': return <OfertasPage currency={currency} onAddToCart={handleAddToCart} onQuickAddToCart={handleAddToCart} onProductSelect={handleProductSelect} onQuickView={setQuickViewProduct} />;
-            case 'regalos': return <RegalosPage onNavigate={handleNavigate} onProductSelect={handleProductSelect} onAddToCart={handleAddToCart} onQuickAddToCart={handleAddToCart} currency={currency} onQuickView={setQuickViewProduct} />;
-            case 'skinDiagnostic': return <SkinDiagnosticPage />;
-            case 'ia': return <AsistenteIAPage />;
-            case 'catalog': return <CatalogPage />;
-            case 'blog': return <BlogPage posts={blogPosts} onSelectPost={(p) => handleNavigate('blogPost', p)} />;
-            case 'blogPost': return <BlogPostPage post={view.payload} allPosts={blogPosts} onSelectPost={(p) => handleNavigate('blogPost', p)} onBack={() => handleNavigate('blog')} />;
-            case 'checkout': return <CheckoutPage cartItems={cartItems} currency={currency} onClearCart={() => setCartItems([])} onNavigate={handleNavigate} />;
-            default: return <ProductList onNavigate={handleNavigate} onProductSelect={handleProductSelect} onAddToCart={handleAddToCart} onQuickAddToCart={handleAddToCart} currency={currency} onQuickView={setQuickViewProduct} />;
+            case 'home': 
+                return <ProductList onNavigate={handleNavigate} onProductSelect={handleProductSelect} onAddToCart={handleAddToCart} onQuickAddToCart={handleAddToCart} currency={currency} onQuickView={setQuickViewProduct} />;
+            case 'products': 
+                return <ShopPage initialCategory={view.payload || 'all'} currency={currency} onAddToCart={handleAddToCart} onQuickAddToCart={handleAddToCart} onProductSelect={handleProductSelect} onQuickView={setQuickViewProduct} />;
+            case 'productDetail': 
+                return <ProductDetailPage product={view.payload} currency={currency} onAddToCart={handleAddToCart} onQuickAddToCart={handleAddToCart} onProductSelect={handleProductSelect} onQuickView={setQuickViewProduct} onNavigate={handleNavigate} />;
+            case 'ofertas': 
+                return <OfertasPage currency={currency} onAddToCart={handleAddToCart} onQuickAddToCart={handleAddToCart} onProductSelect={handleProductSelect} onQuickView={setQuickViewProduct} />;
+            case 'regalos': 
+                return <RegalosPage onNavigate={handleNavigate} onProductSelect={handleProductSelect} onAddToCart={handleAddToCart} onQuickAddToCart={handleAddToCart} currency={currency} onQuickView={setQuickViewProduct} />;
+            case 'skinDiagnostic': 
+                return <SkinDiagnosticPage />;
+            case 'ia': 
+                return <AsistenteIAPage />;
+            case 'catalog': 
+                return <CatalogPage />;
+            case 'blog': 
+                return <BlogPage posts={blogPosts} onSelectPost={(p) => handleNavigate('blogPost', p)} />;
+            case 'blogPost': 
+                return <BlogPostPage post={view.payload} allPosts={blogPosts} onSelectPost={(p) => handleNavigate('blogPost', p)} onBack={() => handleNavigate('blog')} />;
+            case 'checkout': 
+                return <CheckoutPage cartItems={cartItems} currency={currency} onClearCart={() => setCartItems([])} onNavigate={handleNavigate} />;
+            default: 
+                return <ProductList onNavigate={handleNavigate} onProductSelect={handleProductSelect} onAddToCart={handleAddToCart} onQuickAddToCart={handleAddToCart} currency={currency} onQuickView={setQuickViewProduct} />;
         }
     };
 
