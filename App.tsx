@@ -58,9 +58,12 @@ const App: React.FC = () => {
         setView({ current: newView, payload });
     }, []);
 
-    const handleProductSelect = (product: Product) => handleNavigate('productDetail', product);
+    const handleProductSelect = (product: Product) => {
+        if (product) handleNavigate('productDetail', product);
+    };
 
     const handleAddToCart = useCallback((product: Product, buttonElement: HTMLButtonElement | null, selectedVariant: Record<string, string> | null) => {
+        if (!product) return;
         const cartItemId = selectedVariant 
             ? `${product.id}-${Object.values(selectedVariant).join('-')}`
             : `${product.id}`;
@@ -117,7 +120,7 @@ const App: React.FC = () => {
              <main className={`flex-grow relative ${isCatalogView ? 'h-screen overflow-hidden pt-[120px] md:pt-[160px]' : 'pt-[140px] md:pt-[224px] pb-20 md:pb-8'}`}>
                 {renderContent()}
 
-                <aside className="fixed bottom-20 md:bottom-8 right-6 md:right-8 z-[60] flex flex-col gap-5 items-end">
+                <aside className="fixed bottom-24 md:bottom-8 right-6 md:right-8 z-[60] flex flex-col gap-5 items-end">
                     <a href="https://wa.me/34661202616" target="_blank" rel="noopener noreferrer" className="bg-[#25D366] text-white p-4 rounded-full shadow-lg hover:scale-110 transition-transform"><WhatsAppIcon /></a>
                     <button onClick={() => handleNavigate('ia')} className="bg-black text-white px-8 py-4 rounded-full shadow-lg flex items-center gap-4 hover:-translate-y-2 transition-transform border border-white/10">
                         <span className="w-2 h-2 rounded-full animate-pulse" style={{ backgroundColor: orchidPink }}></span>

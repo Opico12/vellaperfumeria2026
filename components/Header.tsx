@@ -22,17 +22,18 @@ const Header: React.FC<HeaderProps> = ({ onNavigate, cartCount, onCartClick, cur
 
     const navItems = [
         { label: 'Colecciones', view: 'products' as View, payload: 'all', hasMega: true },
-        { label: 'Maquillaje OnColour', view: 'products' as View, payload: 'makeup', hasMega: true },
-        { label: 'Cuidado Facial', view: 'products' as View, payload: 'skincare' },
-        { label: 'Ofertas Especiales', view: 'ofertas' as View },
-        { label: 'Digital Journal 2026', view: 'catalog' as View },
+        { label: 'Maquillaje', view: 'products' as View, payload: 'makeup', hasMega: true },
+        { label: 'Cuidado Facial', view: 'products' as View, payload: 'skincare', hasMega: true },
+        { label: 'Cuidado del Cabello', view: 'products' as View, payload: 'hair', hasMega: true },
+        { label: 'Wellness', view: 'products' as View, payload: 'wellness' },
+        { label: 'Ofertas', view: 'ofertas' as View },
     ];
 
     return (
         <header className="w-full fixed top-0 left-0 z-[100] shadow-2xl font-sans">
             {/* BARRA SUPERIOR PROMOCIONAL */}
             <div className="w-full bg-[#FAE1EF] py-2.5 text-[10px] font-black uppercase tracking-[0.4em] text-center text-black border-b border-black/5">
-                ✨ ENVÍO GRATUITO EN PEDIDOS SUPERIORES A 35€ | EXPERIENCIA VIP VELLAPERFUMERÍA ✨
+                ✨ EXPERIENCIA VIP VELLAPERFUMERÍA: ENVÍO GRATIS DESDE 35€ ✨
             </div>
 
             {/* MARCA Y LOGO (FONDO BLANCO) */}
@@ -40,10 +41,10 @@ const Header: React.FC<HeaderProps> = ({ onNavigate, cartCount, onCartClick, cur
                 <div className="flex-1 flex items-center gap-6">
                     <button 
                         onClick={() => onNavigate('ia')} 
-                        className="hidden md:flex bg-black text-white text-[9px] font-black uppercase tracking-widest px-6 py-3 rounded-full hover:bg-pink-600 transition-all shadow-lg items-center gap-3 group"
+                        className="hidden md:flex bg-black text-white text-[9px] font-black uppercase tracking-widest px-6 py-3 rounded-full hover:bg-pink-600 transition-all shadow-lg items-center gap-3"
                     >
-                        <span className="w-1.5 h-1.5 bg-pink-400 rounded-full animate-pulse group-hover:bg-white"></span>
-                        Beauty AI
+                        <span className="w-1.5 h-1.5 bg-pink-400 rounded-full animate-pulse"></span>
+                        Asistente Beauty IA
                     </button>
                     <div className="hidden lg:block">
                         <select 
@@ -64,7 +65,7 @@ const Header: React.FC<HeaderProps> = ({ onNavigate, cartCount, onCartClick, cur
                             alt="Vella" 
                             className="h-12 md:h-16 transition-transform group-hover:scale-105 duration-700" 
                         />
-                        <span className="text-[10px] font-black uppercase tracking-[0.8em] mt-1 text-black">Vellaperfumería</span>
+                        <span className="text-[9px] font-black uppercase tracking-[0.8em] mt-1 text-black">Vellaperfumería</span>
                     </button>
                 </div>
 
@@ -83,7 +84,7 @@ const Header: React.FC<HeaderProps> = ({ onNavigate, cartCount, onCartClick, cur
 
             {/* MENÚ DE NAVEGACIÓN NEGRO (ANCHURA COMPLETA) */}
             <nav className="w-full bg-black h-14 md:h-16 relative">
-                <div className="h-full max-w-7xl mx-auto px-6 flex items-center justify-center md:justify-start space-x-2 md:space-x-8">
+                <div className="h-full w-full max-w-7xl mx-auto px-6 flex items-center justify-center md:justify-start space-x-2 md:space-x-8 overflow-x-auto no-scrollbar">
                     {navItems.map((item) => (
                         <div 
                             key={item.label} 
@@ -99,45 +100,45 @@ const Header: React.FC<HeaderProps> = ({ onNavigate, cartCount, onCartClick, cur
                                 {item.hasMega && (
                                     <svg className={`w-3 h-3 ml-2 transition-transform duration-300 ${activeMenu === item.label ? 'rotate-180' : 'opacity-30'}`} fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M19 9l-7 7-7-7" /></svg>
                                 )}
-                                <span className={`absolute bottom-0 left-0 h-[2px] bg-pink-600 transition-all duration-500 ${activeMenu === item.label ? 'w-full' : 'w-0'}`}></span>
+                                <span className={`absolute bottom-0 left-0 h-[2.5px] bg-pink-600 transition-all duration-500 ${activeMenu === item.label ? 'w-full' : 'w-0'}`}></span>
                             </button>
 
-                            {/* MEGA DESPLEGABLE VISIBLE */}
+                            {/* MEGA DESPLEGABLE - ANCHURA COMPLETA */}
                             {item.hasMega && activeMenu === item.label && (
-                                <div className="fixed top-[134px] md:top-[160px] left-0 w-full bg-black/95 backdrop-blur-2xl border-t border-white/5 shadow-[0_40px_80px_rgba(0,0,0,0.8)] animate-mega-fade-in z-[101]">
-                                    <div className="max-w-7xl mx-auto py-16 px-12 grid grid-cols-12 gap-16">
-                                        <div className="col-span-3 space-y-8 border-r border-white/10 pr-12">
-                                            <h4 className="text-pink-400 text-[12px] font-black uppercase tracking-[0.5em] mb-6">Lo Más Buscado</h4>
-                                            <ul className="space-y-4 text-white/60 text-[11px] font-bold uppercase tracking-[0.2em]">
-                                                <li className="hover:text-white cursor-pointer transition-colors" onClick={() => onNavigate('products', 'makeup')}>Best Sellers 2026</li>
-                                                <li className="hover:text-white cursor-pointer transition-colors" onClick={() => onNavigate('products', 'skincare')}>Sets Bioactivos</li>
-                                                <li className="hover:text-white cursor-pointer transition-colors" onClick={() => onNavigate('regalos')}>Kits para Regalo</li>
-                                                <li className="hover:text-white cursor-pointer transition-colors" onClick={() => onNavigate('products', 'perfume')}>Fragancias de Lujo</li>
+                                <div className="fixed top-[134px] md:top-[160px] left-0 w-full bg-black/98 backdrop-blur-3xl border-t border-white/5 shadow-[0_50px_100px_rgba(0,0,0,0.9)] animate-mega-fade-in z-[101]">
+                                    <div className="w-full max-w-7xl mx-auto py-16 px-12 grid grid-cols-12 gap-20">
+                                        <div className="col-span-3 space-y-10 border-r border-white/10 pr-12">
+                                            <h4 className="text-pink-400 text-[13px] font-black uppercase tracking-[0.5em] border-b border-white/5 pb-4">Destacados</h4>
+                                            <ul className="space-y-5 text-white/70 text-[11px] font-bold uppercase tracking-[0.2em]">
+                                                <li className="hover:text-white cursor-pointer transition-colors" onClick={() => onNavigate('products', 'makeup')}>Novage+ Bioactive</li>
+                                                <li className="hover:text-white cursor-pointer transition-colors" onClick={() => onNavigate('products', 'skincare')}>Sets Rutina Completa</li>
+                                                <li className="hover:text-white cursor-pointer transition-colors" onClick={() => onNavigate('products', 'hair')}>Línea Duologi</li>
+                                                <li className="hover:text-white cursor-pointer transition-colors" onClick={() => onNavigate('products', 'all')}>Catálogo Completo</li>
                                             </ul>
                                         </div>
-                                        <div className="col-span-3 space-y-8 border-r border-white/10 pr-12">
-                                            <h4 className="text-pink-400 text-[12px] font-black uppercase tracking-[0.5em] mb-6">Por Marca</h4>
-                                            <ul className="space-y-4 text-white/60 text-[11px] font-bold uppercase tracking-[0.2em]">
-                                                <li className="hover:text-white cursor-pointer transition-colors" onClick={() => onNavigate('products', 'all')}>Giordani Gold</li>
-                                                <li className="hover:text-white cursor-pointer transition-colors" onClick={() => onNavigate('products', 'all')}>Novage+</li>
-                                                <li className="hover:text-white cursor-pointer transition-colors" onClick={() => onNavigate('products', 'all')}>Milk & Honey Magnolia</li>
-                                                <li className="hover:text-white cursor-pointer transition-colors" onClick={() => onNavigate('products', 'all')}>OnColour Nordic</li>
+                                        <div className="col-span-3 space-y-10 border-r border-white/10 pr-12">
+                                            <h4 className="text-pink-400 text-[13px] font-black uppercase tracking-[0.5em] border-b border-white/5 pb-4">Lo Más Buscado</h4>
+                                            <ul className="space-y-5 text-white/70 text-[11px] font-bold uppercase tracking-[0.2em]">
+                                                <li className="hover:text-white cursor-pointer transition-colors" onClick={() => onNavigate('products', 'skincare')}>Anti-Edad Premium</li>
+                                                <li className="hover:text-white cursor-pointer transition-colors" onClick={() => onNavigate('products', 'makeup')}>Maquillaje Vegano</li>
+                                                <li className="hover:text-white cursor-pointer transition-colors" onClick={() => onNavigate('products', 'perfume')}>Fragancias de Lujo</li>
+                                                <li className="hover:text-white cursor-pointer transition-colors" onClick={() => onNavigate('ofertas')}>Super Ofertas</li>
                                             </ul>
                                         </div>
                                         <div className="col-span-6 flex items-center justify-end">
-                                            <div className="relative group/promo overflow-hidden rounded-sm w-full h-full max-h-[300px]">
+                                            <div className="relative group/promo overflow-hidden rounded-sm w-full h-full max-h-[320px] shadow-2xl">
                                                 <img 
                                                     src="https://images.unsplash.com/photo-1544816155-12df9643f363?auto=format&fit=crop&w=1200&q=80" 
-                                                    className="w-full h-full object-cover grayscale group-hover/promo:grayscale-0 transition-all duration-1000 opacity-60" 
+                                                    className="w-full h-full object-cover grayscale opacity-40 group-hover/promo:scale-105 transition-all duration-[3s]" 
                                                     alt="Promo" 
                                                 />
-                                                <div className="absolute inset-0 flex flex-col items-center justify-center p-8 text-center bg-black/40">
-                                                    <h3 className="text-3xl font-serif italic text-white mb-4 tracking-tighter">Experiencia <br/> Inolvidable</h3>
+                                                <div className="absolute inset-0 flex flex-col items-center justify-center p-12 text-center bg-black/40 backdrop-grayscale-[0.5]">
+                                                    <h3 className="text-4xl font-serif italic text-white mb-6 tracking-tighter leading-tight">La Belleza del <br/> Futuro 2026</h3>
                                                     <button 
                                                         onClick={() => onNavigate('products', 'all')}
-                                                        className="bg-white text-black text-[10px] font-black uppercase tracking-[0.4em] px-8 py-4 hover:bg-pink-600 hover:text-white transition-all shadow-2xl"
+                                                        className="bg-white text-black text-[10px] font-black uppercase tracking-[0.4em] px-10 py-5 hover:bg-pink-600 hover:text-white transition-all shadow-2xl active:scale-95"
                                                     >
-                                                        Explorar Todo
+                                                        Descubrir Ahora
                                                     </button>
                                                 </div>
                                             </div>
@@ -152,10 +153,10 @@ const Header: React.FC<HeaderProps> = ({ onNavigate, cartCount, onCartClick, cur
 
             <style>{`
                 @keyframes mega-fade-in { 
-                    from { opacity: 0; transform: translateY(-10px); } 
+                    from { opacity: 0; transform: translateY(-15px); } 
                     to { opacity: 1; transform: translateY(0); } 
                 }
-                .animate-mega-fade-in { animation: mega-fade-in 0.4s cubic-bezier(0.16, 1, 0.3, 1) forwards; }
+                .animate-mega-fade-in { animation: mega-fade-in 0.5s cubic-bezier(0.16, 1, 0.3, 1) forwards; }
                 .no-scrollbar::-webkit-scrollbar { display: none; }
                 .no-scrollbar { -ms-overflow-style: none; scrollbar-width: none; }
             `}</style>
