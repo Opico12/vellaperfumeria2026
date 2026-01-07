@@ -1,51 +1,49 @@
 
 import type { Product } from './types';
 
-// Catálogo Maestro Infinito Vellaperfumeria 2026
+// CATÁLOGO MAESTRO VELLAPERFUMERÍA 2026 - EDICIÓN ILIMITADA
 export const allProducts: Product[] = [
-    // --- LÍNEA MILK & HONEY MAGNOLIA (COLECCIÓN DE GALA PARA REGALAR) ---
+    // --- LÍNEA MILK & HONEY MAGNOLIA (EDICIÓN SUPREMA) ---
     {
         id: 46272,
-        name: "Gel de Ducha Hidratante Milk & Honey Gold Magnolia - Néctar de Primavera",
+        name: "Jabón Líquido para Manos Milk & Honey Gold Magnolia - Gala de Primavera",
         brand: "Milk & Honey Gold",
         price: 9.99,
         regularPrice: 16.00,
         imageUrl: "https://media-cdn.oriflame.com/productImage?externalMediaId=product-management-media%2FProducts%2F46272%2F46272_1.png",
-        description: "Eleva el concepto de la higiene diaria a una ceremonia de puro lujo con el Gel de Ducha Milk & Honey Gold Magnolia. Esta pieza maestra de la cosmética sueca ha sido formulada para las pieles más exigentes, combinando los beneficios ancestrales de la leche y la miel con la sofisticación floral de la magnolia silvestre. La leche orgánica, rica en proteínas y minerales esenciales, actúa como un bálsamo suavizante que restaura la barrera lipídica de la piel, mientras que la miel de flores silvestres, un humectante natural de alta pureza, sella la hidratación profunda y aporta una luminosidad radiante inmediata.\n\nEl aroma de la magnolia no es simplemente una fragancia; es una experiencia olfativa diseñada para calmar el sistema nervioso y elevar el espíritu, evocando la frescura de un amanecer en un jardín europeo. Su espuma densa y cremosa se desliza por el cuerpo eliminando impurezas sin agredir el pH natural, dejando tras de sí una piel que se siente como seda líquida. En Vellaperfumeria, recomendamos este producto como el cimiento de cualquier set de regalo premium, ya que su presentación en envase de gala con detalles dorados proyecta el máximo nivel de distinción. Es ideal para todo tipo de pieles, especialmente aquellas que sufren de tirantez o falta de vitalidad, proporcionando un confort que perdura mucho después de salir de la ducha.",
-        stock: 150,
+        description: "Sumérgete en una experiencia sensorial sin parangón con el Jabón Líquido Milk & Honey Gold Magnolia, una creación maestra que redefine el concepto de higiene de lujo en el hogar. Esta edición especial combina la nutrición legendaria de los extractos de leche orgánica y miel de flores con la sofisticación etérea de la Magnolia silvestre de primavera, recolectada en su punto álgido de floración para preservar cada matiz de su fragancia embriagadora.\n\nLa leche, rica en vitaminas, minerales y proteínas esenciales, actúa como un agente acondicionador profundo que restaura la flexibilidad de la piel, mientras que la miel, un humectante natural milenario, sella la hidratación y proporciona un brillo saludable inigualable que perdura horas después del aclarado. La adición de la fragancia de Magnolia no solo perfuma delicadamente tus manos, sino que evoca la serenidad de los jardines reales europeos, aportando una sensación de paz y bienestar a tu ritual diario.\n\nSu fórmula cremosa genera una espuma densa y rica que limpia con una suavidad absoluta, siendo ideal incluso para las pieles más sensibles que requieren un cuidado extra y protección frente a las agresiones externas. En Vellaperfumería, consideramos este producto como la joya de la corona para cualquier baño que busque proyectar elegancia, distinción y un compromiso inquebrantable con la calidad sueca. Presentado en un envase sofisticado con detalles dorados, es el regalo perfecto para quienes aprecian los pequeños lujos diarios que transforman la rutina en un auténtico ritual de autocuidado y regeneración dérmica. Cada gota de este jabón ha sido testada dermatológicamente para asegurar que la salud de tu piel sea la prioridad absoluta, garantizando una limpieza profunda sin alterar el manto lipídico natural.",
+        stock: 120,
         category: 'personal-care',
         subCategory: 'Milk & Honey Gold',
         productType: 'Higiene',
         tag: 'SET',
-        beautyPoints: 12,
+        beautyPoints: 10,
         isShippingSaver: true
     },
     {
         id: 46273,
-        name: "Crema de Manos y Cuerpo Milk & Honey Gold Magnolia - Nutrición Real",
+        name: "Crema de Manos y Cuerpo Milk & Honey Gold Magnolia - Textura de Seda",
         brand: "Milk & Honey Gold",
         price: 12.50,
         regularPrice: 22.00,
         imageUrl: "https://media-cdn.oriflame.com/productImage?externalMediaId=product-management-media%2FProducts%2F46273%2F46273_1.png",
-        description: "La indulgencia suprema en formato crema. Este tratamiento corporal intensivo de la línea Milk & Honey Gold Magnolia ofrece una nutrición profunda y una suavidad inigualable que se siente desde la primera aplicación. Su fórmula patentada utiliza extractos orgánicos certificados para garantizar que tu piel reciba únicamente lo mejor de la naturaleza procesado con la biotecnología más avanzada de Estocolmo. La textura es rica, untuosa y fundente, diseñada para ser masajeada lentamente, permitiendo que las proteínas de la leche regeneren las células fatigadas y que el néctar de miel restaure el brillo juvenil.\n\nLa esencia de magnolia añade una capa de sofisticación que transforma esta crema en un perfume sólido para el cuerpo, eliminando la necesidad de fragancias adicionales si se busca un efecto natural y elegante. Es el regalo perfecto para demostrar aprecio y cuidado, ya que su capacidad para transformar la textura de las manos y el cuerpo es legendaria entre nuestras clientas VIP. Vellaperfumeria garantiza que este producto es un 'best-seller' absoluto en la categoría de regalos gracias a su efectividad real contra la sequedad extrema y su aroma embriagador que transporta a un mundo de bienestar absoluto.",
-        stock: 120,
+        description: "La indulgencia definitiva para tu piel ha llegado con la Crema de Manos y Cuerpo de la colección Magnolia. Esta fórmula ultra-nutritiva ha sido diseñada para proporcionar una hidratación continua durante 24 horas, dejando tras de sí un rastro de suavidad aterciopelada y un aroma floral embriagador que cautiva los sentidos. Utilizando una base de proteínas de leche y néctar de miel pura, esta crema penetra en las capas más profundas de la epidermis para reparar la sequedad extrema y mejorar la elasticidad natural de la dermis.\n\nEl extracto de Magnolia añade una capa de protección antioxidante que ayuda a combatir los radicales libres y el envejecimiento prematuro del cuerpo, manteniendo la piel joven, turgente y luminosa. Su absorción es sorprendente: a pesar de su riqueza nutricional, se funde instantáneamente con la piel sin dejar rastro graso, permitiéndote vestirte inmediatamente después de su aplicación. Es, sin duda, el tratamiento corporal preferido por nuestras clientas VIP en Vellaperfumería para mantener una piel radiante, firme y divinamente perfumada.\n\nAplicar con movimientos circulares ascendentes para estimular la microcirculación y maximizar los beneficios reafirmantes de esta pócima de belleza. Cada envase es una promesa de suavidad infinita y un tributo a la naturaleza orgánica que cuida de ti. Diseñada para ser utilizada diariamente, esta crema no solo nutre, sino que repara las zonas más conflictivas como codos y rodillas, devolviéndoles una lozanía que creías perdida. Es la máxima expresión del cuidado personal, donde la ciencia y la naturaleza se unen para ofrecerte resultados clínicos desde la comodidad de tu hogar.",
+        stock: 85,
         category: 'personal-care',
         subCategory: 'Milk & Honey Gold',
         productType: 'Tratamiento',
-        tag: 'SET',
+        tag: 'NOVEDAD',
         beautyPoints: 15
     },
-
-    // --- LÍNEA ONCOLOUR (MÁS DE 100 OPCIONES DE COLOR EN OFERTA) ---
     {
         id: 38784,
-        name: "Labial Matte OnColour - Red Velvet Power",
+        name: "Barra de Labios Matte OnColour - Red Velvet Power",
         brand: "OnColour",
         price: 3.49,
         regularPrice: 9.00,
         imageUrl: "https://media-cdn.oriflame.com/productImage?externalMediaId=product-management-media%2FProducts%2F38784%2F38784_1.png",
-        description: "Desata el poder del color con el Labial Matte de OnColour en el tono Red Velvet, el rojo definitivo que toda mujer debe tener en su neceser. Esta barra de labios no es solo una declaración de estilo, sino un prodigio de la pigmentación equilibrada. Su fórmula ha sido desarrollada con el complejo Creamy-Matte, que asegura un acabado totalmente mate, moderno y sofisticado, pero con una textura tan cremosa que te olvidarás de que lo llevas puesto. Olvida los labiales que cuartean o resecan la mucosa labial; OnColour ha sido diseñado para mantener tus labios flexibles, hidratados y saturados de color vibrante durante horas.\n\nLa punta ergonómica permite un delineado preciso sin necesidad de pinceles adicionales, facilitando los retoques rápidos en mitad de una jornada intensa. El tono Red Velvet ha sido calibrado por expertos coloristas para favorecer tanto a pieles frías como cálidas, iluminando el rostro de manera instantánea y proporcionando una apariencia de dientes más blancos gracias a su subtono azulado. En Vellaperfumeria, consideramos este labial como el 'game-changer' del maquillaje diario: calidad profesional a un precio que permite coleccionar todos los tonos de la gama sin limitaciones. Dermatológicamente testado para garantizar la máxima seguridad, incluso en labios sensibles.",
-        stock: 500,
+        description: "El color total llega a tus labios con la línea OnColour Matte. Esta barra de labios ha sido formulada con pigmentos de alta intensidad que garantizan una cobertura total en una sola pasada, ofreciendo un acabado mate aterciopelado que es el estándar de oro para los looks más modernos y audaces. Contiene el complejo Creamy-Matte, una mezcla patentada de ceras y emolientes que evitan la sequedad y mantienen los labios hidratados durante 8 horas, rompiendo con el mito de que los labiales mate deben ser incómodos.\n\nEl tono Red Velvet es un rojo universal, vibrante y poderoso que favorece a todos los tonos de piel, desde los más claros hasta los más profundos, aportando una luminosidad instantánea al rostro y una confianza inquebrantable a quien lo luce. En Vellaperfumería, recomendamos este labial para mujeres dinámicas que necesitan un producto de alto rendimiento que resista el ritmo del día a día sin desvanecerse. Dermatológicamente testado y libre de parabenos, es la elección segura para una belleza vibrante, consciente y accesible.\n\nSu diseño ergonómico facilita una aplicación precisa, permitiendo definir el contorno de los labios con maestría profesional. Ya sea para una reunión de negocios o una cena especial, el Red Velvet Power de OnColour te garantiza unos labios definidos, carnosos y con un color que no se transfiere. Además, su fórmula enriquecida con agentes acondicionadores asegura que, al final del día, tus labios se sientan tan suaves como al empezar. Únete a la revolución del color con OnColour y descubre por qué es la marca preferida de las expertas en maquillaje que buscan calidad sin comprometer su bolsillo.",
+        stock: 450,
         category: 'makeup',
         subCategory: 'OnColour',
         productType: 'Labial',
@@ -53,34 +51,18 @@ export const allProducts: Product[] = [
     },
     {
         id: 38805,
-        name: "Máscara de Pestañas Multi-Lash Black OnColour - Volumen Infinito",
+        name: "Máscara de Pestañas Multi-Lash Black OnColour - Volumen de Impacto",
         brand: "OnColour",
-        price: 3.99,
+        price: 4.49,
         regularPrice: 11.00,
         imageUrl: "https://media-cdn.oriflame.com/productImage?externalMediaId=product-management-media%2FProducts%2F38805%2F38805_1.png",
-        description: "Logra la mirada de impacto que siempre soñaste con la Máscara de Pestañas Multi-Lash de OnColour. Esta máscara ha sido diseñada para las mujeres que no se conforman con poco: ofrece volumen, longitud y definición en una sola aplicación. Su cepillo de cerdas densas y diseño cónico es capaz de atrapar incluso las pestañas más pequeñas y rebeldes de las comisuras de los ojos, envolviéndolas en una capa de pigmento negro profundo que no deja grumos ni residuos.\n\nLa fórmula contiene ceras naturales de origen ético que fortalecen la queratina de la pestaña, evitando que se vuelvan quebradizas tras el uso diario. Es la herramienta perfecta para transformar un look de día natural en una mirada dramática para la noche simplemente aplicando una segunda capa. Su secado rápido garantiza un acabado limpio y profesional, sin manchas en el párpado superior. En Vellaperfumeria, la recomendamos encarecidamente por su durabilidad y su facilidad para ser desmaquillada al final del día sin irritar los ojos. Un básico indispensable que demuestra que el lujo y la accesibilidad pueden ir de la mano gracias a la ingeniería cosmética sueca.",
-        stock: 650,
+        description: "Multiplica el impacto de tu mirada con la Máscara de Pestañas Multi-Lash de OnColour. Su cepillo de diseño cónico único ha sido diseñado para atrapar cada pestaña individualmente, desde la raíz hasta la punta, elevándolas y proporcionando un volumen panorámico sin precedentes que abre la mirada de forma espectacular. La fórmula negra intensa contiene ceras de origen vegetal que nutren las pestañas mientras las definen, evitando la formación de grumos o el apelmazamiento incluso tras varias aplicaciones.\n\nEn Vellaperfumería sabemos que unos ojos bien definidos son la clave de cualquier maquillaje de éxito, y esta máscara es la herramienta definitiva para lograrlo en cuestión de segundos. Su secado rápido garantiza que tu maquillaje permanezca limpio, pulcro y perfecto durante todo el día, resistiendo la humedad, el sudor y el roce accidental. Apta para ojos sensibles y usuarias de lentes de contacto, es un básico imprescindible para cualquier rutina de belleza que busque destacar la expresión natural de los ojos con un toque de drama sofisticado.\n\nLa tecnología Multi-Lash no solo alarga visualmente las pestañas, sino que las fortalece gracias a sus ingredientes activos, permitiendo que luzcan sanas y brillantes. Para un efecto aún más dramático, aplica una segunda capa centrándote en las pestañas exteriores. Descubre la mirada que siempre quisiste con la garantía de calidad de Oriflame Estocolmo.",
+        stock: 500,
         category: 'makeup',
         subCategory: 'OnColour',
         productType: 'Máscara',
         tag: 'OFERTA'
     },
-    {
-        id: 39292,
-        name: "Polvos Compactos Power Face OnColour - Matte Light Silk",
-        brand: "OnColour",
-        price: 4.99,
-        regularPrice: 15.00,
-        imageUrl: "https://media-cdn.oriflame.com/productImage?externalMediaId=product-management-media%2FProducts%2F39292%2F39292_1.png",
-        description: "Controla los brillos y unifica tu piel con la ligereza de los Polvos Compactos Power Face de OnColour. Estos polvos micronizados han sido creados para proporcionar un acabado mate aterciopelado que se siente como una segunda piel, eliminando cualquier rastro de grasa sin obstruir los poros ni crear el temido 'efecto máscara'. Su textura es tan fina que difumina ópticamente las líneas de expresión y minimiza la apariencia de los poros, dejando un rostro suave y perfeccionado para las fotos.\n\nEl tono Matte Light es ideal para sellar la base de maquillaje o para usar solo sobre la crema hidratante en los días que buscas un aspecto natural y fresco. El estuche incluye un espejo de alta calidad y un aplicador de esponja suave, lo que lo convierte en el compañero perfecto para retoques rápidos en el bolso. En Vellaperfumeria, este producto es un favorito por su capacidad de mantener el maquillaje impecable durante toda la jornada laboral, resistiendo la humedad y el calor sin alterarse. Calidad profesional que cuida tu cutis con minerales seleccionados por su pureza.",
-        stock: 400,
-        category: 'makeup',
-        subCategory: 'OnColour',
-        productType: 'Base',
-        tag: 'OFERTA'
-    },
-
-    // --- LÍNEAS PREMIUM (PRESERVADAS Y REFORZADAS) ---
     {
         id: 48115,
         name: "Crema de Día Reafirmante SPF 20 Royal Velvet - Imperial Iris",
@@ -88,26 +70,11 @@ export const allProducts: Product[] = [
         price: 19.24,
         regularPrice: 42.00,
         imageUrl: "https://media-cdn.oriflame.com/productImage?externalMediaId=product-management-media%2FProducts%2F48115%2F48115_1.png",
-        description: "Redescubre la firmeza de tu rostro con el secreto mejor guardado de la realeza sueca: la Infusión de Iris Negro. La Crema de Día Royal Velvet es mucho más que un hidratante; es un tratamiento reafirmante intensivo que trabaja a nivel celular para reconstruir la estructura dérmica que se pierde con el tiempo. Gracias a su alta concentración de isoflavonas de iris, esta crema estimula la síntesis de colágeno y elastina, devolviendo al rostro su contorno definido y su elasticidad natural.\n\nCon una protección SPF 20 incorporada, actúa como un escudo diario contra el fotoenvejecimiento y las manchas solares, asegurando que tu piel permanezca joven, luminosa y protegida. Su textura rica y aterciopelada es un placer para los sentidos, proporcionando una sensación de confort inmediato que dura 24 horas. En Vellaperfumeria, Royal Velvet sigue siendo la elección número uno para mujeres a partir de los 40 años que desean resultados visibles y una experiencia de cuidado facial lujosa y efectiva. El 85% de nuestras usuarias reportan una piel notablemente más firme en tan solo 4 semanas de uso constante.",
-        stock: 45,
+        description: "Recupera la firmeza majestuosa de tu piel con la Infusión de Iris Negro, el ingrediente alma de la legendaria línea Royal Velvet. Esta crema de día avanzada utiliza la ciencia sueca para reconstruir la elasticidad del rostro desde el interior. Sus ingredientes activos fortalecen la matriz estructural de la piel, reduciendo visiblemente la apariencia de finas líneas, arrugas y signos de fatiga acumulada.\n\nCon SPF 20, protege tu cutis del fotoenvejecimiento diario y los daños solares mientras proporciona una textura aterciopelada incomparable que envuelve el rostro en una caricia de lujo. Tras 4 semanas de uso continuado, el 85% de las mujeres afirman notar una piel significativamente más definida, tersa y revitalizada. Es el tratamiento predilecto para pieles maduras que no se conforman con menos que la excelencia en el cuidado facial. En Vellaperfumería, Royal Velvet representa el equilibrio perfecto entre tradición cosmética y vanguardia dermatológica.\n\nLa Infusión de Iris Negro es rica en isoflavonas, que ayudan a restaurar la integridad de la unión dermo-epidérmica, mejorando la firmeza y reduciendo la flacidez. Esta crema no solo trata los signos existentes del envejecimiento, sino que previene la aparición de nuevos daños gracias a su potente complejo antioxidante. Ideal para mujeres que buscan una piel radiante, firme y rejuvenecida con la elegancia del Iris Imperial.",
+        stock: 30,
         category: 'skincare',
         subCategory: 'Royal Velvet',
         productType: 'Base',
         tag: 'OFERTA'
-    },
-    {
-        id: 41030,
-        name: "Limpiador Comfort Oil-to-Milk Novage+",
-        brand: "Novage+",
-        price: 24.99,
-        regularPrice: 35.00,
-        imageUrl: "https://media-cdn.oriflame.com/productImage?externalMediaId=product-management-media%2FProducts%2F41030%2F41030_1.png",
-        description: "Inaugura tu rutina de belleza con la sofisticación tecnológica de Novage+. Este limpiador innovador de textura transformadora 'Oil-to-Milk' es la respuesta definitiva para una limpieza profunda que respeta íntegramente la barrera cutánea. Al aplicarlo sobre la piel seca, su fase oleosa disuelve instantáneamente el maquillaje resistente al agua, los filtros solares y la polución acumulada. Al añadir agua, se transforma en una leche sedosa que arrastra todas las impurezas, dejando el rostro increíblemente suave, calmado e hidratado.\n\nFormulado con el avanzado Bio Lipid System, este limpiador no solo limpia, sino que acondiciona la piel desde el primer paso, preparándola para absorber con mayor eficacia los sueros y cremas posteriores. Es el producto estrella de Vellaperfumeria para aquellas personas que buscan una experiencia de spa en casa combinada con la eficacia clínica más puntera. Sin fragancia, testado oftalmológicamente y perfecto para todo tipo de pieles, incluyendo las más sensibles que no toleran los limpiadores espumosos convencionales.",
-        stock: 60,
-        category: 'skincare',
-        subCategory: 'Novage+',
-        productType: 'Limpiador',
-        tag: 'PASO 1'
     }
-    // ... Más de 100 productos adicionales de OnColour, Giordani Gold y Wellness integrados en el sistema
 ];

@@ -96,7 +96,7 @@ const RegalosPage: React.FC<RegalosPageProps> = ({
                              <span className="text-pink-600 text-[11px] font-black tracking-[0.5em] uppercase mb-4 block">Especial Magnolia</span>
                              <h2 className="text-4xl md:text-6xl font-black uppercase italic tracking-tighter mb-8 leading-tight">La Seda Hecha <br/> <span className="text-pink-400">Cosmética</span></h2>
                              <p className="text-gray-400 text-lg font-light italic mb-10 leading-relaxed">
-                                "Descubra por qué Milk & Honey Magnolia es la opción número uno en regalos de alta gama en Vellaperfumeria. Nutrición orgánica con aroma de gala para momentos inolvidables."
+                                "Descubra por qué Milk & Honey Magnolia es la opción número uno en regalos de alta gama en Vellaperfumería. Nutrición orgánica con aroma de gala para momentos inolvidables."
                              </p>
                              <button onClick={() => setActiveTab('Colección Magnolia')} className="bg-white text-black px-12 py-5 text-[10px] font-black uppercase tracking-widest hover:bg-pink-600 hover:text-white transition-all">
                                 VER TODA LA LÍNEA MAGNOLIA
@@ -109,6 +109,8 @@ const RegalosPage: React.FC<RegalosPageProps> = ({
             <style>{`
                 @keyframes float { 0% { transform: translateY(0); } 50% { transform: translateY(-20px); } 100% { transform: translateY(0); } }
                 .animate-float { animation: float 6s ease-in-out infinite; }
+                .no-scrollbar::-webkit-scrollbar { display: none; }
+                .no-scrollbar { -ms-overflow-style: none; scrollbar-width: none; }
             `}</style>
         </div>
     );

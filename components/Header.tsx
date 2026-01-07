@@ -1,7 +1,6 @@
 
 import React, { useState } from 'react';
 import type { View } from './types';
-import type { Currency } from './currency';
 
 const BagIcon = () => (
     <svg className="w-6 h-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
@@ -11,17 +10,15 @@ const BagIcon = () => (
 
 interface HeaderProps {
     onNavigate: (view: View, payload?: any) => void;
-    currency: Currency;
-    onCurrencyChange: (currency: Currency) => void;
     cartCount: number;
     onCartClick: () => void;
 }
 
-const Header: React.FC<HeaderProps> = ({ onNavigate, currency, onCurrencyChange, cartCount, onCartClick }) => {
+const Header: React.FC<HeaderProps> = ({ onNavigate, cartCount, onCartClick }) => {
     const [activeMenu, setActiveMenu] = useState<string | null>(null);
 
     const navItems = [
-        { label: 'Inicio', href: 'https://vellaperfumeria.com' },
+        { label: 'Inicio', view: 'home' as View },
         { label: 'OFERTAS ONCOLOUR', view: 'products' as View, payload: 'makeup', hasMega: true },
         { label: 'MILK & HONEY MAGNOLIA', view: 'regalos' as View, hasMega: true },
         { label: 'CATÁLOGO MAESTRO', view: 'products' as View, payload: 'all', hasMega: true },
@@ -31,12 +28,12 @@ const Header: React.FC<HeaderProps> = ({ onNavigate, currency, onCurrencyChange,
 
     return (
         <header className="w-full fixed top-0 left-0 z-[100] shadow-2xl">
-            {/* BARRA PROMOCIONAL SUPERIOR - ANCHURA COMPLETA */}
+            {/* BARRA PROMOCIONAL - ANCHURA COMPLETA */}
             <div className="w-full bg-[#FAE1EF] py-2 text-[9px] font-black uppercase tracking-[0.5em] text-center border-b border-black/5 text-black">
                 ✨ OFERTAS ONCOLOUR DESDE 3,49€ | MILK & HONEY MAGNOLIA DISPONIBLE PARA REGALAR ✨
             </div>
 
-            {/* SECCIÓN DE MARCA - FONDO BLANCO */}
+            {/* MARCA - FONDO BLANCO */}
             <div className="w-full bg-white px-4 md:px-12 h-20 md:h-24 flex items-center justify-between border-b border-gray-100">
                 <div className="flex-1">
                     <button onClick={() => onNavigate('ia')} className="bg-black text-white text-[9px] font-black uppercase tracking-widest px-6 py-3 rounded-full hover:bg-pink-600 transition-all shadow-lg active:scale-95">
@@ -45,10 +42,10 @@ const Header: React.FC<HeaderProps> = ({ onNavigate, currency, onCurrencyChange,
                 </div>
                 
                 <div className="flex-shrink-0">
-                    <a href="https://vellaperfumeria.com" className="flex flex-col items-center group">
+                    <button onClick={() => onNavigate('home')} className="flex flex-col items-center group">
                         <img src="https://i0.wp.com/vellaperfumeria.com/wp-content/uploads/2025/06/1000003724-removebg-preview.png" alt="Vella" className="h-14 md:h-18 transition-transform group-hover:scale-105 duration-700" />
-                        <span className="text-[10px] font-black uppercase tracking-[0.8em] mt-1 text-black">Vella <span className="text-pink-600">Perfumería</span></span>
-                    </a>
+                        <span className="text-[10px] font-black uppercase tracking-[0.8em] mt-1 text-black">Vellaperfumería</span>
+                    </button>
                 </div>
 
                 <div className="flex-1 flex justify-end items-center gap-6">
@@ -74,7 +71,7 @@ const Header: React.FC<HeaderProps> = ({ onNavigate, currency, onCurrencyChange,
                             onMouseLeave={() => setActiveMenu(null)}
                         >
                             <button 
-                                onClick={() => item.href ? window.location.href = item.href : onNavigate(item.view, item.payload)}
+                                onClick={() => onNavigate(item.view, item.payload)}
                                 className="text-white text-[9px] md:text-[10px] font-black uppercase tracking-[0.4em] hover:text-[#FAE1EF] transition-all h-full px-4 md:px-8 relative flex items-center whitespace-nowrap"
                             >
                                 {item.label}
@@ -89,7 +86,7 @@ const Header: React.FC<HeaderProps> = ({ onNavigate, currency, onCurrencyChange,
                                 <div className="fixed top-[138px] md:top-[160px] left-0 w-full bg-black/98 backdrop-blur-xl border-t border-white/5 shadow-[0_60px_100px_rgba(0,0,0,0.9)] animate-mega-slide z-[101]">
                                     <div className="max-w-7xl mx-auto py-16 px-12 grid grid-cols-12 gap-16 text-left">
                                         <div className="col-span-3 space-y-10 border-r border-white/5 pr-12">
-                                            <h4 className="text-[#FAE1EF] text-[13px] font-black uppercase tracking-[0.5em] border-b border-white/10 pb-4">OnColour Hot Sales</h4>
+                                            <h4 className="text-[#FAE1EF] text-[13px] font-black uppercase tracking-[0.5em] border-b border-white/10 pb-4">Nuestras Ofertas</h4>
                                             <ul className="space-y-4 text-white/70 text-[11px] font-bold uppercase tracking-[0.2em]">
                                                 <li className="hover:text-white cursor-pointer transition-colors" onClick={() => onNavigate('products', 'makeup')}>Labiales Matte Power</li>
                                                 <li className="hover:text-white cursor-pointer transition-colors" onClick={() => onNavigate('products', 'makeup')}>Máscaras Multi-Lash</li>
@@ -100,16 +97,16 @@ const Header: React.FC<HeaderProps> = ({ onNavigate, currency, onCurrencyChange,
                                         <div className="col-span-3 space-y-10 border-r border-white/5 pr-12">
                                             <h4 className="text-[#FAE1EF] text-[13px] font-black uppercase tracking-[0.5em] border-b border-white/10 pb-4">Colección Magnolia</h4>
                                             <ul className="space-y-4 text-white/70 text-[11px] font-bold uppercase tracking-[0.2em]">
-                                                <li className="hover:text-white cursor-pointer transition-colors" onClick={() => onNavigate('regalos')}>Set Gel Magnolia</li>
+                                                <li className="hover:text-white cursor-pointer transition-colors" onClick={() => onNavigate('regalos')}>Set Jabón Magnolia</li>
                                                 <li className="hover:text-white cursor-pointer transition-colors" onClick={() => onNavigate('regalos')}>Crema Nutrición Seda</li>
-                                                <li className="hover:text-white cursor-pointer transition-colors" onClick={() => onNavigate('regalos')}>Jabón de Gala Magnolia</li>
+                                                <li className="hover:text-white cursor-pointer transition-colors" onClick={() => onNavigate('regalos')}>Baño de Gala Magnolia</li>
                                                 <li className="hover:text-white cursor-pointer transition-colors" onClick={() => onNavigate('products', 'personal-care')}>Kits de Regalo VIP</li>
                                             </ul>
                                         </div>
                                         <div className="col-span-6 flex items-center justify-end gap-12">
                                             <div className="flex flex-col justify-center text-white space-y-8 max-w-sm text-right">
                                                 <h3 className="text-5xl font-serif italic text-[#FAE1EF] tracking-tighter leading-tight">Explora lo <br/> Extraordinario</h3>
-                                                <p className="text-gray-400 text-[10px] uppercase font-bold tracking-[0.4em] leading-loose">"Accede a nuestra colección infinita de más de 100 productos con descripciones técnicas ilimitadas y envíos VIP."</p>
+                                                <p className="text-gray-400 text-[10px] uppercase font-bold tracking-[0.4em] leading-loose">"Accede a nuestra colección infinita de productos con descripciones técnicas ilimitadas y envíos VIP garantizados por Vellaperfumería."</p>
                                                 <button onClick={() => onNavigate('products', 'all')} className="w-fit ml-auto bg-pink-600 text-white text-[10px] font-black uppercase tracking-[0.4em] px-10 py-5 rounded-sm hover:bg-white hover:text-black transition-all shadow-2xl active:scale-95">VER TODO EL CATÁLOGO</button>
                                             </div>
                                         </div>
