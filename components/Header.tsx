@@ -31,22 +31,38 @@ const Header: React.FC<HeaderProps> = ({ onNavigate, cartCount, onCartClick, cur
 
     return (
         <header className="w-full fixed top-0 left-0 z-[100] shadow-2xl font-sans">
-            {/* Barra Superior Rosa */}
+            {/* Barra Rosa Superior */}
             <div className="w-full bg-[#FAE1EF] py-2 px-6 flex items-center justify-between text-black border-b border-black/10 text-[10px] font-black uppercase tracking-widest overflow-hidden whitespace-nowrap">
                 <span className="flex items-center gap-2">✨ @vellaperfumeria</span>
                 <span className="hidden md:block">ENVÍO GRATUITO EN PEDIDOS SUPERIORES A 35€</span>
                 <span>📞 +34 661 202 616</span>
             </div>
 
-            {/* Logo y Bolsa */}
-            <div className="w-full bg-white px-6 md:px-12 h-20 md:h-24 flex items-center justify-between border-b border-gray-100">
-                <div className="flex-1 hidden md:flex gap-4">
-                    <button onClick={() => onNavigate('ia')} className="bg-black text-white text-[9px] px-6 py-2.5 rounded-full font-black uppercase hover:bg-pink-600 transition-colors">Beauty IA</button>
+            {/* Logo y Bolsa (LOGO CENTRADO) */}
+            <div className="w-full bg-white px-6 md:px-12 h-20 md:h-24 flex items-center border-b border-gray-100">
+                {/* Lado Izquierdo (Equilibra el espacio) */}
+                <div className="flex-1 flex justify-start">
+                    <button 
+                        onClick={() => onNavigate('ia')} 
+                        className="hidden md:block bg-black text-white text-[9px] px-6 py-2.5 rounded-full font-black uppercase hover:bg-pink-600 transition-colors whitespace-nowrap"
+                    >
+                        Beauty IA
+                    </button>
                 </div>
-                <button onClick={() => onNavigate('home')} className="flex flex-col items-center group">
-                    <img src="https://i0.wp.com/vellaperfumeria.com/wp-content/uploads/2025/06/1000003724-removebg-preview.png" alt="Vella" className="h-10 md:h-14 transition-transform group-hover:scale-105" />
-                    <span className="text-[8px] md:text-[9px] font-black uppercase tracking-[0.5em] mt-1 text-black">Vellaperfumería</span>
-                </button>
+
+                {/* Centro (Logo) */}
+                <div className="flex-shrink-0 flex justify-center">
+                    <button onClick={() => onNavigate('home')} className="flex flex-col items-center group">
+                        <img 
+                            src="https://i0.wp.com/vellaperfumeria.com/wp-content/uploads/2025/06/1000003724-removebg-preview.png" 
+                            alt="Vella" 
+                            className="h-10 md:h-14 transition-transform group-hover:scale-105" 
+                        />
+                        <span className="text-[8px] md:text-[9px] font-black uppercase tracking-[0.5em] mt-1 text-black">Vellaperfumería</span>
+                    </button>
+                </div>
+
+                {/* Lado Derecho (Bolsa) */}
                 <div className="flex-1 flex justify-end items-center gap-6">
                     <button onClick={onCartClick} className="relative p-2 text-black hover:text-pink-600 transition-colors">
                         <BagIcon />
@@ -85,11 +101,15 @@ const Header: React.FC<HeaderProps> = ({ onNavigate, cartCount, onCartClick, cur
                                                 <h4 className="text-pink-500 text-[12px] font-black uppercase tracking-[0.4em] pb-4">Nuestras Líneas</h4>
                                                 <ul className="space-y-6 text-white/80 text-[11px] font-bold uppercase tracking-widest">
                                                     <li className="flex items-center justify-between group cursor-pointer" onClick={() => onNavigate('products', 'makeup')}>
-                                                        <span>Lujo Giordani Gold</span>
+                                                        <span>Giordani Gold Lujo</span>
                                                         <span className="bg-zinc-700 text-gray-300 text-[8px] px-3 py-1.5 rounded-sm hover:bg-zinc-600 transition-colors">Ver página</span>
                                                     </li>
                                                     <li className="flex items-center justify-between group cursor-pointer" onClick={() => onNavigate('products', 'skincare')}>
                                                         <span>Ciencia Novage+</span>
+                                                        <span className="bg-zinc-700 text-gray-300 text-[8px] px-3 py-1.5 rounded-sm hover:bg-zinc-600 transition-colors">Ver página</span>
+                                                    </li>
+                                                    <li className="flex items-center justify-between group cursor-pointer" onClick={() => onNavigate('products', 'makeup')}>
+                                                        <span>THE ONE Tendencia</span>
                                                         <span className="bg-zinc-700 text-gray-300 text-[8px] px-3 py-1.5 rounded-sm hover:bg-zinc-600 transition-colors">Ver página</span>
                                                     </li>
                                                 </ul>
