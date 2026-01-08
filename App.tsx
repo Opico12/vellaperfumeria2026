@@ -38,8 +38,6 @@ const App: React.FC = () => {
     const [isCartOpen, setIsCartOpen] = useState(false);
     const [quickViewProduct, setQuickViewProduct] = useState<Product | null>(null);
 
-    const orchidPink = "#FAE1EF";
-
     useEffect(() => {
         try {
             const storedCart = localStorage.getItem('vellaperfumeria_cart');
