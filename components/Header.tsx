@@ -9,6 +9,12 @@ const BagIcon = () => (
     </svg>
 );
 
+const SearchIcon = () => (
+    <svg className="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="1.5" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z" />
+    </svg>
+);
+
 const ChevronDownIcon = () => (
     <svg className="w-3 h-3 ml-1.5 transition-transform group-hover/navitem:rotate-180" fill="none" viewBox="0 0 24 24" stroke="currentColor">
         <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="3" d="M19 9l-7 7-7-7" />
@@ -33,10 +39,10 @@ const Header: React.FC<HeaderProps> = ({ onNavigate, cartCount, onCartClick, cur
             payload: 'makeup', 
             hasMega: true,
             subLinks: [
-                { name: 'Labiales OnColour', payload: 'makeup' },
-                { name: 'Rostro THE ONE', payload: 'makeup' },
-                { name: 'Ojos & Máscaras', payload: 'makeup' },
-                { name: 'Uñas & Esmaltes', payload: 'makeup' }
+                { title: 'Labios', items: ['Labiales OnColour', 'Brillos Gloss', 'Perfiladores'] },
+                { title: 'Rostro', items: ['Bases Giordani Gold', 'Correctores', 'Iluminadores'] },
+                { title: 'Ojos', items: ['Máscaras Wonder Lash', 'Sombras OnColour', 'Delineadores'] },
+                { title: 'Uñas', items: ['Esmaltes de Larga Duración', 'Tratamientos'] }
             ]
         },
         { 
@@ -45,10 +51,10 @@ const Header: React.FC<HeaderProps> = ({ onNavigate, cartCount, onCartClick, cur
             payload: 'skincare', 
             hasMega: true,
             subLinks: [
-                { name: 'Novage+ Advanced', payload: 'skincare' },
-                { name: 'Optimals Solution', payload: 'skincare' },
-                { name: 'Tender Care Colección', payload: 'skincare' },
-                { name: 'Limpiadores & Tónicos', payload: 'skincare' }
+                { title: 'Colecciones', items: ['Novage+ Advanced', 'Optimals Hydra', 'Diamond Cellular'] },
+                { title: 'Limpieza', items: ['Limpiadores en Gel', 'Tónicos Suaves', 'Exfoliantes'] },
+                { title: 'Hidratación', items: ['Cremas de Día', 'Cremas de Noche', 'Sérums'] },
+                { title: 'Tratamientos', items: ['Mascarillas', 'Contorno de Ojos', 'Aceites Faciales'] }
             ]
         },
         { 
@@ -57,10 +63,10 @@ const Header: React.FC<HeaderProps> = ({ onNavigate, cartCount, onCartClick, cur
             payload: 'perfume', 
             hasMega: true,
             subLinks: [
-                { name: 'Perfumes Mujer', payload: 'perfume' },
-                { name: 'Fragancias Hombre', payload: 'perfume' },
-                { name: 'Giordani Gold Essenza', payload: 'perfume' },
-                { name: 'Sets de Regalo', payload: 'perfume' }
+                { title: 'Mujer', items: ['Eclat Femme', 'Divine', 'Love Potion'] },
+                { title: 'Hombre', items: ['Possess The Secret', 'Eclat Style', 'Nordic Waters'] },
+                { title: 'Premium', items: ['Essenza Parfum', 'All or Nothing', 'Signature'] },
+                { title: 'Ofertas', items: ['Sets de Fragancia', 'Miniaturas'] }
             ]
         },
         { 
@@ -69,42 +75,58 @@ const Header: React.FC<HeaderProps> = ({ onNavigate, cartCount, onCartClick, cur
             payload: 'personal-care', 
             hasMega: true,
             subLinks: [
-                { name: 'Milk & Honey Gold', payload: 'personal-care' },
-                { name: 'Cuidado Pies Feet Up', payload: 'personal-care' },
-                { name: 'Aceites Eleo', payload: 'hair' },
-                { name: 'Champús Duologi', payload: 'hair' }
+                { title: 'Higiene', items: ['Geles de Ducha', 'Jabones Orgánicos', 'Desodorantes'] },
+                { title: 'Cuidado Corporal', items: ['Milk & Honey Gold', 'Cremas de Manos', 'Pies Feet Up'] },
+                { title: 'Cabello', items: ['Champús Duologi', 'Aceites Eleo', 'Mascarillas'] },
+                { title: 'Protección', items: ['Cuidado Solar', 'Bálsamos'] }
             ]
         },
-        { label: 'Ofertas', view: 'ofertas' as View, hasMega: false },
-        { label: 'Catálogo', view: 'catalog' as View, hasMega: false },
-        { label: 'Contacto', view: 'contact' as View, hasMega: false },
+        { label: 'Wellness', view: 'products' as View, payload: 'wellness', hasMega: false },
+        { label: 'Ideas Regalo', view: 'ofertas' as View, hasMega: false },
+        { label: 'Revista Digital', view: 'catalog' as View, hasMega: false },
     ];
 
     return (
-        <header className="w-full fixed top-0 left-0 z-[100] font-sans bg-white shadow-xl">
-            {/* Barra de Anuncios Superior */}
-            <div className="w-full bg-[#FAE1EF] py-2 px-6 flex items-center justify-between text-black border-b border-black/10 text-[10px] font-black uppercase tracking-widest overflow-hidden whitespace-nowrap">
-                <span className="flex items-center gap-2">✨ @vellaperfumeria</span>
-                <span className="hidden md:block text-[#25D366]">ENVÍO GRATIS COMPRANDO PRODUCTOS SELECCIONADOS</span>
-                <span>📞 +34 661 202 616</span>
+        <header className="w-full fixed top-0 left-0 z-[100] font-sans">
+            {/* Announcement Bar */}
+            <div className="w-full bg-black py-2.5 px-6 flex items-center justify-between text-white text-[9px] font-black uppercase tracking-[0.2em] border-b border-white/10">
+                <div className="flex gap-4 items-center">
+                    <span className="hidden md:inline text-pink-500">✨ EXCLUSIVO ONLINE</span>
+                    <span>ENVÍO GRATIS A PARTIR DE 35€</span>
+                </div>
+                <div className="flex gap-6 items-center">
+                    <button className="hover:text-pink-500 transition-colors">ENCUENTRA TU ESTILO</button>
+                    <span className="hidden sm:inline">📞 +34 661 202 616</span>
+                </div>
             </div>
 
-            {/* Fila del Logo */}
-            <div className="w-full h-20 md:h-28 grid grid-cols-3 items-center px-6 md:px-12 border-b border-gray-100 bg-white">
-                <div className="flex justify-start">
-                    <button onClick={() => onNavigate('ia')} className="hidden md:block bg-black text-white text-[9px] px-6 py-2.5 rounded-full font-black uppercase hover:bg-pink-600 transition-all shadow-md active:scale-95">Beauty IA</button>
+            {/* Main Branding Header */}
+            <div className="w-full h-24 md:h-32 bg-white flex items-center px-6 md:px-12 border-b border-gray-100">
+                <div className="flex-1 flex justify-start items-center gap-4">
+                   <button onClick={() => onNavigate('ia')} className="hidden lg:flex items-center gap-2 group">
+                       <div className="w-8 h-8 rounded-full bg-black text-white flex items-center justify-center group-hover:bg-pink-600 transition-all">
+                           <SearchIcon />
+                       </div>
+                       <span className="text-[10px] font-black uppercase tracking-widest group-hover:text-pink-600 transition-colors">Beauty Advisor IA</span>
+                   </button>
                 </div>
-                <div className="flex justify-center">
+
+                <div className="flex-1 flex justify-center">
                     <button onClick={() => onNavigate('home')} className="flex flex-col items-center group">
-                        <img src="https://i0.wp.com/vellaperfumeria.com/wp-content/uploads/2025/06/1000003724-removebg-preview.png" alt="Vella Perfumería" className="h-12 md:h-18 transition-transform group-hover:scale-105 duration-500" />
-                        <span className="text-[8px] md:text-[10px] font-black uppercase tracking-[0.6em] mt-1 text-black">Vellaperfumería</span>
+                        <img 
+                            src="https://i0.wp.com/vellaperfumeria.com/wp-content/uploads/2025/06/1000003724-removebg-preview.png" 
+                            alt="Vella Perfumería" 
+                            className="h-14 md:h-20 transition-transform group-hover:scale-105 duration-700" 
+                        />
+                        <span className="text-[9px] md:text-[11px] font-black uppercase tracking-[0.5em] mt-2 text-black">Vellaperfumería</span>
                     </button>
                 </div>
-                <div className="flex justify-end items-center gap-6">
+
+                <div className="flex-1 flex justify-end items-center gap-4 md:gap-8">
                     <button onClick={onCartClick} className="relative p-2 text-black hover:text-pink-600 transition-colors group">
                         <BagIcon />
                         {cartCount > 0 && (
-                            <span className="absolute -top-1 -right-1 bg-pink-600 text-white text-[8px] font-black w-4 h-4 rounded-full flex items-center justify-center animate-bounce">
+                            <span className="absolute -top-1 -right-1 bg-black text-white text-[8px] font-black w-4 h-4 rounded-full flex items-center justify-center animate-pulse">
                                 {cartCount}
                             </span>
                         )}
@@ -112,67 +134,98 @@ const Header: React.FC<HeaderProps> = ({ onNavigate, cartCount, onCartClick, cur
                 </div>
             </div>
 
-            {/* Barra de Navegación: Full Width con Fondo Negro */}
-            <nav className="w-full bg-black relative shadow-2xl">
-                <div className="w-full flex justify-center items-stretch h-14 md:h-16">
-                    <div className="flex h-full w-full justify-center overflow-x-auto no-scrollbar">
-                        {navItems.map((item) => (
-                            <div 
-                                key={item.label} 
-                                className="h-full flex items-center group/navitem"
-                                onMouseEnter={() => item.hasMega && setActiveMenu(item.label)}
-                                onMouseLeave={() => setActiveMenu(null)}
+            {/* Navigation Menu - Full Width Black */}
+            <nav className="w-full bg-black text-white relative h-14 md:h-16 shadow-2xl">
+                <div className="w-full h-full max-w-[1920px] mx-auto flex justify-center items-stretch overflow-x-auto no-scrollbar">
+                    {navItems.map((item) => (
+                        <div 
+                            key={item.label} 
+                            className="h-full flex items-center group/navitem"
+                            onMouseEnter={() => item.hasMega && setActiveMenu(item.label)}
+                            onMouseLeave={() => setActiveMenu(null)}
+                        >
+                            <button 
+                                onClick={() => { onNavigate(item.view, item.payload); setActiveMenu(null); }}
+                                className={`h-full px-6 md:px-10 text-[10px] font-black uppercase tracking-[0.3em] flex items-center whitespace-nowrap transition-all hover:bg-white/5 border-b-2 border-transparent ${activeMenu === item.label ? 'border-pink-500 text-pink-400 bg-white/5' : ''}`}
                             >
-                                <button 
-                                    onClick={() => { onNavigate(item.view, item.payload); setActiveMenu(null); }}
-                                    className={`text-white text-[10px] font-black uppercase tracking-[0.35em] h-full px-5 md:px-12 flex items-center whitespace-nowrap border-b-2 border-transparent hover:text-pink-400 transition-all ${activeMenu === item.label ? 'text-pink-400 border-pink-400 bg-white/5' : ''}`}
-                                >
-                                    {item.label}
-                                    {item.hasMega && <ChevronDownIcon />}
-                                </button>
+                                {item.label}
+                                {item.hasMega && <ChevronDownIcon />}
+                            </button>
 
-                                {/* Mega Menú Desplegable - Fondo Negro Intenso y Anchura Completa */}
-                                {item.hasMega && activeMenu === item.label && (
-                                    <div className="absolute top-full left-0 w-full bg-[#080808] border-t border-white/5 py-14 shadow-[0_40px_80px_-15px_rgba(0,0,0,0.9)] animate-mega-reveal z-[110]">
-                                        <div className="max-w-[1500px] mx-auto px-12 grid grid-cols-4 gap-20">
-                                            <div className="col-span-1 border-r border-white/10 pr-12">
-                                                <h4 className="text-pink-600 text-[10px] font-black tracking-[0.5em] uppercase mb-10">Colecciones {item.label}</h4>
-                                                <ul className="space-y-8">
-                                                    {item.subLinks?.map(link => (
-                                                        <li key={link.name}>
-                                                            <button onClick={() => { onNavigate(item.view, link.payload); setActiveMenu(null); }} className="text-white/50 hover:text-white text-[12px] font-black uppercase tracking-[0.2em] transition-all block text-left group/link"><span className="inline-block transition-transform group-hover/link:translate-x-3">{link.name}</span></button>
+                            {/* Spectacular Mega Menu - Visible on Hover, Full Width Deep Black */}
+                            {item.hasMega && activeMenu === item.label && (
+                                <div 
+                                    className="absolute top-full left-0 w-full bg-black border-t border-white/10 shadow-[0_50px_100px_-20px_rgba(0,0,0,0.8)] z-[200] animate-mega-reveal"
+                                    onMouseEnter={() => setActiveMenu(item.label)}
+                                    onMouseLeave={() => setActiveMenu(null)}
+                                >
+                                    <div className="max-w-[1600px] mx-auto px-12 py-16 grid grid-cols-5 gap-16">
+                                        {/* Sub-links Columns */}
+                                        {item.subLinks?.map((col, idx) => (
+                                            <div key={idx} className="flex flex-col space-y-6 animate-fade-in-up" style={{ animationDelay: `${idx * 100}ms` }}>
+                                                <h4 className="text-pink-500 text-[10px] font-black uppercase tracking-[0.4em] mb-4 border-b border-white/5 pb-2">{col.title}</h4>
+                                                <ul className="space-y-4">
+                                                    {col.items.map((sub, sIdx) => (
+                                                        <li key={sIdx}>
+                                                            <button 
+                                                                onClick={() => { onNavigate(item.view, item.payload); setActiveMenu(null); }}
+                                                                className="text-gray-400 hover:text-white text-[12px] font-bold uppercase tracking-widest transition-all hover:translate-x-2 block text-left"
+                                                            >
+                                                                {sub}
+                                                            </button>
                                                         </li>
                                                     ))}
                                                 </ul>
                                             </div>
-                                            <div className="col-span-3 grid grid-cols-3 gap-12">
-                                                <div className="relative group/promo overflow-hidden cursor-pointer" onClick={() => onNavigate('ofertas')}>
-                                                    <div className="aspect-[3/4] overflow-hidden"><img src="https://media-cdn.oriflame.com/digitalPromotionsMedia/images/banner-media/ES/20899847/20866148.jpg" className="w-full h-full object-cover opacity-60 group-hover/promo:scale-110 group-hover/promo:opacity-100 transition-all duration-1000" alt="Novedades" /></div>
-                                                    <div className="absolute inset-0 bg-gradient-to-t from-black via-transparent to-transparent p-6 flex flex-col justify-end"><span className="text-pink-500 text-[9px] font-black uppercase tracking-widest mb-1">Tendencias</span><h5 className="text-white text-sm font-black uppercase tracking-widest leading-tight">Vellaperfumería 2026</h5></div>
+                                        ))}
+
+                                        {/* Featured Promotion Column */}
+                                        <div className="col-span-1 border-l border-white/5 pl-16 flex flex-col justify-center items-center text-center space-y-8 animate-fade-in-up" style={{ animationDelay: '400ms' }}>
+                                            <div className="relative group/promo overflow-hidden rounded-sm cursor-pointer" onClick={() => onNavigate('ofertas')}>
+                                                <div className="aspect-[4/5] bg-zinc-900 flex items-center justify-center overflow-hidden">
+                                                    <img 
+                                                        src="https://media-cdn.oriflame.com/digitalPromotionsMedia/images/banner-media/ES/20899847/20866148.jpg" 
+                                                        className="w-full h-full object-cover opacity-60 group-hover/promo:scale-110 group-hover/promo:opacity-100 transition-all duration-1000" 
+                                                        alt="Featured" 
+                                                    />
                                                 </div>
-                                                <div className="relative group/promo overflow-hidden cursor-pointer" onClick={() => onNavigate('catalog')}>
-                                                    <div className="aspect-[3/4] overflow-hidden"><img src="https://media-cdn.oriflame.com/digitalPromotionsMedia/images/banner-media/ES/20900001/20866153.jpg" className="w-full h-full object-cover opacity-60 group-hover/promo:scale-110 group-hover/promo:opacity-100 transition-all duration-1000" alt="Catálogo" /></div>
-                                                    <div className="absolute inset-0 bg-gradient-to-t from-black via-transparent to-transparent p-6 flex flex-col justify-end"><span className="text-pink-500 text-[9px] font-black uppercase tracking-widest mb-1">Especial</span><h5 className="text-white text-sm font-black uppercase tracking-widest leading-tight">Digital Journal</h5></div>
-                                                </div>
-                                                <div className="bg-zinc-900/50 p-10 flex flex-col justify-center items-center text-center border border-white/5 space-y-6">
-                                                    <img src="https://i0.wp.com/vellaperfumeria.com/wp-content/uploads/2025/06/1000003724-removebg-preview.png" className="h-20 invert opacity-10" alt="Vella Icon" />
-                                                    <h6 className="text-white text-xl font-black italic uppercase tracking-tighter">Smart <span className="text-pink-600">Beauty</span></h6>
-                                                    <p className="text-white/40 text-[9px] font-bold uppercase tracking-[0.3em] leading-relaxed">Asesoramiento personalizado con IA para tu piel.</p>
-                                                    <button onClick={() => onNavigate('ia')} className="w-full bg-white text-black text-[10px] font-black py-4 uppercase tracking-[0.4em] hover:bg-pink-600 hover:text-white transition-all shadow-xl">Probar IA</button>
+                                                <div className="absolute inset-0 p-4 flex flex-col justify-end bg-gradient-to-t from-black to-transparent">
+                                                    <span className="text-pink-500 text-[8px] font-black uppercase tracking-widest">Novedad</span>
+                                                    <h5 className="text-white text-[10px] font-black uppercase tracking-widest">Edición Limitada</h5>
                                                 </div>
                                             </div>
+                                            <button 
+                                                onClick={() => onNavigate('catalog')}
+                                                className="w-full bg-white text-black py-4 text-[9px] font-black uppercase tracking-[0.4em] hover:bg-pink-500 hover:text-white transition-all shadow-xl"
+                                            >
+                                                Ver Catálogo
+                                            </button>
                                         </div>
                                     </div>
-                                )}
-                            </div>
-                        ))}
-                    </div>
+                                    {/* Bottom Decorative Line */}
+                                    <div className="w-full h-[1px] bg-gradient-to-r from-transparent via-pink-500/30 to-transparent"></div>
+                                </div>
+                            )}
+                        </div>
+                    ))}
                 </div>
             </nav>
 
             <style>{`
-                @keyframes mega-reveal { from { opacity: 0; transform: translateY(10px); } to { opacity: 1; transform: translateY(0); } }
-                .animate-mega-reveal { animation: mega-reveal 0.5s cubic-bezier(0.19, 1, 0.22, 1) forwards; }
+                @keyframes mega-reveal {
+                    from { opacity: 0; transform: translateY(10px); }
+                    to { opacity: 1; transform: translateY(0); }
+                }
+                @keyframes fade-in-up {
+                    from { opacity: 0; transform: translateY(20px); }
+                    to { opacity: 1; transform: translateY(0); }
+                }
+                .animate-mega-reveal {
+                    animation: mega-reveal 0.4s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+                }
+                .animate-fade-in-up {
+                    animation: fade-in-up 0.6s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+                }
                 .no-scrollbar::-webkit-scrollbar { display: none; }
                 .no-scrollbar { -ms-overflow-style: none; scrollbar-width: none; }
             `}</style>

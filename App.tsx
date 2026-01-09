@@ -19,7 +19,6 @@ import BlogPostPage from './components/BlogPostPage';
 import QuickViewModal from './components/QuickViewModal';
 import CheckoutPage from './components/CheckoutPage';
 import BottomNavBar from './components/BottomNavBar';
-import ContactPage from './components/ContactPage';
 
 type AppView = {
     current: View;
@@ -99,8 +98,6 @@ const App: React.FC = () => {
                 return <BlogPostPage post={view.payload} allPosts={blogPosts} onSelectPost={(p) => handleNavigate('blogPost', p)} onBack={() => handleNavigate('blog')} />;
             case 'checkout': 
                 return <CheckoutPage cartItems={cartItems} currency={currency} onClearCart={() => setCartItems([])} onNavigate={handleNavigate} />;
-            case 'contact':
-                return <ContactPage />;
             default: 
                 return <ProductList onNavigate={handleNavigate} onProductSelect={handleProductSelect} onAddToCart={handleAddToCart} onQuickAddToCart={handleAddToCart} currency={currency} onQuickView={setQuickViewProduct} />;
         }
@@ -118,7 +115,7 @@ const App: React.FC = () => {
                 onCartClick={() => setIsCartOpen(true)}
             />
             
-             <main className={`flex-grow relative ${isCatalogView ? 'h-screen overflow-hidden pt-[138px] md:pt-[184px]' : 'pt-[160px] md:pt-[260px] pb-20 md:pb-8'}`}>
+             <main className={`flex-grow relative ${isCatalogView ? 'h-screen overflow-hidden pt-[152px] md:pt-[208px]' : 'pt-[160px] md:pt-[220px] pb-20 md:pb-8'}`}>
                 {renderContent()}
 
                 <aside className="fixed bottom-24 md:bottom-8 right-6 md:right-8 z-[60] flex flex-col gap-5 items-end">

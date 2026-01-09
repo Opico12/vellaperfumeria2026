@@ -82,15 +82,20 @@ const CartSidebar: React.FC<CartSidebarProps> = ({
         return subtotal >= DISCOUNT_THRESHOLD ? subtotal * DISCOUNT_PERCENTAGE : 0;
     }, [subtotal]);
 
-    const shippingSaverProduct = useMemo(() => cartItems.find(item => item.product.isShippingSaver), [cartItems]);
-    const hasShippingSaver = !!shippingSaverProduct;
-    const isFreeShippingByAmount = subtotal >= FREE_SHIPPING_THRESHOLD;
-    const shippingCost = (hasShippingSaver || isFreeShippingByAmount) ? 0 : SHIPPING_COST;
+    const hasShippingSaver = useMemo(() => cartItems.some(item => item.product.isShippingSaver), [cartItems]);
+    const shippingCost = (hasShippingSaver || subtotal >= FREE_SHIPPING_THRESHOLD) ? 0 : SHIPPING_COST;
     const total = subtotal - discountAmount + shippingCost;
 
     const packagingOptions = useMemo(() => {
         return allProducts
             .filter(p => p.category === 'accessories' && !cartItems.some(ci => ci.product.id === p.id))
+            .sort((a, b) => {
+                const aName = a.name.toLowerCase();
+                const bName = b.name.toLowerCase();
+                if (aName.includes('bolsa turquesa')) return -1;
+                if (bName.includes('bolsa turquesa')) return 1;
+                return 0;
+            })
             .slice(0, 3);
     }, [cartItems]);
 
@@ -117,18 +122,6 @@ const CartSidebar: React.FC<CartSidebarProps> = ({
                     {cartItems.length > 0 ? (
                         <div className="flex-grow flex flex-col overflow-hidden">
                             <div className="flex-grow overflow-y-auto p-6 space-y-6">
-                                {/* Banner Informativo Envío */}
-                                <div className={`p-4 rounded-sm mb-4 text-[10px] font-black uppercase tracking-widest text-center transition-all ${shippingCost === 0 ? 'bg-green-100 text-green-800 border border-green-200' : 'bg-gray-100 text-gray-500 border border-gray-200'}`}>
-                                    {shippingCost === 0 ? (
-                                        <span>
-                                            ✨ ¡ENVÍO GRATUITO ACTIVADO! 
-                                            {hasShippingSaver && <span className="block mt-1 opacity-70">(Gracias a: {shippingSaverProduct?.product.name})</span>}
-                                        </span>
-                                    ) : (
-                                        <span>Te faltan {formatCurrency(FREE_SHIPPING_THRESHOLD - subtotal, currency)} para Envío Gratis</span>
-                                    )}
-                                </div>
-
                                 {cartItems.map(item => (
                                     <div key={item.id} className="flex gap-6 items-start group">
                                         <div className="w-20 h-24 bg-gray-50 p-2 rounded-sm border border-gray-100 flex-shrink-0">
@@ -140,7 +133,6 @@ const CartSidebar: React.FC<CartSidebarProps> = ({
                                                 <button onClick={() => setIdToDelete(item.id)} className="text-gray-300 hover:text-red-600 p-1 transition-colors"><TrashIcon /></button>
                                             </div>
                                             <p className="text-[11px] font-black mt-2 tracking-tighter">{formatCurrency(item.product.price, currency)}</p>
-                                            {item.product.isShippingSaver && <span className="text-[8px] font-black text-green-600 tracking-widest mt-1">PRODUCTO ENVÍO GRATIS</span>}
                                             <div className="flex items-center mt-3 border border-gray-100 w-fit rounded-sm">
                                                 <button onClick={() => onUpdateQuantity(item.id, Math.max(1, item.quantity - 1))} className="px-3 py-1 font-bold">-</button>
                                                 <span className="px-2 text-[10px] font-black">{item.quantity}</span>
@@ -150,9 +142,13 @@ const CartSidebar: React.FC<CartSidebarProps> = ({
                                     </div>
                                 ))}
 
+                                {/* Envoltorios y Presentación Oriflame */}
                                 {packagingOptions.length > 0 && (
                                     <div className="mt-12 p-6 rounded-sm bg-gray-50/50 border border-gray-100 relative overflow-hidden">
-                                        <h4 className="text-[9px] font-black uppercase tracking-[0.4em] mb-5 text-black border-b border-gray-200 pb-2">Especial Regalos</h4>
+                                        <div className="absolute -top-4 -right-4 w-24 h-24 opacity-5 pointer-events-none" style={{ color: oriflameTurquoise }}>
+                                            <svg fill="currentColor" viewBox="0 0 24 24"><path d="M12 2l-5.5 9h11L12 2zm0 3.84L14.07 9H9.93L12 5.84zM17.5 13c-2.49 0-4.5 2.01-4.5 4.5s2.01 4.5 4.5 4.5 4.5-2.01 4.5-4.5-2.01-4.5-4.5-4.5zm0 7c-1.38 0-2.5-1.12-2.5-2.5s1.12-2.5 2.5-2.5 2.5 1.12 2.5 2.5-1.12 2.5-2.5 2.5zM6.5 13c-2.49 0-4.5 2.01-4.5 4.5s2.01 4.5 4.5 4.5 4.5-2.01 4.5-4.5-2.01-4.5-4.5-4.5zm0 7c-1.38 0-2.5-1.12-2.5-2.5s1.12-2.5 2.5-2.5 2.5 1.12 2.5 2.5-1.12 2.5-2.5 2.5z"/></svg>
+                                        </div>
+                                        <h4 className="text-[9px] font-black uppercase tracking-[0.4em] mb-5 text-black border-b border-gray-200 pb-2">Completa tu Regalo Oriflame</h4>
                                         <div className="grid grid-cols-3 gap-4">
                                             {packagingOptions.map(p => (
                                                 <div key={p.id} className="text-center group">
@@ -167,6 +163,9 @@ const CartSidebar: React.FC<CartSidebarProps> = ({
                                                         </button>
                                                     </div>
                                                     <p className="text-[7px] font-black uppercase tracking-tighter truncate leading-tight mb-1">{p.name}</p>
+                                                    <p className="text-[9px] font-black" style={{ color: oriflameTurquoise }}>
+                                                        {formatCurrency(p.price, currency)}
+                                                    </p>
                                                 </div>
                                             ))}
                                         </div>
@@ -183,13 +182,13 @@ const CartSidebar: React.FC<CartSidebarProps> = ({
                                     </div>
                                     {discountAmount > 0 && (
                                         <div className="flex justify-between" style={{ color: lightOrchid }}>
-                                            <span>Oferta Seleccionada (15%)</span>
+                                            <span>Descuento Especial (15%)</span>
                                             <span>-{formatCurrency(discountAmount, currency)}</span>
                                         </div>
                                     )}
                                     <div className="flex justify-between text-gray-400">
                                         <span>Gastos de Envío</span>
-                                        <span className={shippingCost === 0 ? "italic text-green-400" : ""}>{shippingCost === 0 ? '¡GRATIS!' : formatCurrency(shippingCost, currency)}</span>
+                                        <span className={shippingCost === 0 ? "italic text-white" : ""}>{shippingCost === 0 ? 'Cortesía de la Casa' : formatCurrency(shippingCost, currency)}</span>
                                     </div>
                                 </div>
                                 <div className="flex justify-between text-xl font-black italic tracking-tighter border-t border-white/10 pt-4">
@@ -229,8 +228,18 @@ const CartSidebar: React.FC<CartSidebarProps> = ({
                             ¿Estás seguro de que quieres retirar este artículo de tu bolsa de compra?
                         </p>
                         <div className="grid grid-cols-2 gap-4">
-                            <button onClick={() => setIdToDelete(null)} className="border border-black py-4 text-[9px] font-black uppercase tracking-widest hover:bg-gray-50 transition-colors">Cancelar</button>
-                            <button onClick={handleConfirmDelete} className="bg-black text-white py-4 text-[9px] font-black uppercase tracking-widest hover:bg-zinc-800 transition-colors">Confirmar</button>
+                            <button 
+                                onClick={() => setIdToDelete(null)}
+                                className="border border-black py-4 text-[9px] font-black uppercase tracking-widest hover:bg-gray-50 transition-colors"
+                            >
+                                Cancelar
+                            </button>
+                            <button 
+                                onClick={handleConfirmDelete}
+                                className="bg-black text-white py-4 text-[9px] font-black uppercase tracking-widest hover:bg-zinc-800 transition-colors"
+                            >
+                                Confirmar
+                            </button>
                         </div>
                     </div>
                 </div>
