@@ -19,6 +19,7 @@ import BlogPostPage from './components/BlogPostPage';
 import QuickViewModal from './components/QuickViewModal';
 import CheckoutPage from './components/CheckoutPage';
 import BottomNavBar from './components/BottomNavBar';
+import ContactPage from './components/ContactPage';
 
 type AppView = {
     current: View;
@@ -98,6 +99,8 @@ const App: React.FC = () => {
                 return <BlogPostPage post={view.payload} allPosts={blogPosts} onSelectPost={(p) => handleNavigate('blogPost', p)} onBack={() => handleNavigate('blog')} />;
             case 'checkout': 
                 return <CheckoutPage cartItems={cartItems} currency={currency} onClearCart={() => setCartItems([])} onNavigate={handleNavigate} />;
+            case 'contact':
+                return <ContactPage />;
             default: 
                 return <ProductList onNavigate={handleNavigate} onProductSelect={handleProductSelect} onAddToCart={handleAddToCart} onQuickAddToCart={handleAddToCart} currency={currency} onQuickView={setQuickViewProduct} />;
         }
