@@ -39,10 +39,10 @@ const Header: React.FC<HeaderProps> = ({ onNavigate, cartCount, onCartClick, cur
             payload: 'makeup', 
             hasMega: true,
             subLinks: [
-                { title: 'Labios', items: ['Labiales OnColour', 'Brillos Gloss', 'Perfiladores'] },
-                { title: 'Rostro', items: ['Bases Giordani Gold', 'Correctores', 'Iluminadores'] },
+                { title: 'Labios', items: ['Labiales OnColour', 'Iconic Giordani', 'Brillos Gloss'] },
+                { title: 'Rostro', items: ['Bases Sérum GG', 'Polvos Compactos', 'Iluminadores'] },
                 { title: 'Ojos', items: ['Máscaras Wonder Lash', 'Sombras OnColour', 'Delineadores'] },
-                { title: 'Uñas', items: ['Esmaltes de Larga Duración', 'Tratamientos'] }
+                { title: 'Uñas', items: ['Esmaltes Gloss N\' Wear', 'Tratamientos'] }
             ]
         },
         { 
@@ -51,10 +51,10 @@ const Header: React.FC<HeaderProps> = ({ onNavigate, cartCount, onCartClick, cur
             payload: 'skincare', 
             hasMega: true,
             subLinks: [
-                { title: 'Colecciones', items: ['Novage+ Advanced', 'Optimals Hydra', 'Diamond Cellular'] },
-                { title: 'Limpieza', items: ['Limpiadores en Gel', 'Tónicos Suaves', 'Exfoliantes'] },
+                { title: 'Colecciones', items: ['Novage+ Advanced', 'Optimals Hydra', 'Royal Velvet'] },
+                { title: 'Limpieza', items: ['Geles Limpiadores', 'Tónicos Suaves', 'Exfoliantes'] },
                 { title: 'Hidratación', items: ['Cremas de Día', 'Cremas de Noche', 'Sérums'] },
-                { title: 'Tratamientos', items: ['Mascarillas', 'Contorno de Ojos', 'Aceites Faciales'] }
+                { title: 'Tratamientos', items: ['Mascarillas', 'Contorno de Ojos', 'Aceites'] }
             ]
         },
         { 
@@ -64,9 +64,9 @@ const Header: React.FC<HeaderProps> = ({ onNavigate, cartCount, onCartClick, cur
             hasMega: true,
             subLinks: [
                 { title: 'Mujer', items: ['Eclat Femme', 'Divine', 'Love Potion'] },
-                { title: 'Hombre', items: ['Possess The Secret', 'Eclat Style', 'Nordic Waters'] },
+                { title: 'Hombre', items: ['Possess Man', 'Eclat Style', 'Nordic Waters'] },
                 { title: 'Premium', items: ['Essenza Parfum', 'All or Nothing', 'Signature'] },
-                { title: 'Ofertas', items: ['Sets de Fragancia', 'Miniaturas'] }
+                { title: 'Novedades', items: ['Nuevos Lanzamientos', 'Miniaturas'] }
             ]
         },
         { 
@@ -75,7 +75,7 @@ const Header: React.FC<HeaderProps> = ({ onNavigate, cartCount, onCartClick, cur
             payload: 'personal-care', 
             hasMega: true,
             subLinks: [
-                { title: 'Higiene', items: ['Geles de Ducha', 'Jabones Orgánicos', 'Desodorantes'] },
+                { title: 'Higiene', items: ['Geles de Ducha', 'Jabones Naturales', 'Desodorantes'] },
                 { title: 'Cuidado Corporal', items: ['Milk & Honey Gold', 'Cremas de Manos', 'Pies Feet Up'] },
                 { title: 'Cabello', items: ['Champús Duologi', 'Aceites Eleo', 'Mascarillas'] },
                 { title: 'Protección', items: ['Cuidado Solar', 'Bálsamos'] }
@@ -88,26 +88,29 @@ const Header: React.FC<HeaderProps> = ({ onNavigate, cartCount, onCartClick, cur
 
     return (
         <header className="w-full fixed top-0 left-0 z-[100] font-sans">
-            {/* Announcement Bar */}
-            <div className="w-full bg-black py-2.5 px-6 flex items-center justify-between text-white text-[9px] font-black uppercase tracking-[0.2em] border-b border-white/10">
+            {/* 1. Barra de Anuncio */}
+            <div className="w-full bg-[#FAE1EF] py-2 px-6 flex items-center justify-between text-gray-800 text-[9px] font-black uppercase tracking-[0.2em] border-b border-pink-200">
                 <div className="flex gap-4 items-center">
-                    <span className="hidden md:inline text-pink-500">✨ EXCLUSIVO ONLINE</span>
-                    <span>ENVÍO GRATIS A PARTIR DE 35€</span>
+                    <span className="hidden md:inline text-pink-700 font-bold">✨ EXCLUSIVO ONLINE</span>
+                    <span>ENVÍO GRATIS DESDE 35€</span>
                 </div>
                 <div className="flex gap-6 items-center">
-                    <button className="hover:text-pink-500 transition-colors">ENCUENTRA TU ESTILO</button>
-                    <span className="hidden sm:inline">📞 +34 661 202 616</span>
+                    <button className="hover:text-pink-600 transition-colors uppercase">Asesoría Gratuita</button>
+                    <span className="hidden sm:inline">ESP 🇪🇸</span>
                 </div>
             </div>
 
-            {/* Main Branding Header */}
-            <div className="w-full h-24 md:h-32 bg-white flex items-center px-6 md:px-12 border-b border-gray-100">
-                <div className="flex-1 flex justify-start items-center gap-4">
-                   <button onClick={() => onNavigate('ia')} className="hidden lg:flex items-center gap-2 group">
-                       <div className="w-8 h-8 rounded-full bg-black text-white flex items-center justify-center group-hover:bg-pink-600 transition-all">
+            {/* 2. Barra Principal de Marca */}
+            <div className="w-full h-24 md:h-28 bg-white flex items-center px-6 md:px-12 border-b border-gray-100">
+                <div className="flex-1 flex justify-start items-center">
+                   <button onClick={() => onNavigate('ia')} className="flex items-center gap-3 group">
+                       <div className="w-9 h-9 rounded-full bg-black text-white flex items-center justify-center group-hover:bg-pink-600 group-hover:scale-110 transition-all duration-300 shadow-lg">
                            <SearchIcon />
                        </div>
-                       <span className="text-[10px] font-black uppercase tracking-widest group-hover:text-pink-600 transition-colors">Beauty Advisor IA</span>
+                       <div className="flex flex-col items-start leading-none">
+                           <span className="text-[10px] font-black text-black uppercase tracking-widest">Beauty IA</span>
+                           <span className="text-[8px] text-gray-400 font-bold uppercase mt-0.5 group-hover:text-pink-600">Consultar</span>
+                       </div>
                    </button>
                 </div>
 
@@ -116,17 +119,17 @@ const Header: React.FC<HeaderProps> = ({ onNavigate, cartCount, onCartClick, cur
                         <img 
                             src="https://i0.wp.com/vellaperfumeria.com/wp-content/uploads/2025/06/1000003724-removebg-preview.png" 
                             alt="Vella Perfumería" 
-                            className="h-14 md:h-20 transition-transform group-hover:scale-105 duration-700" 
+                            className="h-12 md:h-16 transition-transform group-hover:scale-105 duration-700" 
                         />
-                        <span className="text-[9px] md:text-[11px] font-black uppercase tracking-[0.5em] mt-2 text-black">Vellaperfumería</span>
+                        <span className="text-[9px] md:text-[10px] font-black uppercase tracking-[0.6em] mt-2 text-black group-hover:text-pink-600 transition-colors">Vellaperfumería</span>
                     </button>
                 </div>
 
-                <div className="flex-1 flex justify-end items-center gap-4 md:gap-8">
-                    <button onClick={onCartClick} className="relative p-2 text-black hover:text-pink-600 transition-colors group">
+                <div className="flex-1 flex justify-end items-center gap-6">
+                    <button onClick={onCartClick} className="relative p-2 text-black hover:text-pink-600 transition-all group">
                         <BagIcon />
                         {cartCount > 0 && (
-                            <span className="absolute -top-1 -right-1 bg-black text-white text-[8px] font-black w-4 h-4 rounded-full flex items-center justify-center animate-pulse">
+                            <span className="absolute top-0 right-0 bg-black text-white text-[8px] font-black w-4 h-4 rounded-full flex items-center justify-center shadow-lg border border-white">
                                 {cartCount}
                             </span>
                         )}
@@ -134,9 +137,9 @@ const Header: React.FC<HeaderProps> = ({ onNavigate, cartCount, onCartClick, cur
                 </div>
             </div>
 
-            {/* Navigation Menu - Full Width Black */}
-            <nav className="w-full bg-black text-white relative h-14 md:h-16 shadow-2xl">
-                <div className="w-full h-full max-w-[1920px] mx-auto flex justify-center items-stretch overflow-x-auto no-scrollbar">
+            {/* 3. Menú de Navegación - Ancho Completo Negro */}
+            <nav className="w-full bg-black text-white relative h-12 md:h-14">
+                <div className="w-full h-full flex justify-center items-stretch overflow-x-auto no-scrollbar">
                     {navItems.map((item) => (
                         <div 
                             key={item.label} 
@@ -146,30 +149,30 @@ const Header: React.FC<HeaderProps> = ({ onNavigate, cartCount, onCartClick, cur
                         >
                             <button 
                                 onClick={() => { onNavigate(item.view, item.payload); setActiveMenu(null); }}
-                                className={`h-full px-6 md:px-10 text-[10px] font-black uppercase tracking-[0.3em] flex items-center whitespace-nowrap transition-all hover:bg-white/5 border-b-2 border-transparent ${activeMenu === item.label ? 'border-pink-500 text-pink-400 bg-white/5' : ''}`}
+                                className={`h-full px-5 md:px-8 text-[9px] font-black uppercase tracking-[0.3em] flex items-center whitespace-nowrap transition-all hover:text-pink-400 ${activeMenu === item.label ? 'text-pink-500 bg-white/5' : 'text-gray-300'}`}
                             >
                                 {item.label}
                                 {item.hasMega && <ChevronDownIcon />}
                             </button>
 
-                            {/* Spectacular Mega Menu - Visible on Hover, Full Width Deep Black */}
+                            {/* 4. Mega Menú Desplegable Visible de Fondo Negro */}
                             {item.hasMega && activeMenu === item.label && (
                                 <div 
-                                    className="absolute top-full left-0 w-full bg-black border-t border-white/10 shadow-[0_50px_100px_-20px_rgba(0,0,0,0.8)] z-[200] animate-mega-reveal"
+                                    className="fixed left-0 w-full bg-[#050505] border-t border-white/10 shadow-[0_40px_80px_-15px_rgba(0,0,0,0.9)] z-[200] animate-mega-reveal"
+                                    style={{ top: 'calc(24px + 96px + 48px)' }}
                                     onMouseEnter={() => setActiveMenu(item.label)}
                                     onMouseLeave={() => setActiveMenu(null)}
                                 >
-                                    <div className="max-w-[1600px] mx-auto px-12 py-16 grid grid-cols-5 gap-16">
-                                        {/* Sub-links Columns */}
+                                    <div className="max-w-7xl mx-auto px-12 py-16 grid grid-cols-5 gap-12">
                                         {item.subLinks?.map((col, idx) => (
-                                            <div key={idx} className="flex flex-col space-y-6 animate-fade-in-up" style={{ animationDelay: `${idx * 100}ms` }}>
-                                                <h4 className="text-pink-500 text-[10px] font-black uppercase tracking-[0.4em] mb-4 border-b border-white/5 pb-2">{col.title}</h4>
+                                            <div key={idx} className="flex flex-col space-y-6 animate-fade-in-up" style={{ animationDelay: `${idx * 80}ms` }}>
+                                                <h4 className="text-pink-600 text-[10px] font-black uppercase tracking-[0.4em] mb-2 border-b border-white/5 pb-3">{col.title}</h4>
                                                 <ul className="space-y-4">
                                                     {col.items.map((sub, sIdx) => (
                                                         <li key={sIdx}>
                                                             <button 
                                                                 onClick={() => { onNavigate(item.view, item.payload); setActiveMenu(null); }}
-                                                                className="text-gray-400 hover:text-white text-[12px] font-bold uppercase tracking-widest transition-all hover:translate-x-2 block text-left"
+                                                                className="text-gray-400 hover:text-white text-[11px] font-bold uppercase tracking-widest transition-all hover:translate-x-2 block text-left"
                                                             >
                                                                 {sub}
                                                             </button>
@@ -179,31 +182,18 @@ const Header: React.FC<HeaderProps> = ({ onNavigate, cartCount, onCartClick, cur
                                             </div>
                                         ))}
 
-                                        {/* Featured Promotion Column */}
-                                        <div className="col-span-1 border-l border-white/5 pl-16 flex flex-col justify-center items-center text-center space-y-8 animate-fade-in-up" style={{ animationDelay: '400ms' }}>
-                                            <div className="relative group/promo overflow-hidden rounded-sm cursor-pointer" onClick={() => onNavigate('ofertas')}>
-                                                <div className="aspect-[4/5] bg-zinc-900 flex items-center justify-center overflow-hidden">
-                                                    <img 
-                                                        src="https://media-cdn.oriflame.com/digitalPromotionsMedia/images/banner-media/ES/20899847/20866148.jpg" 
-                                                        className="w-full h-full object-cover opacity-60 group-hover/promo:scale-110 group-hover/promo:opacity-100 transition-all duration-1000" 
-                                                        alt="Featured" 
-                                                    />
-                                                </div>
-                                                <div className="absolute inset-0 p-4 flex flex-col justify-end bg-gradient-to-t from-black to-transparent">
-                                                    <span className="text-pink-500 text-[8px] font-black uppercase tracking-widest">Novedad</span>
-                                                    <h5 className="text-white text-[10px] font-black uppercase tracking-widest">Edición Limitada</h5>
+                                        <div className="col-span-1 border-l border-white/5 pl-12 flex flex-col justify-center animate-fade-in-up" style={{ animationDelay: '320ms' }}>
+                                            <div className="relative group/promo overflow-hidden rounded-sm cursor-pointer aspect-[3/4] mb-6" onClick={() => onNavigate('catalog')}>
+                                                <img src="https://images.unsplash.com/photo-1596704017254-9b121068fb31?auto=format&fit=crop&w=400&q=80" className="w-full h-full object-cover opacity-50 group-hover/promo:scale-110 group-hover/promo:opacity-100 transition-all duration-1000" alt="Promo" />
+                                                <div className="absolute inset-0 bg-gradient-to-t from-black via-transparent to-transparent flex flex-col justify-end p-4">
+                                                    <span className="text-pink-500 text-[8px] font-black uppercase tracking-widest mb-1">Nueva Temporada</span>
+                                                    <h5 className="text-white text-[10px] font-black uppercase tracking-widest">Catálogo 2026</h5>
                                                 </div>
                                             </div>
-                                            <button 
-                                                onClick={() => onNavigate('catalog')}
-                                                className="w-full bg-white text-black py-4 text-[9px] font-black uppercase tracking-[0.4em] hover:bg-pink-500 hover:text-white transition-all shadow-xl"
-                                            >
-                                                Ver Catálogo
-                                            </button>
+                                            <button onClick={() => onNavigate('catalog')} className="bg-white text-black py-3 text-[8px] font-black uppercase tracking-[0.3em] hover:bg-pink-600 hover:text-white transition-all">Ver Digital</button>
                                         </div>
                                     </div>
-                                    {/* Bottom Decorative Line */}
-                                    <div className="w-full h-[1px] bg-gradient-to-r from-transparent via-pink-500/30 to-transparent"></div>
+                                    <div className="w-full h-[1px] bg-gradient-to-r from-transparent via-pink-500/20 to-transparent"></div>
                                 </div>
                             )}
                         </div>
@@ -212,20 +202,10 @@ const Header: React.FC<HeaderProps> = ({ onNavigate, cartCount, onCartClick, cur
             </nav>
 
             <style>{`
-                @keyframes mega-reveal {
-                    from { opacity: 0; transform: translateY(10px); }
-                    to { opacity: 1; transform: translateY(0); }
-                }
-                @keyframes fade-in-up {
-                    from { opacity: 0; transform: translateY(20px); }
-                    to { opacity: 1; transform: translateY(0); }
-                }
-                .animate-mega-reveal {
-                    animation: mega-reveal 0.4s cubic-bezier(0.16, 1, 0.3, 1) forwards;
-                }
-                .animate-fade-in-up {
-                    animation: fade-in-up 0.6s cubic-bezier(0.16, 1, 0.3, 1) forwards;
-                }
+                @keyframes mega-reveal { from { opacity: 0; transform: translateY(-5px); } to { opacity: 1; transform: translateY(0); } }
+                @keyframes fade-in-up { from { opacity: 0; transform: translateY(15px); } to { opacity: 1; transform: translateY(0); } }
+                .animate-mega-reveal { animation: mega-reveal 0.3s cubic-bezier(0.16, 1, 0.3, 1) forwards; }
+                .animate-fade-in-up { animation: fade-in-up 0.5s cubic-bezier(0.16, 1, 0.3, 1) forwards; }
                 .no-scrollbar::-webkit-scrollbar { display: none; }
                 .no-scrollbar { -ms-overflow-style: none; scrollbar-width: none; }
             `}</style>

@@ -115,10 +115,10 @@ const App: React.FC = () => {
                 onCartClick={() => setIsCartOpen(true)}
             />
             
-             <main className={`flex-grow relative ${isCatalogView ? 'h-screen overflow-hidden pt-[152px] md:pt-[208px]' : 'pt-[160px] md:pt-[220px] pb-20 md:pb-8'}`}>
+             <main className={`flex-grow relative ${isCatalogView ? 'h-screen overflow-hidden pt-[148px] md:pt-[168px]' : 'pt-[148px] md:pt-[176px] pb-32 md:pb-12'}`}>
                 {renderContent()}
 
-                <aside className="fixed bottom-24 md:bottom-8 right-6 md:right-8 z-[60] flex flex-col gap-5 items-end">
+                <aside className="fixed bottom-28 md:bottom-8 right-6 md:right-8 z-[60] flex flex-col gap-5 items-end">
                     <a href="https://wa.me/34661202616" target="_blank" rel="noopener noreferrer" className="bg-[#25D366] text-white p-4 rounded-full shadow-lg hover:scale-110 transition-transform"><WhatsAppIcon /></a>
                 </aside>
             </main>

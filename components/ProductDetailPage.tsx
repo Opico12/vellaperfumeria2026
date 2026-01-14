@@ -68,7 +68,7 @@ const ProductDetailPage: React.FC<ProductDetailPageProps> = ({ product, currency
                     <nav className="flex items-center gap-2 text-[10px] font-black uppercase tracking-widest text-gray-400 mb-8">
                         <button onClick={() => onNavigate('home')} className="hover:text-black transition-colors">Inicio</button>
                         <span>/</span>
-                        <button onClick={() => onNavigate('products', product.category)} className="hover:text-black transition-colors">{product.category}</button>
+                        <button onClick={() => onNavigate('products', product.category)} className="hover:text-black transition-colors uppercase">{product.category}</button>
                     </nav>
 
                     <span className="text-pink-600 text-[12px] font-black tracking-[0.5em] uppercase mb-4 block underline underline-offset-8 decoration-pink-200">{product.brand}</span>
@@ -84,9 +84,9 @@ const ProductDetailPage: React.FC<ProductDetailPageProps> = ({ product, currency
                     </div>
 
                     {/* Descripciones Extensas Formateadas */}
-                    <div className="mb-12 border-l-4 border-pink-500 pl-8 py-4 bg-gray-50/50 rounded-r-lg">
+                    <div className="mb-12 border-l-4 border-black pl-8 py-2 bg-gray-50/30 rounded-r-lg">
                         <div className="prose prose-sm max-w-none">
-                            <p className="text-gray-800 text-[16px] leading-[1.8] font-light italic whitespace-pre-line tracking-wide">
+                            <p className="text-gray-800 text-[15px] leading-[1.8] font-light whitespace-pre-line tracking-wide">
                                 {product.description}
                             </p>
                         </div>
@@ -107,8 +107,8 @@ const ProductDetailPage: React.FC<ProductDetailPageProps> = ({ product, currency
                                 <span className="text-[11px] font-black text-black">Envío gratis &gt; 35€</span>
                             </div>
                             <div className="p-5 bg-gray-50 rounded-sm border border-gray-100">
-                                <span className="block text-[9px] font-black uppercase tracking-widest text-gray-400 mb-1">Satisfacción</span>
-                                <span className="text-[11px] font-black text-black">Garantía Oriflame</span>
+                                <span className="block text-[9px] font-black uppercase tracking-widest text-gray-400 mb-1">Garantía</span>
+                                <span className="text-[11px] font-black text-black">Certificación Original</span>
                             </div>
                         </div>
                     </div>
