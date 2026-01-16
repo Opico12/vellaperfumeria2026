@@ -2,7 +2,6 @@
 import React, { useState } from 'react';
 import type { View } from './types';
 import type { Currency } from './currency';
-// Added import for getImg helper function
 import { getImg } from './products';
 
 const BagIcon = () => (
@@ -31,35 +30,35 @@ interface HeaderProps {
     onCurrencyChange: (currency: Currency) => void;
 }
 
-const Header: React.FC<HeaderProps> = ({ onNavigate, cartCount, onCartClick, currency, onCurrencyChange }) => {
+const Header: React.FC<HeaderProps> = ({ onNavigate, cartCount, onCartClick }) => {
     const [activeMenu, setActiveMenu] = useState<string | null>(null);
 
     const navItems = [
         { label: 'Fragancias', view: 'products' as View, payload: 'perfume', hasMega: true, 
             subLinks: [
-                { title: 'Perfumería Femenina', items: ['Love Potion Parfum', 'Giordani Gold Essenza', 'Divine Exclusive', 'Amber Elixir', 'Infinita'] },
-                { title: 'Selección Masculina', items: ['Eclat Style', 'Possess Secret Man', 'Signature for Him', 'Nordic Waters', 'Glacier Rock'] }
+                { title: 'Dama', items: ['Volare', 'Elvie', 'Giordani Gold', 'Divine'] },
+                { title: 'Caballero', items: ['Subzero', 'Mister Giordani', 'Ascendant'] }
             ]
         },
         { label: 'Maquillaje', view: 'products' as View, payload: 'makeup', hasMega: true,
             subLinks: [
-                { title: 'Rostro & Perfección', items: ['Base Everlasting Sync', 'Correctores HD', 'Polvos Giordani Gold', 'Coloretes en Perlas'] },
-                { title: 'Ojos & Labios', items: ['Máscara WonderLash HD', 'Labiales Ultra Fix', 'Sombras High Definition', 'Delineadores Kohl'] }
+                { title: 'Labios', items: ['The ONE Colour Stylist', 'Giordani Gold'] },
+                { title: 'Ojos', items: ['WonderLash HD', 'Kohl Precision'] }
             ]
         },
         { label: 'Cuidado Facial', view: 'products' as View, payload: 'skincare', hasMega: true,
             subLinks: [
-                { title: 'Sistemas Novage+', items: ['Ritual Lift & Firm', 'Sérum Bright Intense', 'Tratamiento Arrugas', 'Limpiadoras Bio-Lipid'] },
-                { title: 'Cuidado Diario', items: ['Optimals Hydra', 'Royal Velvet', 'Diamond Cellular', 'Even Out'] }
+                { title: 'Novage+', items: ['Sérum Bright', 'Limpiador Bio-Lipid'] },
+                { title: 'Mascarillas', items: ['Sandía Love Nature', 'Diamond Cellular'] }
             ]
         },
         { label: 'Cuerpo & Baño', view: 'products' as View, payload: 'personal-care', hasMega: true,
             subLinks: [
-                { title: 'Milk & Honey Gold', items: ['Crema Cuerpo Nutritiva', 'Exfoliante de Azúcar', 'Champú de Lujo', 'Jabón Suave'] },
-                { title: 'Love Nature', items: ['Línea Magnolia', 'Línea Coco & Agua', 'Aceites Esenciales', 'Cuidado de Manos'] }
+                { title: 'Milk & Honey', items: ['Crema Manos y Cuerpo', 'Exfoliante Azúcar'] },
+                { title: 'Esenciales', items: ['Crema Árnica 32635', 'Optifresh Menta'] }
             ]
         },
-        { label: 'Journal 2026', view: 'catalog' as View, hasMega: false },
+        { label: 'Catálogo', view: 'catalog' as View, hasMega: false },
         { label: 'IA Consultor', view: 'ia' as View, hasMega: false },
     ];
 
@@ -67,26 +66,26 @@ const Header: React.FC<HeaderProps> = ({ onNavigate, cartCount, onCartClick, cur
         <header className="w-full fixed top-0 left-0 z-[100] font-sans">
             {/* Promo Bar */}
             <div className="w-full bg-[#FAE1EF] py-1.5 px-6 flex items-center justify-between text-black text-[9px] font-black uppercase tracking-[0.3em] border-b border-pink-200">
-                <span className="flex items-center gap-2"><span className="w-2 h-2 bg-pink-600 rounded-full animate-pulse"></span> ENVÍO VIP GRATUITO POR COMPRAS SUPERIORES A 35€</span>
-                <span className="hidden md:block">ENTREGA EXPRESA 24/48H EN TODA LA PENÍNSULA</span>
-                <span className="cursor-pointer hover:text-pink-600 transition-colors uppercase">Vellaperfumeria Estocolmo</span>
+                <span><span className="w-2 h-2 bg-pink-600 rounded-full inline-block mr-2"></span> ENVÍO GRATIS &gt; 35€</span>
+                <span className="hidden md:block">PRODUCTOS 100% ORIGINALES ORIFLAME</span>
+                <span className="cursor-pointer hover:text-pink-600 uppercase">Vellaperfumeria Estocolmo</span>
             </div>
 
             {/* Main Brand Bar */}
             <div className="w-full h-24 bg-white flex items-center px-6 md:px-12 border-b border-gray-100 shadow-sm relative z-20">
-                <div className="flex-1 flex justify-start">
+                <div className="flex-1">
                     <button onClick={() => onNavigate('ia')} className="bg-black text-white p-3 rounded-full hover:bg-pink-600 transition-all shadow-md">
                         <SearchIcon />
                     </button>
                 </div>
                 <div className="flex-1 flex justify-center">
-                    <img onClick={() => onNavigate('home')} src="https://i0.wp.com/vellaperfumeria.com/wp-content/uploads/2025/06/1000003724-removebg-preview.png" alt="Logo Vellaperfumeria" className="h-16 cursor-pointer hover:scale-105 transition-transform" />
+                    <img onClick={() => onNavigate('home')} src="https://i0.wp.com/vellaperfumeria.com/wp-content/uploads/2025/06/1000003724-removebg-preview.png" alt="Logo" className="h-16 cursor-pointer hover:scale-105 transition-transform" />
                 </div>
-                <div className="flex-1 flex justify-end items-center gap-6">
+                <div className="flex-1 flex justify-end">
                     <button onClick={onCartClick} className="relative p-3 group">
                         <BagIcon />
                         {cartCount > 0 && (
-                            <span className="absolute top-1 right-1 bg-black text-white text-[8px] font-black w-5 h-5 rounded-full flex items-center justify-center font-black border-2 border-white group-hover:bg-pink-600 transition-colors">
+                            <span className="absolute top-1 right-1 bg-black text-white text-[8px] font-black w-5 h-5 rounded-full flex items-center justify-center border-2 border-white">
                                 {cartCount}
                             </span>
                         )}
@@ -94,9 +93,9 @@ const Header: React.FC<HeaderProps> = ({ onNavigate, cartCount, onCartClick, cur
                 </div>
             </div>
 
-            {/* FULL WIDTH BLACK NAVIGATION MENU */}
-            <nav className="w-full bg-black text-white h-14 relative flex justify-center shadow-2xl">
-                <div className="w-full h-full flex justify-center items-stretch overflow-x-auto no-scrollbar px-6 max-w-[1920px]">
+            {/* FULL WIDTH BLACK MENU */}
+            <nav className="w-full bg-black text-white h-14 relative shadow-2xl overflow-visible">
+                <div className="w-full h-full flex justify-center items-stretch px-4">
                     {navItems.map((item) => (
                         <div 
                             key={item.label} 
@@ -106,25 +105,25 @@ const Header: React.FC<HeaderProps> = ({ onNavigate, cartCount, onCartClick, cur
                         >
                             <button 
                                 onClick={() => { onNavigate(item.view, item.payload); setActiveMenu(null); }}
-                                className={`h-full px-8 md:px-14 text-[10px] font-black uppercase tracking-[0.45em] flex items-center whitespace-nowrap transition-all ${activeMenu === item.label ? 'text-pink-400 bg-white/5' : 'text-gray-300 hover:text-white'}`}
+                                className={`h-full px-6 md:px-10 text-[10px] font-black uppercase tracking-[0.3em] flex items-center whitespace-nowrap transition-all ${activeMenu === item.label ? 'text-pink-400 bg-white/10' : 'text-gray-300 hover:text-white'}`}
                             >
                                 {item.label}
                                 {item.hasMega && <ChevronDownIcon />}
                             </button>
 
-                            {/* DROPDOWN / MEGA MENU */}
+                            {/* MEGA MENU DESPLEGABLE */}
                             {item.hasMega && activeMenu === item.label && (
-                                <div className="fixed left-0 w-full bg-black border-t border-white/10 shadow-[0_50px_100px_rgba(0,0,0,0.95)] animate-mega-in top-[152px] z-[50]">
-                                    <div className="max-w-[1400px] mx-auto px-12 py-20 grid grid-cols-2 lg:grid-cols-4 gap-20 text-left">
+                                <div className="fixed left-0 top-[152px] w-full bg-black border-t border-white/10 shadow-[0_40px_60px_rgba(0,0,0,0.9)] animate-mega-in z-[50] py-12">
+                                    <div className="max-w-7xl mx-auto px-12 grid grid-cols-1 md:grid-cols-4 gap-12">
                                         {item.subLinks?.map((col, idx) => (
-                                            <div key={idx} className="space-y-8">
-                                                <h4 className="text-pink-600 text-[11px] font-black uppercase tracking-[0.5em] border-b border-white/10 pb-4 mb-6 italic">{col.title}</h4>
-                                                <ul className="space-y-4">
+                                            <div key={idx}>
+                                                <h4 className="text-pink-600 text-[10px] font-black uppercase tracking-[0.4em] mb-6 border-b border-white/5 pb-2">{col.title}</h4>
+                                                <ul className="space-y-3">
                                                     {col.items.map((sub, sIdx) => (
                                                         <li key={sIdx}>
                                                             <button 
                                                                 onClick={() => { onNavigate(item.view, item.payload); setActiveMenu(null); }}
-                                                                className="text-gray-400 hover:text-white text-[11px] font-bold uppercase tracking-widest hover:translate-x-3 transition-all block text-left"
+                                                                className="text-gray-400 hover:text-white text-[11px] font-bold uppercase tracking-widest hover:translate-x-2 transition-all"
                                                             >
                                                                 {sub}
                                                             </button>
@@ -133,26 +132,17 @@ const Header: React.FC<HeaderProps> = ({ onNavigate, cartCount, onCartClick, cur
                                                 </ul>
                                             </div>
                                         ))}
-                                        
-                                        {/* Luxury Feature in Menu */}
-                                        <div className="hidden lg:flex border-l border-white/10 pl-16 col-span-2 items-center">
-                                            <div className="bg-white/5 p-12 rounded-sm w-full group/promo cursor-pointer flex items-center gap-14" onClick={() => onNavigate(item.view, item.payload)}>
-                                                <div className="w-1/2 bg-white rounded-sm p-8 aspect-square flex items-center justify-center shadow-xl">
-                                                    <img 
-                                                        src={item.payload === 'perfume' ? getImg(42751) : getImg(42119)} 
-                                                        className="max-w-full max-h-full object-contain transition-transform duration-700 group-hover/promo:scale-110" 
-                                                        alt="Destacado" 
-                                                    />
+                                        <div className="md:col-span-2 border-l border-white/5 pl-12 flex items-center gap-8">
+                                             <div className="bg-white/5 p-6 rounded flex items-center gap-6 w-full">
+                                                <img src={getImg(42119)} className="h-24 object-contain" alt="Feature" />
+                                                <div>
+                                                    <p className="text-pink-500 text-[8px] font-black uppercase mb-1">Destacado</p>
+                                                    <h5 className="text-white text-lg font-black uppercase italic tracking-tighter">Ofertas VIP 2026</h5>
+                                                    <button onClick={() => onNavigate('ofertas')} className="mt-4 bg-white text-black text-[9px] font-black px-6 py-3 uppercase tracking-widest hover:bg-pink-600 hover:text-white transition-all">Ver Ahora</button>
                                                 </div>
-                                                <div className="w-1/2">
-                                                    <p className="text-pink-500 text-[9px] font-black uppercase tracking-[0.6em] mb-4">Experiencia Premium</p>
-                                                    <h5 className="text-white text-3xl font-black uppercase italic leading-none mb-8 tracking-tighter">Maestros <br/> de {item.label}</h5>
-                                                    <button className="bg-white text-black text-[9px] font-black px-10 py-5 uppercase tracking-widest hover:bg-pink-600 hover:text-white transition-all">Ver la Colección</button>
-                                                </div>
-                                            </div>
+                                             </div>
                                         </div>
                                     </div>
-                                    <div className="h-1.5 bg-gradient-to-r from-transparent via-pink-600/30 to-transparent"></div>
                                 </div>
                             )}
                         </div>
@@ -160,10 +150,8 @@ const Header: React.FC<HeaderProps> = ({ onNavigate, cartCount, onCartClick, cur
                 </div>
             </nav>
             <style>{`
-                @keyframes mega-in { from { opacity: 0; transform: translateY(-10px); } to { opacity: 1; transform: translateY(0); } }
-                .animate-mega-in { animation: mega-in 0.4s cubic-bezier(0.16, 1, 0.3, 1) forwards; }
-                .no-scrollbar::-webkit-scrollbar { display: none; }
-                .no-scrollbar { -ms-overflow-style: none; scrollbar-width: none; }
+                @keyframes mega-in { from { opacity: 0; transform: translateY(-5px); } to { opacity: 1; transform: translateY(0); } }
+                .animate-mega-in { animation: mega-in 0.3s ease-out forwards; }
             `}</style>
         </header>
     );
