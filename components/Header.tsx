@@ -36,30 +36,30 @@ const Header: React.FC<HeaderProps> = ({ onNavigate, cartCount, onCartClick }) =
     const navItems = [
         { label: 'Fragancias', view: 'products' as View, payload: 'perfume', hasMega: true, 
             subLinks: [
-                { title: 'Dama', items: ['Volare', 'Elvie', 'Giordani Gold', 'Divine'] },
-                { title: 'Caballero', items: ['Subzero', 'Mister Giordani', 'Ascendant'] }
+                { title: 'Dama', items: ['Volare 31495', 'Elvie 31119', 'Elvie Summer Joy 41129'] },
+                { title: 'Caballero', items: ['Mister Giordani', 'Eclat Homme', 'Ascendant'] }
             ]
         },
         { label: 'Maquillaje', view: 'products' as View, payload: 'makeup', hasMega: true,
             subLinks: [
-                { title: 'Labios', items: ['The ONE Colour Stylist', 'Giordani Gold'] },
-                { title: 'Ojos', items: ['WonderLash HD', 'Kohl Precision'] }
+                { title: 'Labios', items: ['Colour Stylist 31625', 'Giordani Gold'] },
+                { title: 'Rostro', items: ['The ONE Everlasting', 'Everlasting Sync'] }
             ]
         },
         { label: 'Cuidado Facial', view: 'products' as View, payload: 'skincare', hasMega: true,
             subLinks: [
-                { title: 'Novage+', items: ['Sérum Bright', 'Limpiador Bio-Lipid'] },
-                { title: 'Mascarillas', items: ['Sandía Love Nature', 'Diamond Cellular'] }
+                { title: 'Novage+', items: ['Sérum Bright', 'Novage Ecollagen 32042'] },
+                { title: 'Mascarillas', items: ['Sandía Love Nature 46990', 'Diamond Cellular'] }
             ]
         },
         { label: 'Cuerpo & Baño', view: 'products' as View, payload: 'personal-care', hasMega: true,
             subLinks: [
-                { title: 'Milk & Honey', items: ['Crema Manos y Cuerpo', 'Exfoliante Azúcar'] },
-                { title: 'Esenciales', items: ['Crema Árnica 32635', 'Optifresh Menta'] }
+                { title: 'Higiene', items: ['Milk & Honey 31602', 'Beautanicals 31115', 'Optifresh 31673'] },
+                { title: 'Cuidado', items: ['Exfoliante 31603', 'Loción Magnolia 41101', 'Crema Árnica 32635'] }
             ]
         },
         { label: 'Catálogo', view: 'catalog' as View, hasMega: false },
-        { label: 'IA Consultor', view: 'ia' as View, hasMega: false },
+        { label: 'IA Asesor', view: 'ia' as View, hasMega: false },
     ];
 
     return (
@@ -105,26 +105,27 @@ const Header: React.FC<HeaderProps> = ({ onNavigate, cartCount, onCartClick }) =
                         >
                             <button 
                                 onClick={() => { onNavigate(item.view, item.payload); setActiveMenu(null); }}
-                                className={`h-full px-6 md:px-10 text-[10px] font-black uppercase tracking-[0.3em] flex items-center whitespace-nowrap transition-all ${activeMenu === item.label ? 'text-pink-400 bg-white/10' : 'text-gray-300 hover:text-white'}`}
+                                className={`h-full px-5 md:px-8 text-[9px] md:text-[10px] font-black uppercase tracking-[0.3em] flex items-center whitespace-nowrap transition-all ${activeMenu === item.label ? 'text-pink-400 bg-white/10' : 'text-gray-300 hover:text-white'}`}
                             >
                                 {item.label}
                                 {item.hasMega && <ChevronDownIcon />}
                             </button>
 
-                            {/* MEGA MENU DESPLEGABLE */}
+                            {/* MEGA MENU DESPLEGABLE - FONDO NEGRO ANCHURA COMPLETA */}
                             {item.hasMega && activeMenu === item.label && (
-                                <div className="fixed left-0 top-[152px] w-full bg-black border-t border-white/10 shadow-[0_40px_60px_rgba(0,0,0,0.9)] animate-mega-in z-[50] py-12">
-                                    <div className="max-w-7xl mx-auto px-12 grid grid-cols-1 md:grid-cols-4 gap-12">
+                                <div className="fixed left-0 top-[152px] w-full bg-black border-t border-white/5 shadow-[0_40px_100px_rgba(0,0,0,1)] animate-mega-in z-[50] py-16">
+                                    <div className="max-w-7xl mx-auto px-12 grid grid-cols-1 md:grid-cols-4 gap-16">
                                         {item.subLinks?.map((col, idx) => (
-                                            <div key={idx}>
-                                                <h4 className="text-pink-600 text-[10px] font-black uppercase tracking-[0.4em] mb-6 border-b border-white/5 pb-2">{col.title}</h4>
-                                                <ul className="space-y-3">
+                                            <div key={idx} className="animate-fade-up" style={{ animationDelay: `${idx * 100}ms` }}>
+                                                <h4 className="text-pink-600 text-[10px] font-black uppercase tracking-[0.4em] mb-8 border-b border-white/10 pb-3">{col.title}</h4>
+                                                <ul className="space-y-4">
                                                     {col.items.map((sub, sIdx) => (
                                                         <li key={sIdx}>
                                                             <button 
                                                                 onClick={() => { onNavigate(item.view, item.payload); setActiveMenu(null); }}
-                                                                className="text-gray-400 hover:text-white text-[11px] font-bold uppercase tracking-widest hover:translate-x-2 transition-all"
+                                                                className="text-gray-400 hover:text-white text-[11px] font-bold uppercase tracking-widest hover:translate-x-3 transition-all flex items-center group/sub"
                                                             >
+                                                                <span className="w-0 h-[1px] bg-pink-500 mr-0 group-hover/sub:w-4 group-hover/sub:mr-3 transition-all"></span>
                                                                 {sub}
                                                             </button>
                                                         </li>
@@ -132,14 +133,12 @@ const Header: React.FC<HeaderProps> = ({ onNavigate, cartCount, onCartClick }) =
                                                 </ul>
                                             </div>
                                         ))}
-                                        <div className="md:col-span-2 border-l border-white/5 pl-12 flex items-center gap-8">
-                                             <div className="bg-white/5 p-6 rounded flex items-center gap-6 w-full">
-                                                <img src={getImg(42119)} className="h-24 object-contain" alt="Feature" />
-                                                <div>
-                                                    <p className="text-pink-500 text-[8px] font-black uppercase mb-1">Destacado</p>
-                                                    <h5 className="text-white text-lg font-black uppercase italic tracking-tighter">Ofertas VIP 2026</h5>
-                                                    <button onClick={() => onNavigate('ofertas')} className="mt-4 bg-white text-black text-[9px] font-black px-6 py-3 uppercase tracking-widest hover:bg-pink-600 hover:text-white transition-all">Ver Ahora</button>
-                                                </div>
+                                        <div className="md:col-span-1 border-l border-white/10 pl-16 flex items-center">
+                                             <div className="bg-zinc-900 p-8 rounded-sm border border-white/5 w-full">
+                                                <img src={getImg(31602)} className="h-24 object-contain mx-auto mb-6" alt="Destacado" />
+                                                <p className="text-pink-500 text-[9px] font-black uppercase mb-1 tracking-widest text-center">Favorito</p>
+                                                <h5 className="text-white text-md font-black uppercase italic text-center mb-6">Milk & Honey Gold</h5>
+                                                <button onClick={() => onNavigate('products', 'personal-care')} className="w-full bg-white text-black text-[9px] font-black px-6 py-4 uppercase tracking-[0.3em] hover:bg-pink-600 hover:text-white transition-all">Explorar</button>
                                              </div>
                                         </div>
                                     </div>
@@ -150,8 +149,10 @@ const Header: React.FC<HeaderProps> = ({ onNavigate, cartCount, onCartClick }) =
                 </div>
             </nav>
             <style>{`
-                @keyframes mega-in { from { opacity: 0; transform: translateY(-5px); } to { opacity: 1; transform: translateY(0); } }
-                .animate-mega-in { animation: mega-in 0.3s ease-out forwards; }
+                @keyframes mega-in { from { opacity: 0; transform: translateY(-10px); } to { opacity: 1; transform: translateY(0); } }
+                @keyframes fade-up { from { opacity: 0; transform: translateY(20px); } to { opacity: 1; transform: translateY(0); } }
+                .animate-mega-in { animation: mega-in 0.4s cubic-bezier(0.16, 1, 0.3, 1) forwards; }
+                .animate-fade-up { animation: fade-up 0.6s cubic-bezier(0.16, 1, 0.3, 1) forwards; }
             `}</style>
         </header>
     );
