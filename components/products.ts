@@ -3,102 +3,228 @@ import type { Product } from './types';
 
 export const getImg = (id: number | string) => `https://media-cdn.oriflame.com/productImage?externalMediaId=product-management-media%2FProducts%2F${id}%2F${id}_1.png`;
 
-// --- 1. PRODUCTOS REALES ESPECÍFICOS (MAPEO MANUAL) ---
-const manualProducts: Product[] = [
-    // LÍNEA AGUACATE (32020 - 32022)
-    { id: 32020, name: "Crema Facial Love Nature Aguacate", brand: "Love Nature", price: 8.50, imageUrl: getImg(32020), category: "skincare", stock: 60, description: "Nutrición natural con aceite de aguacate orgánico." },
-    { id: 32021, name: "Crema de Manos Love Nature Aguacate", brand: "Love Nature", price: 5.00, imageUrl: getImg(32021), category: "personal-care", stock: 85, description: "Suavidad inmediata para tus manos." },
-    { id: 32022, name: "Bálsamo Labial Love Nature Aguacate", brand: "Love Nature", price: 4.50, imageUrl: getImg(32022), category: "makeup", stock: 120, description: "Protección y brillo natural." },
-
-    // SÉRUM DE PIES CORRECTO (32370)
-    { id: 32370, name: "Sérum para Pies Feet Up Advanced", brand: "Feet Up", price: 11.00, imageUrl: getImg(32370), category: "personal-care", stock: 40, description: "Sérum con ácido salicílico para pies con durezas." },
-
-    // LABIAL CORRECTO (33030)
-    { id: 33030, name: "Labial The ONE Lip Sensation Matte", brand: "THE ONE", price: 15.00, imageUrl: getImg(33030), category: "makeup", stock: 55, description: "Mousse labial de acabado mate intenso." },
-
-    // MAQUILLAJE CON VARIANTES (GRUPOS DE TONOS EN UNA SOLA FOTO)
-    {
-        id: 32191,
-        name: "Perfilador de Labios Giordani Gold Iconic",
-        brand: "Giordani Gold",
-        price: 13.00,
-        imageUrl: getImg(32191),
-        category: "makeup",
-        stock: 200,
-        description: "Definición de lujo y color duradero.",
-        variants: {
-            "Tono": [
-                { value: "Nude Natural", colorCode: "#d4a391", id: 32191 },
-                { value: "Pink Satin", colorCode: "#e18a8a", id: 32192 },
-                { value: "Rose Velvet", colorCode: "#b85c5c", id: 32193 },
-                { value: "Red Passion", colorCode: "#a11d1d", id: 32194 },
-                { value: "Coral Glow", colorCode: "#e36d4f", id: 32195 }
-            ]
-        }
+// --- CATÁLOGO REAL BASADO EN TUS CÓDIGOS ---
+export const allProducts: Product[] = [
+    // --- FRAGANCIAS ---
+    { 
+        id: 47718, 
+        name: "Perfume All or Nothing Amplifies Exclusive Edition", 
+        brand: "Oriflame Estocolmo", 
+        price: 17.99, 
+        regularPrice: 62.99,
+        imageUrl: getImg(47718), 
+        category: "perfume", 
+        stock: 50, 
+        tag: "OFERTA",
+        description: "Una esencia magistral diseñada para amplificar tu presencia. Esta fragancia combina notas de nardo y ámbar rojo para una distinción premium. Edición especial de lanzamiento con una fijación ultra prolongada." 
     },
-    {
-        id: 32081,
-        name: "Perlas Iluminadoras Giordani Gold",
-        brand: "Giordani Gold",
-        price: 26.00,
-        imageUrl: getImg(32081),
-        category: "makeup",
-        stock: 90,
-        description: "Perlas artesanales para un brillo radiante.",
+    { 
+        id: 46047, 
+        name: "Eau de Parfum Love Potion Cherry on Top", 
+        brand: "Love Potion", 
+        price: 25.99, 
+        regularPrice: 46.00,
+        imageUrl: getImg(46047), 
+        category: "perfume", 
+        stock: 35, 
+        description: "Un aroma dulce e irresistible de cereza negra, rematado con notas de chocolate y vainilla. El capricho perfecto para abrir los corazones y captar miradas." 
+    },
+    { 
+        id: 31292, 
+        name: "Eau de Toilette Eclat Femme Weekends", 
+        brand: "Eclat", 
+        price: 26.99, 
+        regularPrice: 42.49,
+        imageUrl: getImg(31292), 
+        category: "perfume", 
+        stock: 20, 
+        description: "Elegancia natural y radiante. Notas de melocotón blanco y bergamota que te transportan a un fin de semana de lujo en la Riviera Francesa." 
+    },
+    { 
+        id: 47499, 
+        name: "Eau de Toilette Elvie Midnight Magic", 
+        brand: "Elvie", 
+        price: 22.99, 
+        regularPrice: 38.00,
+        imageUrl: getImg(47499), 
+        category: "perfume", 
+        stock: 40, 
+        description: "Embellece tus días más aburridos con la magia de medianoche. Un aroma místico con notas de rosa negra y ámbar." 
+    },
+
+    // --- COSMÉTICA Y CUIDADO ---
+    { 
+        id: 46974, 
+        name: "Jabón en Barra True Hours Moments", 
+        brand: "True Hours", 
+        price: 3.49, 
+        imageUrl: getImg(46974), 
+        category: "personal-care", 
+        stock: 120, 
+        description: "Limpieza suave y delicada con una fragancia que evoca los momentos de paz. Piel limpia, fresca y suavemente perfumada." 
+    },
+    { 
+        id: 47201, 
+        name: "Crema de Manos True Hours Moments", 
+        brand: "True Hours", 
+        price: 6.99, 
+        imageUrl: getImg(47201), 
+        category: "personal-care", 
+        stock: 85, 
+        description: "Nutrición intensa para manos que inspiran belleza. Fórmula de rápida absorción que restaura la barrera cutánea inmediatamente." 
+    },
+    { 
+        id: 36152, 
+        name: "Crema Universal Tender Care con Aceite de Frambuesa", 
+        brand: "Tender Care", 
+        price: 7.99, 
+        imageUrl: getImg(36152), 
+        category: "skincare", 
+        stock: 300, 
+        description: "Fórmula 99% de ingredientes naturales. Protege y suaviza las zonas secas o agrietadas de tu piel con el aroma dulce de la frambuesa." 
+    },
+    { 
+        id: 42806, 
+        name: "Crema de Manos Hidratante Cherry", 
+        brand: "Love Nature", 
+        price: 7.99, 
+        imageUrl: getImg(42806), 
+        category: "personal-care", 
+        stock: 90, 
+        description: "Hidratación frutal con extractos de cereza dulce. Deja tus manos aterciopeladas y con un brillo natural saludable." 
+    },
+
+    // --- TRATAMIENTO REAL VELVET ---
+    { 
+        id: 47005, 
+        name: "Crema de Día Reafirmante Royal Velvet SPF 20", 
+        brand: "Royal Velvet", 
+        price: 43.00, 
+        imageUrl: getImg(47005), 
+        category: "skincare", 
+        stock: 25, 
+        description: "Fortalece y reafirma la estructura de la piel a partir de los 40 años. Infundida con la exclusiva Infusión de Iris Negro." 
+    },
+    { 
+        id: 47007, 
+        name: "Contorno de Ojos Reafirmante Royal Velvet", 
+        brand: "Royal Velvet", 
+        price: 30.00, 
+        imageUrl: getImg(47007), 
+        category: "skincare", 
+        stock: 30, 
+        description: "Suaviza el área del contorno de ojos, reduciendo bolsas y líneas de expresión. Mirada más joven y descansada." 
+    },
+    { 
+        id: 48117, 
+        name: "Crema de Noche Reafirmante Royal Velvet Special Edition", 
+        brand: "Royal Velvet", 
+        price: 23.99, 
+        regularPrice: 40.00,
+        imageUrl: getImg(48117), 
+        category: "skincare", 
+        stock: 15, 
+        description: "Nutrición nocturna intensa para regenerar la piel mientras duermes. Edición especial con mayor concentración de activos reafirmantes." 
+    },
+
+    // --- MAQUILLAJE THE ONE ---
+    { 
+        id: 48650, 
+        name: "Máscara de Pestañas Winter Wanderlust Waterproof THE ONE", 
+        brand: "THE ONE", 
+        price: 9.99, 
+        imageUrl: getImg(48650), 
+        category: "makeup", 
+        stock: 65, 
+        description: "Cautiva a través de múltiples sentidos. Volumen extremo y resistencia total al agua para una mirada que no conoce límites." 
+    },
+    { 
+        id: 46929, 
+        name: "Paleta de Sombras Color Unlimited THE ONE", 
+        brand: "THE ONE", 
+        price: 15.99, 
+        imageUrl: getImg(46929), 
+        category: "makeup", 
+        stock: 45, 
         variants: {
             "Tono": [
-                { value: "Natural Radiance", colorCode: "#e6c3a0", id: 32081 },
-                { value: "Natural Bronze", colorCode: "#c48b5a", id: 32082 },
-                { value: "Natural Peach", colorCode: "#f2b5a0", id: 32083 }
+                { value: "Matte Burgundy", colorCode: "#5e1919", id: 46929 },
+                { value: "Warm Taupe", colorCode: "#a38e83", id: 46926 },
+                { value: "Satin Rose", colorCode: "#d4a3b1", id: 46922 },
+                { value: "Deep Ebony", colorCode: "#1a1a1a", id: 46918 }
             ]
-        }
+        },
+        description: "Alta pigmentación y duración ilimitada. Crea looks desde lo más natural hasta el drama más profundo del borgoña mate." 
+    },
+    { 
+        id: 43295, 
+        name: "Labial Color Stylist Ultimate THE ONE", 
+        brand: "THE ONE", 
+        price: 9.99, 
+        imageUrl: getImg(43295), 
+        category: "makeup", 
+        stock: 110, 
+        variants: {
+            "Shade": [
+                { value: "Amber Nude", colorCode: "#b87c6b", id: 43295 },
+                { value: "Cherry Crush", colorCode: "#8a1a2e", id: 43298 },
+                { value: "Velvet Red", colorCode: "#a11d1d", id: 43302 }
+            ]
+        },
+        description: "5 beneficios en 1. Color intenso, cobertura total y cuidado labial en cada pasada. Elige tu tono ideal." 
+    },
+
+    // --- ACCESORIOS Y REGALOS ---
+    { 
+        id: 48908, 
+        name: "Set de 4 Pares de Pendientes Glitters of Love", 
+        brand: "Accesorios Oriflame", 
+        price: 11.99, 
+        imageUrl: getImg(48908), 
+        category: "accessories", 
+        stock: 40, 
+        description: "Colección exclusiva de cuatro pares de pendientes que celebran el amor y el brillo. El set más versátil para cualquier ocasión festiva." 
+    },
+    { 
+        id: 48954, 
+        name: "Reloj Glitters of Love - Edición Limitada", 
+        brand: "Accesorios Oriflame", 
+        price: 10.99, 
+        regularPrice: 35.00,
+        imageUrl: getImg(48954), 
+        category: "accessories", 
+        stock: 12, 
+        description: "Añade un toque de brilla a tus citas con este reloj de diseño exclusivo inspirado en la elegancia del amor." 
+    },
+    { 
+        id: 48953, 
+        name: "Necessaire Sugar Spice Especial", 
+        brand: "Accesorios Oriflame", 
+        price: 10.99, 
+        imageUrl: getImg(48953), 
+        category: "accessories", 
+        stock: 150, 
+        tag: "OFERTA",
+        description: "OFERTA EXCLUSIVA: Consigue tu Necessaire Sugar Spice por solo 10.99€ por cada 20€ de compra en este catálogo. El complemento ideal para tus cosméticos." 
+    },
+    { 
+        id: 48975, 
+        name: "Bolsa de Regalo Festive - Grande", 
+        brand: "Vellaperfumeria", 
+        price: 3.99, 
+        imageUrl: getImg(48975), 
+        category: "accessories", 
+        stock: 500, 
+        description: "Haz que tu regalo sea inolvidable con nuestra bolsa grande de diseño festivo exclusivo." 
+    },
+    { 
+        id: 48970, 
+        name: "Caja de Regalo Premium Festive", 
+        brand: "Vellaperfumeria", 
+        price: 10.00, 
+        imageUrl: getImg(48970), 
+        category: "accessories", 
+        stock: 200, 
+        description: "El envoltorio definitivo. Una caja rígida de alta calidad para proteger y presentar tus mejores deseos." 
     }
 ];
-
-// --- 2. GENERADOR DE 600 PRODUCTOS ÚNICOS (SIN REPETIR NOMBRES) ---
-const generateUniqueCatalog = (): Product[] => {
-    const products: Product[] = [...manualProducts];
-    const usedIds = new Set(manualProducts.map(p => p.id));
-    
-    // Diccionarios para crear nombres únicos
-    const brands = ["Novage+", "Optimals", "Love Nature", "THE ONE", "Giordani Gold", "Milk & Honey", "Duologi", "Royal Velvet", "Feet Up", "Beautanicals"];
-    const types = ["Loción Corporal", "Gel de Ducha", "Sérum Facial", "Crema de Noche", "Crema de Día", "Limpiador Espumoso", "Tónico Equilibrante", "Mascarilla Revitalizante", "Exfoliante Suave", "Acondicionador Rico"];
-    const ingredients = ["Ácido Hialurónico", "Vitamina C", "Aceite de Argán", "Miel Orgánica", "Árbol de Té", "Coco y Aloe", "Carbón Activo", "Retinol", "Extracto de Rosa", "Menta Fresca"];
-
-    let count = 0;
-    // Iniciamos en 32029 como pidió el usuario
-    let currentId = 32029;
-
-    while (products.length < 600) {
-        if (!usedIds.has(currentId)) {
-            // Lógica para que el nombre sea siempre diferente
-            const bIndex = count % brands.length;
-            const tIndex = Math.floor(count / brands.length) % types.length;
-            const iIndex = Math.floor(count / (brands.length * types.length)) % ingredients.length;
-
-            const name = `${types[tIndex]} de ${ingredients[iIndex]} ${brands[bIndex]}`;
-            const category = types[tIndex].includes("Crema") || types[tIndex].includes("Sérum") ? "skincare" : "personal-care";
-
-            products.push({
-                id: currentId,
-                name: name,
-                brand: brands[bIndex],
-                price: 10.00 + (count % 40),
-                imageUrl: getImg(currentId),
-                category: category as any,
-                stock: 50,
-                description: `Producto de alta calidad ${brands[bIndex]} diseñado para resultados profesionales.`
-            });
-            usedIds.add(currentId);
-            count++;
-        }
-        currentId++;
-        // Saltamos bloques si es necesario para evitar IDs de variantes manuales
-        if (currentId === 32191) currentId = 32200;
-        if (currentId === 33030) currentId = 33031;
-    }
-
-    return products;
-};
-
-export const allProducts: Product[] = generateUniqueCatalog().sort((a,b) => a.id - b.id);

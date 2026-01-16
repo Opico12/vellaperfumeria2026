@@ -9,10 +9,9 @@ const categories = [
     { key: 'all', name: 'Todos los productos' },
     { key: 'skincare', name: 'Cuidado Facial' },
     { key: 'makeup', name: 'Maquillaje' },
-    { key: 'perfume', name: 'Fragancias' },
-    { key: 'wellness', name: 'Wellness' },
-    { key: 'hair', name: 'Cuidado del Cabello' },
-    { key: 'personal-care', name: 'Cuidado Personal' },
+    { key: 'perfume', name: 'Brumas y Fragancias' },
+    { key: 'hair', name: 'Cabello' },
+    { key: 'personal-care', name: 'Lociones y Geles' },
     { key: 'men', name: 'Hombre' },
     { key: 'accessories', name: 'Accesorios' },
 ];
@@ -28,6 +27,7 @@ const ShopPage: React.FC<{
     
     const [activeCategory, setActiveCategory] = useState(initialCategory);
     const [sortOrder, setSortOrder] = useState('menu_order');
+    const [searchQuery, setSearchQuery] = useState('');
     
     useEffect(() => {
         setActiveCategory(initialCategory);
@@ -38,13 +38,14 @@ const ShopPage: React.FC<{
             ? [...allProducts]
             : allProducts.filter(p => p.category === activeCategory);
 
+        if (searchQuery) {
+            filtered = filtered.filter(p => 
+                p.name.toLowerCase().includes(searchQuery.toLowerCase()) || 
+                p.id.toString().includes(searchQuery)
+            );
+        }
+
         switch (sortOrder) {
-            case 'popularity':
-                filtered.sort((a, b) => (b.reviewCount || 0) - (a.reviewCount || 0));
-                break;
-            case 'rating':
-                filtered.sort((a, b) => (b.rating || 0) - (a.rating || 0));
-                break;
             case 'price':
                 filtered.sort((a, b) => a.price - b.price);
                 break;
@@ -56,62 +57,71 @@ const ShopPage: React.FC<{
                 break;
         }
         return filtered;
-    }, [activeCategory, sortOrder]);
-
-    const handleSortChange = (e: React.ChangeEvent<HTMLSelectElement>) => {
-        setSortOrder(e.target.value);
-    };
+    }, [activeCategory, sortOrder, searchQuery]);
 
     const currentCategoryName = categories.find(c => c.key === activeCategory)?.name || 'Tienda';
 
     return (
-        <div className="container mx-auto px-4 sm:px-6 lg:px-8">
-            <div className="flex flex-col md:flex-row gap-8">
-                <aside className="w-full md:w-1/4 lg:w-1/5">
-                    <h2 className="text-lg font-bold mb-4 border-b pb-2">Categorías</h2>
-                    <ul className="space-y-2">
-                        {categories.map(cat => (
-                            <li key={cat.key}>
-                                <button
-                                    onClick={() => setActiveCategory(cat.key)}
-                                    className={`w-full text-left px-3 py-2 rounded-md transition-colors text-sm ${
-                                        activeCategory === cat.key
-                                            ? 'bg-brand-purple text-brand-primary font-semibold'
-                                            : 'text-gray-700 hover:bg-gray-100'
-                                    }`}
-                                >
-                                    {cat.name}
-                                </button>
-                            </li>
-                        ))}
-                    </ul>
+        <div className="container mx-auto px-4 md:px-12 py-10">
+            <div className="flex flex-col lg:flex-row gap-12">
+                {/* Sidebar Filtros */}
+                <aside className="w-full lg:w-1/4">
+                    <div className="sticky top-48 space-y-10">
+                        <div>
+                            <h2 className="text-[10px] font-black uppercase tracking-[0.4em] mb-6 border-b pb-4">Buscar Producto</h2>
+                            <input 
+                                type="text"
+                                placeholder="Ref o Ingrediente..."
+                                value={searchQuery}
+                                onChange={(e) => setSearchQuery(e.target.value)}
+                                className="w-full border-2 border-gray-100 p-4 text-xs font-bold uppercase tracking-widest focus:border-black outline-none transition-all"
+                            />
+                        </div>
+
+                        <div>
+                            <h2 className="text-[10px] font-black uppercase tracking-[0.4em] mb-6 border-b pb-4">Categorías</h2>
+                            <ul className="space-y-2">
+                                {categories.map(cat => (
+                                    <li key={cat.key}>
+                                        <button
+                                            onClick={() => setActiveCategory(cat.key)}
+                                            className={`w-full text-left px-4 py-3 text-[9px] font-black uppercase tracking-[0.2em] transition-all border ${
+                                                activeCategory === cat.key
+                                                    ? 'bg-black text-white border-black'
+                                                    : 'text-gray-400 border-transparent hover:border-gray-100 hover:text-black'
+                                            }`}
+                                        >
+                                            {cat.name}
+                                        </button>
+                                    </li>
+                                ))}
+                            </ul>
+                        </div>
+                    </div>
                 </aside>
 
-                <main className="w-full md:w-3/4 lg:w-4/5">
-                    <h1 className="text-2xl font-bold text-brand-primary tracking-tight mb-4">{currentCategoryName}</h1>
-                    <div className="flex flex-col sm:flex-row justify-between items-center mb-6 gap-4 p-4 bg-white rounded-lg shadow-sm border">
-                        <p className="text-sm text-gray-700">
-                           Mostrando {filteredAndSortedProducts.length} productos
-                        </p>
-                        <form className="woocommerce-ordering">
+                {/* Grid de Productos */}
+                <main className="w-full lg:w-3/4">
+                    <div className="flex justify-between items-end mb-12 border-b border-gray-100 pb-8">
+                        <div>
+                            <span className="text-pink-600 text-[9px] font-black tracking-[0.6em] uppercase mb-2 block">Catálogo Oriflame 2026</span>
+                            <h1 className="text-4xl font-black text-black tracking-tighter uppercase italic">{currentCategoryName}</h1>
+                        </div>
+                        <div className="hidden md:block">
                             <select 
-                                name="orderby" 
-                                className="orderby border border-gray-300 rounded-md py-2 px-3 text-sm focus:ring-brand-purple-dark focus:border-brand-purple-dark bg-white"
-                                aria-label="Pedido de la tienda"
                                 value={sortOrder}
-                                onChange={handleSortChange}
+                                onChange={(e) => setSortOrder(e.target.value)}
+                                className="border-none text-[9px] font-black uppercase tracking-widest bg-transparent cursor-pointer outline-none"
                             >
-                                <option value="menu_order">Orden predeterminado</option>
-                                <option value="popularity">Ordenar por popularidad</option>
-                                <option value="rating">Ordenar por puntuación media</option>
-                                <option value="price">Ordenar por precio: bajo a alto</option>
-                                <option value="price-desc">Ordenar por precio: alto a bajo</option>
+                                <option value="menu_order">Por Defecto</option>
+                                <option value="price">Precio: Bajo a Alto</option>
+                                <option value="price-desc">Precio: Alto a Bajo</option>
                             </select>
-                        </form>
+                        </div>
                     </div>
 
                     {filteredAndSortedProducts.length > 0 ? (
-                        <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4 md:gap-6 auto-rows-fr">
+                        <div className="grid grid-cols-2 md:grid-cols-3 gap-x-8 gap-y-16">
                             {filteredAndSortedProducts.map(product => (
                                 <ProductCard
                                     key={product.id}
@@ -125,8 +135,8 @@ const ShopPage: React.FC<{
                             ))}
                         </div>
                     ) : (
-                        <div className="text-center py-16 border rounded-lg">
-                            <p className="text-xl text-gray-600">No se encontraron productos en esta categoría.</p>
+                        <div className="text-center py-40 border-2 border-dashed border-gray-100">
+                            <p className="text-gray-300 text-[10px] font-black uppercase tracking-[0.5em]">No se han encontrado resultados</p>
                         </div>
                     )}
                 </main>
