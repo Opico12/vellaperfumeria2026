@@ -1,17 +1,16 @@
 
-// Variant types, used in Product
 export interface VariantOption {
     value: string;
     colorCode?: string;
     imageUrl?: string;
     variationId?: number;
+    id?: number; // ID específico de Oriflame para este tono
 }
 
 export interface ProductVariants {
     [key: string]: VariantOption[];
 }
 
-// Product type
 export interface Product {
     id: number;
     name: string;
@@ -23,7 +22,7 @@ export interface Product {
     howToUse?: string;
     stock: number;
     category: 'perfume' | 'hair' | 'makeup' | 'skincare' | 'personal-care' | 'men' | 'wellness' | 'accessories';
-    subCategory?: 'Giordani Gold' | 'THE ONE' | 'OnColour' | 'Novage' | 'Novage+' | 'Royal Velvet' | 'Diamond Cellular' | 'Duologi' | 'Optimals' | 'Oriflame' | 'Love Nature' | 'Milk & Honey Gold' | 'Feet Up';
+    subCategory?: string;
     productType?: string;
     tag?: 'NOVEDAD' | 'SET' | 'OFERTA' | 'PASO 1' | 'PASO 2' | 'PASO 3' | 'PASO 4';
     statusLabel?: string;
@@ -34,7 +33,6 @@ export interface Product {
     isShippingSaver?: boolean;
 }
 
-// Cart item type
 export interface CartItem {
     id: string;
     product: Product;
@@ -42,5 +40,4 @@ export interface CartItem {
     selectedVariant: Record<string, string> | null;
 }
 
-// App view type
 export type View = 'home' | 'products' | 'productDetail' | 'ofertas' | 'ia' | 'catalog' | 'about' | 'contact' | 'blog' | 'blogPost' | 'checkout' | 'regalos' | 'skinDiagnostic';

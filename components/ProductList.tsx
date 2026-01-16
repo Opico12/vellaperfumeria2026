@@ -20,8 +20,8 @@ const ProductList: React.FC<{
     // Curación específica para la página de inicio
     const featuredPerfumes = allProducts.filter(p => [31119, 31495, 31493, 40003].includes(p.id)).slice(0, 4);
     
-    // Ritual Bioactivo Real
-    const bioactiveIds = [32042, 32035, 32028, 32021];
+    // IDs de Novage+ corregidos (Ritual Bioactivo)
+    const bioactiveIds = [33979, 42426, 41029, 41034];
     const bioactiveProducts = allProducts.filter(p => bioactiveIds.includes(p.id));
 
     const featuredMakeup = allProducts.filter(p => p.category === 'makeup').slice(5, 9);
@@ -57,14 +57,14 @@ const ProductList: React.FC<{
                 </section>
             </div>
 
-            {/* SECCIÓN 2: RITUAL BIOACTIVO NOVAGE ECOLLAGEN */}
+            {/* SECCIÓN 2: RITUAL BIOACTIVO NOVAGE+ (CORREGIDO) */}
             <div className="w-full bg-[#fdfdfd] py-32 border-y border-gray-100">
                 <div className="container mx-auto px-4 md:px-12">
                     <section>
                         <div className="text-center mb-24">
                              <span className="text-pink-600 text-[10px] font-black tracking-[0.8em] uppercase mb-6 block">Biotecnología Facial</span>
                              <h3 className="text-4xl md:text-6xl font-black text-black tracking-tighter uppercase italic">Ritual <span className="text-pink-600">Bio-Activo</span></h3>
-                             <p className="mt-6 text-gray-500 uppercase tracking-widest text-[11px] font-bold">La solución antiarrugas definitiva con Novage Ecollagen</p>
+                             <p className="mt-6 text-gray-500 uppercase tracking-widest text-[11px] font-bold">La solución antiarrugas definitiva con Novage+ de Oriflame</p>
                         </div>
                         <div className="grid grid-cols-2 lg:grid-cols-4 gap-8 md:gap-12">
                             {bioactiveProducts.map(product => (
