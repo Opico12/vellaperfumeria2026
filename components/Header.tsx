@@ -36,26 +36,26 @@ const Header: React.FC<HeaderProps> = ({ onNavigate, cartCount, onCartClick }) =
     const navItems = [
         { label: 'Fragancias', view: 'products' as View, payload: 'perfume', hasMega: true, 
             subLinks: [
-                { title: 'Dama', items: ['Volare 31495', 'Elvie 31119', 'Elvie Summer Joy 41129'] },
+                { title: 'Dama', items: ['Volare 31495', 'Elvie 31119', 'Summer Joy 41129'] },
                 { title: 'Caballero', items: ['Mister Giordani', 'Eclat Homme', 'Ascendant'] }
             ]
         },
         { label: 'Maquillaje', view: 'products' as View, payload: 'makeup', hasMega: true,
             subLinks: [
-                { title: 'Labios', items: ['Colour Stylist 31625', 'Giordani Gold'] },
-                { title: 'Rostro', items: ['The ONE Everlasting', 'Everlasting Sync'] }
+                { title: 'Labios', items: ['Colour Stylist 31625', 'The ONE Lip Sensation'] },
+                { title: 'Ojos', items: ['WonderLash HD 42119', 'Tremendous'] }
             ]
         },
         { label: 'Cuidado Facial', view: 'products' as View, payload: 'skincare', hasMega: true,
             subLinks: [
-                { title: 'Novage+', items: ['Sérum Bright', 'Novage Ecollagen 32042'] },
-                { title: 'Mascarillas', items: ['Sandía Love Nature 46990', 'Diamond Cellular'] }
+                { title: 'Novage+', items: ['Sérum Bright', 'Limpiador Bio-Lipid'] },
+                { title: 'Tratamientos', items: ['Diamond Cellular 13659', 'Optimals Hydra'] }
             ]
         },
         { label: 'Cuerpo & Baño', view: 'products' as View, payload: 'personal-care', hasMega: true,
             subLinks: [
                 { title: 'Higiene', items: ['Milk & Honey 31602', 'Beautanicals 31115', 'Optifresh 31673'] },
-                { title: 'Cuidado', items: ['Exfoliante 31603', 'Loción Magnolia 41101', 'Crema Árnica 32635'] }
+                { title: 'Especiales', items: ['Champú 41131', 'Magnolia 41101', 'My Fragrance 40584'] }
             ]
         },
         { label: 'Catálogo', view: 'catalog' as View, hasMega: false },
@@ -136,9 +136,9 @@ const Header: React.FC<HeaderProps> = ({ onNavigate, cartCount, onCartClick }) =
                                         <div className="md:col-span-1 border-l border-white/10 pl-16 flex items-center">
                                              <div className="bg-zinc-900 p-8 rounded-sm border border-white/5 w-full">
                                                 <img src={getImg(31602)} className="h-24 object-contain mx-auto mb-6" alt="Destacado" />
-                                                <p className="text-pink-500 text-[9px] font-black uppercase mb-1 tracking-widest text-center">Favorito</p>
+                                                <p className="text-pink-500 text-[9px] font-black uppercase mb-1 tracking-widest text-center">Incondicional</p>
                                                 <h5 className="text-white text-md font-black uppercase italic text-center mb-6">Milk & Honey Gold</h5>
-                                                <button onClick={() => onNavigate('products', 'personal-care')} className="w-full bg-white text-black text-[9px] font-black px-6 py-4 uppercase tracking-[0.3em] hover:bg-pink-600 hover:text-white transition-all">Explorar</button>
+                                                <button onClick={() => onNavigate('products', 'personal-care')} className="w-full bg-white text-black text-[9px] font-black px-6 py-4 uppercase tracking-[0.3em] hover:bg-pink-600 hover:text-white transition-all">Ver Colección</button>
                                              </div>
                                         </div>
                                     </div>
