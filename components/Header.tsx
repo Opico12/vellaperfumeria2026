@@ -31,8 +31,8 @@ const Header: React.FC<HeaderProps> = ({ onNavigate, cartCount, onCartClick }) =
         { label: 'Cuidado Facial', view: 'products' as View, payload: 'skincare' },
         { label: 'Cuidado Corporal', view: 'products' as View, payload: 'personal-care' },
         { label: 'Perfumes', view: 'products' as View, payload: 'perfume' },
-        { label: 'Catálogo 2026', view: 'catalog' as View },
-        { label: 'Asistente IA', view: 'ia' as View }
+        { label: 'Catálogo', view: 'catalog' as View },
+        { label: 'IA Advisor', view: 'ia' as View }
     ];
 
     return (
@@ -44,7 +44,7 @@ const Header: React.FC<HeaderProps> = ({ onNavigate, cartCount, onCartClick }) =
                         <InstagramIconSm /> @bellaperfumeria
                     </a>
                     <div className="flex items-center">
-                         BELLA PERFUMERÍA - DISTRIBUIDORA ORIFLAME
+                         BELLA PERFUMERÍA - DISTRIBUIDORA OFICIAL ORIFLAME
                     </div>
                 </div>
                 <span className="hidden lg:block font-bold">TU ESENCIA, TU BELLEZA</span>
@@ -95,11 +95,6 @@ const Header: React.FC<HeaderProps> = ({ onNavigate, cartCount, onCartClick }) =
                     ))}
                 </div>
             </nav>
-            <style>{`
-                .no-scrollbar::-webkit-scrollbar { display: none; }
-                @keyframes mega-in { from { opacity: 0; transform: translateY(-10px); } to { opacity: 1; transform: translateY(0); } }
-                .animate-mega-in { animation: mega-in 0.4s cubic-bezier(0.16, 1, 0.3, 1) forwards; }
-            `}</style>
         </header>
     );
 };

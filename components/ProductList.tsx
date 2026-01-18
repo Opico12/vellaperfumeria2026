@@ -17,7 +17,7 @@ const ProductList: React.FC<{
     onQuickView: (product: Product) => void;
 }> = ({ onNavigate, onProductSelect, onAddToCart, onQuickAddToCart, currency, onQuickView }) => {
     
-    const displayProducts = allProducts.slice(0, 12);
+    const displayProducts = allProducts.slice(0, 16);
 
     return (
         <div className="space-y-32 pb-20 bg-white">
@@ -48,7 +48,7 @@ const ProductList: React.FC<{
                 </section>
             </div>
 
-            {/* SECCIÓN 2: REGALAR CON CARIÑO - HISTORIA */}
+            {/* SECCIÓN 2: REGALAR CON CARIÑO - HISTORIA DE JAN Y VALENTINA */}
             <div className="w-full bg-[#FAE1EF] py-32 relative overflow-hidden">
                 <div className="absolute top-0 right-0 w-1/2 h-full bg-white/20 rotate-12 translate-x-1/2"></div>
                 <div className="container mx-auto px-6 relative z-10 flex flex-col lg:flex-row items-center gap-20">
@@ -56,7 +56,7 @@ const ProductList: React.FC<{
                         <span className="text-pink-600 text-[11px] font-black tracking-[0.6em] uppercase mb-8 block">Jan & Valentina Presentan</span>
                         <h2 className="text-6xl md:text-9xl font-black text-black tracking-tighter uppercase italic mb-10 leading-none">Regalar con <br/><span className="text-pink-600">Cariño</span></h2>
                         <p className="text-gray-700 text-xl font-light italic mb-12 leading-relaxed max-w-xl">
-                            "En Bella Perfumería creemos que un regalo es más que un objeto; es una emoción. Cada pedido es preparado con el mismo amor con el que Jan y Valentina construyeron este sueño."
+                            "Jan y Valentina comparten actos de amor que inspiran nuestra belleza. En Bella Perfumería creemos que un regalo es más que un objeto; es una emoción compartida."
                         </p>
                         <button 
                             onClick={() => onNavigate('products', 'all')}

@@ -9,27 +9,27 @@ interface HeroCarouselProps {
 
 const slides = [
     {
-        imageUrl: 'https://images.unsplash.com/photo-1490481651871-ab68de25d43d?auto=format&fit=crop&w=1920&q=80',
-        title: 'Alta Sastrería 2026',
-        subtitle: 'DESCUBRA LA EXCELENCIA EN CADA PUNTADA',
-        buttonText: 'VER COLECCIÓN',
+        imageUrl: 'https://images.unsplash.com/photo-1541643600914-78b084683601?auto=format&fit=crop&w=1920&q=80',
+        title: 'Fragancias de Gala 2026',
+        subtitle: 'DESCUBRA LA ESENCIA DE LA ELEGANCIA SUECA',
+        buttonText: 'VER PERFUMES',
         view: 'products' as View,
-        payload: 'men'
+        payload: 'perfume'
     },
     {
-        imageUrl: 'https://images.unsplash.com/photo-1445205170230-053b83016050?auto=format&fit=crop&w=1920&q=80',
-        title: 'Elegancia Sin Límites',
-        subtitle: 'DISEÑOS EXCLUSIVOS PARA MOMENTOS INOLVIDABLES',
-        buttonText: 'DESCUBRIR',
+        imageUrl: 'https://images.unsplash.com/photo-1596704017254-9b121068fb31?auto=format&fit=crop&w=1920&q=80',
+        title: 'Cuidado Facial Novage+',
+        subtitle: 'TECNOLOGÍA AVANZADA PARA UNA PIEL RADIANTE',
+        buttonText: 'DESCUBRIR RITUAL',
         view: 'products' as View,
         payload: 'skincare'
     },
     {
-        imageUrl: 'https://images.unsplash.com/photo-1539109132314-34755219f688?auto=format&fit=crop&w=1920&q=80',
-        title: 'El Arte de Vestir',
-        subtitle: 'TENDENCIAS DE GALA DIRECTAMENTE DESDE ESTOCOLMO',
-        buttonText: 'EXPLORAR',
-        view: 'ofertas' as View,
+        imageUrl: 'https://images.unsplash.com/photo-1512436991641-6745cdb1723f?auto=format&fit=crop&w=1920&q=80',
+        title: 'Campaña 1 - Oriflame',
+        subtitle: 'NUEVAS TENDENCIAS DE BELLEZA INTERACTIVA',
+        buttonText: 'ABRIR CATÁLOGO',
+        view: 'catalog' as View,
     },
 ];
 
@@ -75,12 +75,11 @@ const HeroCarousel: React.FC<HeroCarouselProps> = ({ onNavigate }) => {
                             className="absolute inset-0 bg-cover bg-center"
                             style={{ backgroundImage: `url(${slide.imageUrl})` }}
                         />
-                        {/* Reducida opacidad del overlay para más viveza */}
-                        <div className="absolute inset-0 bg-black/20" />
+                        <div className="absolute inset-0 bg-black/30" />
                         <div className="absolute inset-0 flex items-center justify-center text-center">
                             <div className="max-w-4xl px-6">
-                                <span className="text-white text-[10px] font-black tracking-[0.6em] uppercase mb-6 block animate-fade-in shadow-sm">Atelier Gala 2026</span>
-                                <h2 className="text-6xl md:text-8xl font-serif italic text-white mb-8 leading-tight drop-shadow-2xl">
+                                <span className="text-white text-[10px] font-black tracking-[0.6em] uppercase mb-6 block animate-fade-in shadow-sm">Bella Perfumería 2026</span>
+                                <h2 className="text-6xl md:text-8xl font-black text-white mb-8 leading-tight drop-shadow-2xl italic uppercase tracking-tighter">
                                     {slide.title}
                                 </h2>
                                 <p className="text-white/90 text-xs md:text-sm tracking-[0.3em] font-bold uppercase mb-10 drop-shadow-lg">

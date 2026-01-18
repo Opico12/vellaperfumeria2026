@@ -1,7 +1,7 @@
 
 import React from 'react';
 
-// URL del catálogo interactivo de Oriflame 2026 - Campaña 1
+// URL del catálogo interactivo oficial Oriflame 2026 - Campaña 1
 const INTERACTIVE_CATALOG_URL = 'https://es-catalogue.oriflame.com/oriflame/es/2026001-brp?HideStandardUI=true&Page=1';
 
 const CatalogPage: React.FC = () => {
@@ -39,7 +39,7 @@ const CatalogPage: React.FC = () => {
                     allowFullScreen
                 />
                 
-                {/* Loader mientras carga el iframe */}
+                {/* Loader */}
                 <div className="absolute inset-0 flex items-center justify-center bg-white z-0">
                     <div className="flex flex-col items-center gap-6">
                         <div className="w-12 h-12 border-4 border-pink-50 border-t-pink-600 rounded-full animate-spin"></div>

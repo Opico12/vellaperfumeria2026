@@ -36,7 +36,7 @@ const AsistenteIAPage: React.FC = () => {
                 const newChat = ai.chats.create({
                     model: 'gemini-3-flash-preview',
                     config: {
-                        systemInstruction: 'Eres un asesor de estilo personal y experto sastre para la boutique online "Atelier GALA". Tu objetivo es ayudar a los clientes a encontrar la prenda perfecta, asesorar sobre tallas, tejidos y combinaciones de gala. Sé amable, sofisticado y conocedor de la alta costura. Céntrate exclusivamente en el catálogo de Atelier GALA.',
+                        systemInstruction: 'Eres un asesor de belleza personal y experto en cosmética para la boutique online "Bella Perfumería". Tu objetivo es ayudar a los clientes a encontrar la fragancia perfecta, asesorar sobre rutinas de cuidado facial Novage+, maquillaje y bienestar. Sé amable, sofisticado y conocedor de los productos Oriflame. Céntrate exclusivamente en el catálogo de Bella Perfumería y la Campaña 1 de 2026.',
                     },
                 });
                 setChat(newChat);
@@ -45,7 +45,7 @@ const AsistenteIAPage: React.FC = () => {
             }
         } catch (e) {
             console.error("Error initializing Gemini:", e);
-            setError("No se pudo inicializar el asistente de estilo.");
+            setError("No se pudo inicializar el asistente de belleza.");
         }
     }, []);
 
@@ -104,8 +104,8 @@ const AsistenteIAPage: React.FC = () => {
     return (
         <div className="container mx-auto px-4 sm:px-6 lg:px-8 py-12">
             <div className="text-center mb-10">
-                <h1 className="text-4xl font-extrabold text-black tracking-tight uppercase italic leading-none">Asistente de Estilo <br/><span className="text-pink-600">INTELIGENTE</span></h1>
-                <p className="mt-4 text-lg text-gray-400 italic font-light uppercase tracking-widest">Asesoría personalizada en alta sastrería.</p>
+                <h1 className="text-4xl font-extrabold text-black tracking-tight uppercase italic leading-none">Asistente de Belleza <br/><span className="text-pink-600">INTELIGENTE</span></h1>
+                <p className="mt-4 text-lg text-gray-400 italic font-light uppercase tracking-widest">Asesoría personalizada en cosmética y bienestar.</p>
             </div>
 
             <div className="max-w-2xl mx-auto bg-white rounded-sm shadow-2xl border border-gray-100 flex flex-col h-[60vh] overflow-hidden">
@@ -116,7 +116,7 @@ const AsistenteIAPage: React.FC = () => {
                                 <SparklesIcon />
                             </div>
                             <div className="max-w-md p-6 rounded-2xl bg-pink-50 text-black rounded-tl-none border border-pink-100 shadow-sm">
-                                <p className="text-sm italic">"Bienvenido al Atelier GALA. Soy su asesor de estilo digital. ¿En qué puedo asistirle hoy?"</p>
+                                <p className="text-sm italic">"Bienvenido a Bella Perfumería. Soy su asesor de belleza digital. ¿En qué puedo asistirle hoy?"</p>
                             </div>
                         </div>
                     )}
@@ -158,7 +158,7 @@ const AsistenteIAPage: React.FC = () => {
                             type="text"
                             value={input}
                             onChange={(e) => setInput(e.target.value)}
-                            placeholder="Consulte su estilo aquí..."
+                            placeholder="Consulte sus dudas de belleza aquí..."
                             className="flex-grow px-6 py-4 border border-gray-100 rounded-sm focus:outline-none focus:ring-2 focus:ring-pink-500 text-sm italic"
                             disabled={isProcessing}
                         />
