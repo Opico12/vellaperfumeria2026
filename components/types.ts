@@ -11,6 +11,11 @@ export interface ProductVariants {
     [key: string]: VariantOption[];
 }
 
+/**
+ * Product interface representing the beauty and wellness items in the catalog.
+ * The description property is optional because some promotional items or newly added references
+ * may not have full descriptive text yet.
+ */
 export interface Product {
     id: number;
     name: string;
@@ -18,7 +23,7 @@ export interface Product {
     price: number;
     regularPrice?: number;
     imageUrl: string;
-    description: string;
+    description?: string;
     howToUse?: string;
     stock: number;
     category: 'perfume' | 'hair' | 'makeup' | 'skincare' | 'personal-care' | 'men' | 'wellness' | 'accessories';

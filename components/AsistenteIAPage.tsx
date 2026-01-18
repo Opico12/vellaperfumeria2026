@@ -1,6 +1,6 @@
 
 import React, { useState, useRef, useEffect } from 'react';
-import { GoogleGenAI, Chat } from "@google/genai";
+import { GoogleGenAI, Chat, GenerateContentResponse } from "@google/genai";
 
 interface Message {
     role: 'user' | 'model';
@@ -33,7 +33,7 @@ const AsistenteIAPage: React.FC = () => {
         // Initialize the AI chat session
         try {
             const ai = new GoogleGenAI({ apiKey: process.env.API_KEY });
-            // Fix: Updated to recommended gemini-3-flash-preview model
+            // Using gemini-3-flash-preview for general assistant tasks
             const newChat = ai.chats.create({
                 model: 'gemini-3-flash-preview',
                 config: {
@@ -70,14 +70,17 @@ const AsistenteIAPage: React.FC = () => {
             const responseStream = await chat.sendMessageStream({ message: messageText });
 
             for await (const chunk of responseStream) {
-                // Fix: Accessing .text property directly as per @google/genai guidelines
-                const chunkText = chunk.text;
-                setMessages(prev => {
-                    const newMessages = [...prev];
-                    const lastMessage = newMessages[newMessages.length - 1];
-                    lastMessage.text += chunkText;
-                    return newMessages;
-                });
+                // Correctly access .text property from chunk cast as GenerateContentResponse
+                const c = chunk as GenerateContentResponse;
+                const chunkText = c.text;
+                if (chunkText) {
+                    setMessages(prev => {
+                        const newMessages = [...prev];
+                        const lastMessage = newMessages[newMessages.length - 1];
+                        lastMessage.text += chunkText;
+                        return newMessages;
+                    });
+                }
             }
         } catch (e) {
             console.error("Error sending message to Gemini:", e);

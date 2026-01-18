@@ -115,7 +115,7 @@ const App: React.FC = () => {
                 onCartClick={() => setIsCartOpen(true)}
             />
             
-             <main className={`flex-grow relative ${isCatalogView ? 'h-screen overflow-hidden pt-[148px] md:pt-[168px]' : 'pt-[148px] md:pt-[176px] pb-32 md:pb-12'}`}>
+             <main className={`flex-grow relative ${isCatalogView ? 'h-screen overflow-hidden pt-[188px]' : 'pt-[188px] pb-32 md:pb-12'}`}>
                 {renderContent()}
 
                 <aside className="fixed bottom-28 md:bottom-8 right-6 md:right-8 z-[60] flex flex-col gap-5 items-end">

@@ -34,46 +34,53 @@ const Header: React.FC<HeaderProps> = ({ onNavigate, cartCount, onCartClick }) =
     const [activeMenu, setActiveMenu] = useState<string | null>(null);
 
     const navItems = [
-        { label: 'Novedades', view: 'products' as View, payload: 'all', hasMega: true,
-            subLinks: [
-                { title: 'Exclusivos', items: ['All or Nothing 47718', 'Love Potion 46047', 'Eclat Weekends 31292'] },
-                { title: 'Lanzamientos', items: ['Necessaire Sugar Spice', 'Set Joyas Pearl', 'Reloj Glitters'] }
-            ]
-        },
-        { label: 'Maquillaje', view: 'products' as View, payload: 'makeup', hasMega: true,
-            subLinks: [
-                { title: 'THE ONE', items: ['Labiales Stylist 43295', 'Sombra Burgundy 46929', 'Máscara Wanderlust'] },
-                { title: 'Rostro', items: ['Bases Novage+', 'Perlas Giordani', 'Correctores'] }
-            ]
-        },
-        { label: 'Cuidado Facial', view: 'products' as View, payload: 'skincare', hasMega: true,
-            subLinks: [
-                { title: 'Royal Velvet', items: ['Día Reafirmante 47005', 'Noche Reafirmante 48117', 'Contorno Ojos 47007'] },
-                { title: 'Expertise', items: ['Tender Care Frambuesa', 'Sérum Bio-Active', 'Novage+ Energize'] }
-            ]
-        },
-        { label: 'Accesorios & Regalos', view: 'products' as View, payload: 'accessories', hasMega: true,
-            subLinks: [
-                { title: 'El Arte de Envolver', items: ['Caja Festive 48970', 'Bolsa Grande 48975', 'Envoltorio Pequeño'] },
-                { title: 'Detalles Joyería', items: ['Set Pendientes 48908', 'Collar Glitters', 'Spatula Exclusiva'] }
-            ]
-        },
-        { label: 'Revista Digital', view: 'catalog' as View, hasMega: false },
-        { label: 'Asistente IA', view: 'ia' as View, hasMega: false },
+      { label: 'Aromas Gala 2026', view: 'products' as View, payload: 'perfume', hasMega: true,
+          subLinks: [
+              { title: 'Alta Perfumería', items: ['All or Nothing 46060', 'Essenza 47511', 'Divine Idol 38497'] },
+              { title: 'Joyce & Scents', items: ['Turquoise 42508', 'Rose 37766', 'O Sweet Marshmallow'] },
+              { title: 'Cuidado Corporal', items: ['Cremas Perfumadas', 'Brumas Giordani'] }
+          ]
+      },
+      { label: 'Maquillaje Pro', view: 'products' as View, payload: 'makeup', hasMega: true,
+          subLinks: [
+              { title: 'Eternal Glow GG', items: ['Foundation Vainilla 43243', 'Foundation Icy 43247', 'Natural Base 43248'] },
+              { title: 'The One 3-Free', items: ['Labiales Super Pout', 'Máscara Wanderlust', 'Sombra Unlimited'] },
+              { title: 'Luxury Finishes', items: ['Marble Neutral 42105', 'Leggy Bodhi 42107', 'Ultra Glossy Lip'] }
+          ]
+      },
+      { label: 'Tratamiento Real', view: 'products' as View, payload: 'skincare', hasMega: true,
+          subLinks: [
+              { title: 'Lujo Diamond', items: ['Crema Antiedad 13659', 'Noche Diamond 18437', 'Micelar 21339'] },
+              { title: 'Royal Velvet', items: ['Crema Día SPF 20', 'Noche Edición Especial', 'Espátula Exclusive'] },
+              { title: 'Novage+ Expert', items: ['Sérum Pro-Collagen', 'Bruma Micro Essence', 'Sérum Eclat'] }
+          ]
+      },
+      { label: 'Men & Wellness', view: 'products' as View, payload: 'men', hasMega: true,
+          subLinks: [
+              { title: 'Grooming', items: ['GG Man Elixir 45967', 'Nordic Waters Blue', 'Reloj Wildy Wood'] },
+              { title: 'Wellbeing', items: ['Colágeno Sophy', 'Daily Vitamins', 'Mineral Drinks'] }
+          ]
+      },
+      { label: 'Ideas Regalo', view: 'regalos' as View, hasMega: true,
+          subLinks: [
+              { title: 'Glitters of Love', items: ['Reloj Glitters', 'Joyas Pearl', 'Set Pendientes'] },
+              { title: 'Packaging Gala', items: ['Bolsa Festive 48975', 'Sobre Festive 48977', 'Caja Premium 48970'] }
+          ]
+      }
     ];
 
     return (
         <header className="w-full fixed top-0 left-0 z-[150] font-sans">
             {/* Promo Bar */}
-            <div className="w-full bg-[#FAE1EF] py-2 px-6 flex items-center justify-between text-black text-[10px] font-black uppercase tracking-[0.3em] border-b border-pink-200">
-                <span>ORIFLAME ESTOCOLMO - CÓDIGOS ACTUALIZADOS 2026</span>
-                <span className="hidden md:block">ENTREGA VIP 24/48H A TODA ESPAÑA</span>
-                <span className="cursor-pointer hover:text-pink-600">Vellaperfumeria</span>
+            <div className="w-full bg-[#FAE1EF] h-9 px-6 flex items-center justify-between text-black text-[10px] font-black uppercase tracking-[0.3em] border-b border-pink-200">
+                <span>VELLAPERFUMERIA - ORIFLAME ESTOCOLMO</span>
+                <span className="hidden md:block italic uppercase">EDICIÓN GALA: DISPONIBLES +200 ICONOS DE BELLEZA</span>
+                <span className="cursor-pointer hover:text-pink-600">TIENDA OFICIAL</span>
             </div>
 
             {/* Brand Bar */}
-            <div className="w-full h-24 bg-white flex items-center px-6 md:px-12 border-b border-gray-100 relative z-20">
-                <div className="flex-1">
+            <div className="w-full h-24 bg-white flex items-center px-6 md:px-12 relative z-20 shadow-sm border-b border-gray-100">
+                <div className="flex-1 text-left">
                     <button onClick={() => onNavigate('ia')} className="bg-black text-white p-3 rounded-full hover:bg-pink-600 transition-all shadow-lg">
                         <SearchIcon />
                     </button>
@@ -93,32 +100,32 @@ const Header: React.FC<HeaderProps> = ({ onNavigate, cartCount, onCartClick }) =
                 </div>
             </div>
 
-            {/* FULL WIDTH BLACK MENU */}
+            {/* FULL WIDTH NAVIGATION BAR (CINEMA BLACK) */}
             <nav className="w-full bg-black text-white h-14 relative shadow-2xl overflow-visible">
-                <div className="w-full h-full flex overflow-x-auto no-scrollbar scroll-smooth whitespace-nowrap lg:justify-center items-stretch">
+                <div className="w-full h-full flex overflow-x-auto no-scrollbar lg:justify-center items-stretch px-4">
                     {navItems.map((item) => (
                         <div 
                             key={item.label} 
-                            className="group/navitem h-full flex items-center flex-shrink-0"
+                            className="group/navitem h-full flex items-center"
                             onMouseEnter={() => item.hasMega && setActiveMenu(item.label)}
                             onMouseLeave={() => setActiveMenu(null)}
                         >
                             <button 
                                 onClick={() => { onNavigate(item.view, item.payload); setActiveMenu(null); }}
-                                className={`h-full px-8 md:px-12 text-[10px] font-black uppercase tracking-[0.3em] flex items-center transition-all ${activeMenu === item.label ? 'text-pink-400 bg-zinc-900 border-b-2 border-pink-400' : 'text-gray-300 hover:text-white'}`}
+                                className={`h-full px-8 md:px-12 text-[10px] font-black uppercase tracking-[0.3em] flex items-center transition-all ${activeMenu === item.label ? 'text-pink-400 bg-zinc-950 border-b-2 border-pink-400' : 'text-gray-300 hover:text-white'}`}
                             >
                                 {item.label}
                                 {item.hasMega && <ChevronDownIcon />}
                             </button>
 
-                            {/* MEGA MENU BLACK DROPDOWN */}
+                            {/* MEGA MENU - FULL WIDTH BLACK OVERLAY */}
                             {item.hasMega && activeMenu === item.label && (
-                                <div className="fixed left-0 top-[152px] w-full bg-black border-t border-white/10 shadow-[0_50px_100px_rgba(0,0,0,0.8)] animate-mega-in z-[50] py-16">
+                                <div className="fixed left-0 top-[188px] w-full bg-black border-t border-white/10 shadow-[0_60px_100px_rgba(0,0,0,0.95)] animate-mega-in z-[50] py-20">
                                     <div className="max-w-7xl mx-auto px-12 grid grid-cols-1 md:grid-cols-4 gap-16">
                                         {item.subLinks?.map((col, idx) => (
                                             <div key={idx} className="animate-fade-up whitespace-normal text-left">
                                                 <h4 className="text-pink-500 text-[10px] font-black uppercase tracking-[0.4em] mb-10 border-b border-white/5 pb-4 italic">{col.title}</h4>
-                                                <ul className="space-y-5">
+                                                <ul className="space-y-6">
                                                     {col.items.map((sub, sIdx) => (
                                                         <li key={sIdx}>
                                                             <button 
@@ -132,17 +139,25 @@ const Header: React.FC<HeaderProps> = ({ onNavigate, cartCount, onCartClick }) =
                                                 </ul>
                                             </div>
                                         ))}
-                                        <div className="md:col-span-1 bg-zinc-900/40 p-10 border border-white/5 rounded-sm text-center">
-                                             <img src={getImg(47718)} className="h-28 mx-auto mb-8 drop-shadow-[0_0_20px_rgba(255,255,255,0.1)]" alt="Destacado" />
-                                             <p className="text-pink-500 text-[9px] font-black tracking-widest uppercase mb-2">Edición Limitada</p>
-                                             <h5 className="text-white text-[11px] font-black uppercase mb-8 tracking-widest leading-tight">All or Nothing 17.99€</h5>
-                                             <button onClick={() => onNavigate('products', 'all')} className="bg-white text-black text-[9px] font-black px-10 py-5 uppercase tracking-widest hover:bg-pink-600 hover:text-white transition-all w-full shadow-xl">Comprar Ahora</button>
+                                    </div>
+                                    <div className="max-w-7xl mx-auto px-12 mt-16 pt-16 border-t border-white/5 flex items-center justify-between">
+                                        <div className="flex items-center gap-10">
+                                            <img src={getImg(13659)} className="h-16 opacity-50 grayscale hover:grayscale-0 transition-all cursor-pointer" alt="Diamond Cellular" />
+                                            <img src={getImg(46060)} className="h-16 opacity-50 grayscale hover:grayscale-0 transition-all cursor-pointer" alt="All or Nothing" />
+                                            <img src={getImg(43243)} className="h-16 opacity-50 grayscale hover:grayscale-0 transition-all cursor-pointer" alt="Eternal Glow" />
                                         </div>
+                                        <button onClick={() => onNavigate('catalog')} className="text-pink-500 text-[10px] font-black uppercase tracking-[0.4em] hover:text-white transition-colors italic">Ver Revista Digital &rarr;</button>
                                     </div>
                                 </div>
                             )}
                         </div>
                     ))}
+                    <button 
+                        onClick={() => onNavigate('catalog')}
+                        className="h-full px-8 md:px-12 text-[10px] font-black uppercase tracking-[0.3em] flex items-center text-pink-400 hover:text-white transition-all"
+                    >
+                        Journal Digital
+                    </button>
                 </div>
             </nav>
             <style>{`
