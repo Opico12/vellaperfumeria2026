@@ -17,29 +17,24 @@ const ProductList: React.FC<{
     onQuickView: (product: Product) => void;
 }> = ({ onNavigate, onProductSelect, onAddToCart, onQuickAddToCart, currency, onQuickView }) => {
     
-    // Mostramos TODOS los productos sin un máximo, priorizando los estelares para la carga visual inicial
-    const estelares = allProducts;
-    const sugarSpiceOffer = allProducts.find(p => p.id === 48908 || p.name.includes("Sugar & Spice"));
+    const productosCompletos = allProducts;
+    const neceserOffer = allProducts.find(p => p.id === 48908);
 
     return (
-        <div className="space-y-40 pb-20 bg-white">
+        <div className="space-y-32 pb-20 bg-white">
             <HeroBanner onNavigate={onNavigate} />
 
-            {/* SECCIÓN 1: EL CATÁLOGO COMPLETO - GALERÍA BLANCA */}
+            {/* SECCIÓN 1: GALERÍA DE SASTRERÍA GALA 2026 */}
             <div className="container mx-auto px-4 md:px-12">
                 <section>
-                    <div className="flex flex-col md:flex-row justify-between items-end mb-16 gap-6">
-                        <div className="text-left">
-                            <span className="text-pink-600 text-[10px] font-black tracking-[0.8em] uppercase mb-4 block underline underline-offset-8 decoration-black italic">Gala Oficial Estocolmo 2026</span>
-                            <h3 className="text-5xl md:text-8xl font-black text-black tracking-tighter uppercase italic leading-[0.9]">Edición <br/> <span className="text-pink-600">Completa</span></h3>
-                            <p className="mt-8 text-gray-400 font-light italic text-base tracking-widest max-w-2xl uppercase leading-relaxed">
-                                Sin límites. Todas las referencias de Diamond Cellular, Novage+ y la nueva colección Eternal Glow disponibles para ti.
-                            </p>
-                        </div>
+                    <div className="text-center mb-20">
+                        <span className="text-rose-600 text-[11px] font-black tracking-[0.8em] uppercase mb-4 block italic">Colección Haute Couture Estocolmo</span>
+                        <h3 className="text-5xl md:text-8xl font-black text-black tracking-tighter uppercase italic leading-none">Boutique <span className="text-rose-600">Gala</span></h3>
+                        <div className="h-[4px] w-24 bg-gradient-to-r from-rose-600 to-pink-500 mx-auto mt-10 rounded-full"></div>
                     </div>
                     
-                    <div className="grid grid-cols-2 lg:grid-cols-4 gap-10">
-                        {estelares.map(product => (
+                    <div className="grid grid-cols-2 lg:grid-cols-4 gap-8 md:gap-12">
+                        {productosCompletos.map(product => (
                             <ProductCard
                                 key={product.id}
                                 product={product}
@@ -54,53 +49,44 @@ const ProductList: React.FC<{
                 </section>
             </div>
 
-            {/* SECCIÓN 2: LA HISTORIA DE REGALAR CON CARIÑO (JAN & VALENTINA) */}
-            <div className="w-full bg-black py-40 relative overflow-hidden">
-                <div className="absolute inset-0 opacity-25 bg-[url('https://images.unsplash.com/photo-1513201099705-a9746e1e201f?ixlib=rb-4.0.3&auto=format&fit=crop&w=1920&q=80')] bg-cover bg-center"></div>
-                <div className="container mx-auto px-4 md:px-12 relative z-10 text-center lg:text-left flex flex-col lg:flex-row items-center gap-24">
-                    <div className="lg:w-1/2">
-                        <span className="text-pink-500 text-[11px] font-black tracking-[0.6em] uppercase mb-8 block italic">Actos de Amor Real</span>
-                        <h2 className="text-6xl md:text-9xl font-black text-white tracking-tighter uppercase italic mb-10 leading-[0.9]">Jan & <br/><span className="text-pink-600">Valentina</span></h2>
-                        <p className="text-gray-300 text-xl font-light italic mb-12 leading-relaxed max-w-xl">
-                            "Jan y Valentina comparten actos de amor inspirando belleza. El regalo perfecto es aquel que se entrega con cariño, protegiendo los tesoros más valiosos."
+            {/* SECCIÓN 2: EL HILO DEL CARIÑO - CAMBIADO A FONDO CLARO VIVO */}
+            <div className="w-full bg-[#FFF5F8] py-32 relative overflow-hidden border-y border-pink-100">
+                <div className="absolute top-0 right-0 w-1/3 h-full bg-rose-600/5 rotate-12 translate-x-1/2"></div>
+                <div className="container mx-auto px-6 relative z-10 flex flex-col lg:flex-row items-center gap-20">
+                    <div className="lg:w-1/2 text-center lg:text-left">
+                        <span className="text-rose-600 text-[11px] font-black tracking-[0.6em] uppercase mb-8 block">El Hilo de Jan & Valentina</span>
+                        <h2 className="text-6xl md:text-9xl font-black text-black tracking-tighter uppercase italic mb-10 leading-none">Vestir con <br/><span className="text-rose-600">Cariño</span></h2>
+                        <p className="text-gray-600 text-xl font-light italic mb-12 leading-relaxed max-w-xl">
+                            "Jan y Valentina entienden que cada prenda es un lenguaje. En nuestro Atelier, cada puntada es un acto de amor que une la tradición de la sastrería con la vanguardia del estilo personal."
                         </p>
-                        <div className="flex flex-wrap gap-8 justify-center lg:justify-start">
-                             <div className="p-10 bg-white/5 border border-white/10 rounded-sm text-center w-48 hover:bg-white/10 transition-all cursor-pointer" onClick={() => onNavigate('regalos')}>
-                                <img src={getImg(48970)} className="h-24 mx-auto mb-6" alt="Caja Festive" />
-                                <span className="text-white text-[10px] font-black uppercase tracking-widest">Sets Festive</span>
-                             </div>
-                             <div className="p-10 bg-white/5 border border-white/10 rounded-sm text-center w-48 hover:bg-white/10 transition-all cursor-pointer" onClick={() => onNavigate('regalos')}>
-                                <img src={getImg(48954)} className="h-24 mx-auto mb-6" alt="Reloj Glitters" />
-                                <span className="text-white text-[10px] font-black uppercase tracking-widest">Joyas Gala</span>
-                             </div>
-                        </div>
+                        <button onClick={() => onNavigate('regalos')} className="bg-rose-600 text-white px-16 py-6 text-[11px] font-black uppercase tracking-widest hover:bg-black transition-all shadow-2xl rounded-sm">
+                            RESERVAR ASESORÍA
+                        </button>
                     </div>
-                    <div className="lg:w-1/2">
-                        <img src={getImg(48954)} className="w-[500px] mx-auto drop-shadow-[0_0_80px_rgba(255,100,200,0.3)] animate-float" alt="Reloj Glitters of Love" />
+                    <div className="lg:w-1/2 flex justify-center">
+                        <div className="relative">
+                            <div className="absolute inset-0 bg-rose-600/20 blur-[100px] rounded-full"></div>
+                            <img src={getImg(48954)} className="w-[450px] mx-auto relative z-10 drop-shadow-[0_20px_50px_rgba(225,29,72,0.3)] animate-float" alt="Reloj Boutique" />
+                        </div>
                     </div>
                 </div>
             </div>
 
-            {/* SECCIÓN 3: OFERTA VINCULADA NECESER SUGAR & SPICE */}
-            {sugarSpiceOffer && (
+            {/* SECCIÓN 3: OFERTA ACCESORIO - AHORA MÁS COLORIDA */}
+            {neceserOffer && (
                 <div className="container mx-auto px-4 md:px-12">
-                    <div className="bg-zinc-950 p-16 md:p-32 rounded-sm flex flex-col md:flex-row items-center gap-24 border border-white/5 relative overflow-hidden group shadow-[0_30px_60px_-15px_rgba(0,0,0,0.5)]">
-                        <div className="md:w-1/3 relative">
-                            <img src={sugarSpiceOffer.imageUrl} className="w-full h-auto drop-shadow-[0_0_60px_rgba(255,100,200,0.3)] transition-transform group-hover:scale-105 duration-700" alt="Necessaire Sugar & Spice" />
+                    <div className="bg-white p-12 md:p-24 rounded-sm flex flex-col md:flex-row items-center gap-20 border-2 border-rose-50 shadow-2xl relative overflow-hidden">
+                        <div className="absolute top-0 left-0 w-full h-2 bg-gradient-to-r from-rose-600 to-pink-500"></div>
+                        <div className="md:w-1/3">
+                            <img src={neceserOffer.imageUrl} className="w-full h-auto drop-shadow-[0_20px_50px_rgba(0,0,0,0.1)] rounded-lg" alt="Neceser Boutique" />
                         </div>
-                        <div className="md:w-2/3 text-center md:text-left z-10">
-                            <span className="bg-pink-600 text-white text-[10px] font-black px-8 py-3 uppercase tracking-[0.5em] mb-12 inline-block shadow-lg italic">OFERTA DE TEMPORADA</span>
-                            <h3 className="text-5xl md:text-8xl font-black text-white uppercase tracking-tighter italic mb-10 leading-none">{sugarSpiceOffer.name}</h3>
-                            <p className="text-gray-400 text-2xl italic mb-14 max-w-xl leading-relaxed">
-                                Consíguelo por solo <span className="text-white">10.99€</span> por cada 20€ de compra en este catálogo. La sofisticación para guardar tus básicos de belleza.
+                        <div className="md:w-2/3 text-center md:text-left">
+                            <span className="bg-rose-600 text-white text-[10px] font-black px-8 py-3 uppercase tracking-[0.5em] mb-10 inline-block shadow-xl">DETALLE ATELIER</span>
+                            <h3 className="text-5xl md:text-7xl font-black text-black uppercase tracking-tighter italic mb-8 leading-none">Neceser Velvet Boutique</h3>
+                            <p className="text-gray-500 text-xl italic mb-12 max-w-lg leading-relaxed">
+                                Complemento exclusivo en terciopelo orquídea. Un toque de distinción para organizar sus accesorios más preciosos. <span className="text-rose-600 font-black">10.99€</span> por cada 20€ de compra.
                             </p>
-                            <div className="flex items-center gap-12 justify-center md:justify-start">
-                                <div className="flex flex-col">
-                                    <span className="text-gray-500 line-through text-xl">12.99€</span>
-                                    <span className="text-7xl font-black text-pink-500 tracking-tighter">10.99€</span>
-                                </div>
-                                <button onClick={() => onAddToCart(sugarSpiceOffer, null, null)} className="bg-white text-black px-20 py-8 text-[12px] font-black uppercase tracking-widest hover:bg-pink-600 hover:text-white transition-all shadow-2xl">AÑADIR AL PEDIDO</button>
-                            </div>
+                            <button onClick={() => onAddToCart(neceserOffer, null, null)} className="bg-black text-white px-12 py-5 text-[11px] font-black uppercase tracking-widest hover:bg-rose-600 transition-all shadow-lg">AÑADIR A MI SELECCIÓN</button>
                         </div>
                     </div>
                 </div>

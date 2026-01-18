@@ -78,9 +78,6 @@ const ProductDetailPage: React.FC<ProductDetailPageProps> = ({ product, currency
 
                     <div className="flex items-baseline gap-6 mb-10">
                         <span className="text-4xl font-black tracking-tighter text-black">{formatCurrency(product.price, currency)}</span>
-                        {product.regularPrice && product.regularPrice > product.price && (
-                            <span className="text-xl text-gray-300 line-through font-light">{formatCurrency(product.regularPrice, currency)}</span>
-                        )}
                     </div>
 
                     {/* Descripciones Extensas Formateadas */}

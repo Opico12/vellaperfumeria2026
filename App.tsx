@@ -50,7 +50,7 @@ const App: React.FC = () => {
         catch (error) { console.error(error); }
     }, [cartItems]);
     
-    useEffect(() => { window.scrollTo(0, 0); }, [view]);
+    useEffect(() => { window.scrollTo(0, 0); }, [view.current]);
 
     const handleNavigate = useCallback((newView: View, payload?: any) => {
         setView({ current: newView, payload });
@@ -106,7 +106,7 @@ const App: React.FC = () => {
     const isCatalogView = view.current === 'catalog';
 
     return (
-        <div className="flex flex-col min-h-screen bg-white font-sans selection:bg-[#FAE1EF] selection:text-black">
+        <div className="flex flex-col min-h-screen bg-[#FFFDFE] font-sans selection:bg-[#FAE1EF] selection:text-black">
             <Header
                 onNavigate={handleNavigate}
                 currency={currency}
@@ -115,12 +115,14 @@ const App: React.FC = () => {
                 onCartClick={() => setIsCartOpen(true)}
             />
             
-             <main className={`flex-grow relative ${isCatalogView ? 'h-screen overflow-hidden pt-[188px]' : 'pt-[188px] pb-32 md:pb-12'}`}>
+            <main className={`flex-grow relative bg-[#FFFDFE] transition-all duration-300 ${isCatalogView ? 'pt-0' : 'pt-[192px] pb-32 md:pb-12'}`}>
                 {renderContent()}
 
-                <aside className="fixed bottom-28 md:bottom-8 right-6 md:right-8 z-[60] flex flex-col gap-5 items-end">
-                    <a href="https://wa.me/34661202616" target="_blank" rel="noopener noreferrer" className="bg-[#25D366] text-white p-4 rounded-full shadow-lg hover:scale-110 transition-transform"><WhatsAppIcon /></a>
-                </aside>
+                {!isCatalogView && (
+                    <aside className="fixed bottom-28 md:bottom-8 right-6 md:right-8 z-[100] flex flex-col gap-5 items-end">
+                        <a href="https://wa.me/34661202616" target="_blank" rel="noopener noreferrer" className="bg-[#25D366] text-white p-4 rounded-full shadow-[0_10px_30px_rgba(37,211,102,0.4)] hover:scale-110 transition-transform active:scale-95"><WhatsAppIcon /></a>
+                    </aside>
+                )}
             </main>
             
             {!isCatalogView && <Footer onNavigate={handleNavigate} />}

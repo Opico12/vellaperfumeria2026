@@ -9,25 +9,26 @@ interface HeroCarouselProps {
 
 const slides = [
     {
-        imageUrl: 'https://images.unsplash.com/photo-1544816155-12df9643f363?ixlib=rb-4.0.3&auto=format&fit=crop&w=1920&q=80',
-        title: 'Navidad 2026: Magia en Turquesa',
-        subtitle: 'DESCUBRE LOS COFRES DE REGALO MÁS EXCLUSIVOS DE ORIFLAME',
-        buttonText: 'VER REGALOS',
-        view: 'ofertas' as View,
+        imageUrl: 'https://images.unsplash.com/photo-1490481651871-ab68de25d43d?auto=format&fit=crop&w=1920&q=80',
+        title: 'Alta Sastrería 2026',
+        subtitle: 'DESCUBRA LA EXCELENCIA EN CADA PUNTADA',
+        buttonText: 'VER COLECCIÓN',
+        view: 'products' as View,
+        payload: 'men'
     },
     {
-        imageUrl: 'https://media-cdn.oriflame.com/digitalPromotionsMedia/images/banner-media/ES/20899847/20866148.jpg',
-        title: 'La Nueva Era de la Elegancia',
-        subtitle: 'COLECCIÓN PRIVÉE 2026: DIVINE DARK VELVET',
+        imageUrl: 'https://images.unsplash.com/photo-1445205170230-053b83016050?auto=format&fit=crop&w=1920&q=80',
+        title: 'Elegancia Sin Límites',
+        subtitle: 'DISEÑOS EXCLUSIVOS PARA MOMENTOS INOLVIDABLES',
         buttonText: 'DESCUBRIR',
-        view: 'products' as View, // Cambiado de productDetail a products para mayor seguridad
-        payload: 'perfume'
+        view: 'products' as View,
+        payload: 'skincare'
     },
     {
-        imageUrl: 'https://media-cdn.oriflame.com/digitalPromotionsMedia/images/banner-media/ES/20900001/20866153.jpg',
-        title: 'Esenciales de Pasarela',
-        subtitle: 'HASTA -50% EN SELECCIÓN DE TEMPORADA',
-        buttonText: 'VER OFERTAS',
+        imageUrl: 'https://images.unsplash.com/photo-1539109132314-34755219f688?auto=format&fit=crop&w=1920&q=80',
+        title: 'El Arte de Vestir',
+        subtitle: 'TENDENCIAS DE GALA DIRECTAMENTE DESDE ESTOCOLMO',
+        buttonText: 'EXPLORAR',
         view: 'ofertas' as View,
     },
 ];
@@ -62,7 +63,7 @@ const HeroCarousel: React.FC<HeroCarouselProps> = ({ onNavigate }) => {
     
     return (
         <div className="w-full bg-white font-sans">
-             <div className="relative h-[70vh] min-h-[500px] w-full overflow-hidden">
+             <div className="relative h-[80vh] min-h-[600px] w-full overflow-hidden">
                 {slides.map((slide, index) => (
                     <div
                         key={index}
@@ -74,19 +75,20 @@ const HeroCarousel: React.FC<HeroCarouselProps> = ({ onNavigate }) => {
                             className="absolute inset-0 bg-cover bg-center"
                             style={{ backgroundImage: `url(${slide.imageUrl})` }}
                         />
-                        <div className="absolute inset-0 bg-black/40" />
+                        {/* Reducida opacidad del overlay para más viveza */}
+                        <div className="absolute inset-0 bg-black/20" />
                         <div className="absolute inset-0 flex items-center justify-center text-center">
                             <div className="max-w-4xl px-6">
-                                <span className="text-white text-[10px] font-black tracking-[0.6em] uppercase mb-6 block animate-fade-in">Temporada 2026</span>
-                                <h2 className="text-5xl md:text-7xl font-serif italic text-white mb-8 leading-tight drop-shadow-2xl">
+                                <span className="text-white text-[10px] font-black tracking-[0.6em] uppercase mb-6 block animate-fade-in shadow-sm">Atelier Gala 2026</span>
+                                <h2 className="text-6xl md:text-8xl font-serif italic text-white mb-8 leading-tight drop-shadow-2xl">
                                     {slide.title}
                                 </h2>
-                                <p className="text-white/80 text-xs md:text-sm tracking-[0.3em] font-bold uppercase mb-10">
+                                <p className="text-white/90 text-xs md:text-sm tracking-[0.3em] font-bold uppercase mb-10 drop-shadow-lg">
                                     {slide.subtitle}
                                 </p>
                                 <button
                                     onClick={() => onNavigate(slide.view, slide.payload)}
-                                    className="bg-white text-black text-[10px] font-black tracking-[0.4em] px-12 py-5 uppercase hover:bg-pink-600 hover:text-white transition-all duration-500 shadow-2xl"
+                                    className="bg-white text-black text-[10px] font-black tracking-[0.4em] px-16 py-6 uppercase hover:bg-pink-600 hover:text-white transition-all duration-500 shadow-2xl"
                                 >
                                     {slide.buttonText}
                                 </button>
@@ -95,30 +97,28 @@ const HeroCarousel: React.FC<HeroCarouselProps> = ({ onNavigate }) => {
                     </div>
                 ))}
                 
-                {/* Navegación */}
                 <button 
                     onClick={prevSlide}
-                    className="absolute left-8 top-1/2 -translate-y-1/2 text-white/50 hover:text-white transition-colors p-2"
+                    className="absolute left-8 top-1/2 -translate-y-1/2 text-white/50 hover:text-white transition-colors p-4 bg-black/10 hover:bg-black/20 rounded-full"
                     aria-label="Anterior"
                 >
                     <ChevronLeftIcon />
                 </button>
                 <button 
                     onClick={nextSlide}
-                    className="absolute right-8 top-1/2 -translate-y-1/2 text-white/50 hover:text-white transition-colors p-2"
+                    className="absolute right-8 top-1/2 -translate-y-1/2 text-white/50 hover:text-white transition-colors p-4 bg-black/10 hover:bg-black/20 rounded-full"
                     aria-label="Siguiente"
                 >
                     <ChevronRightIcon />
                 </button>
 
-                {/* Indicadores */}
-                <div className="absolute bottom-10 left-1/2 -translate-x-1/2 flex space-x-4">
+                <div className="absolute bottom-10 left-1/2 -translate-x-1/2 flex space-x-6">
                     {slides.map((_, index) => (
                         <button
                             key={index}
                             onClick={() => setCurrentIndex(index)}
-                            className={`h-0.5 transition-all duration-500 ${
-                                index === currentIndex ? 'w-12 bg-pink-500' : 'w-6 bg-white/30 hover:bg-white/60'
+                            className={`h-1 transition-all duration-500 ${
+                                index === currentIndex ? 'w-16 bg-pink-500' : 'w-8 bg-white/40 hover:bg-white'
                             }`}
                             aria-label={`Slide ${index + 1}`}
                         />
