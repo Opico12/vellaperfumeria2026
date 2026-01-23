@@ -17,14 +17,14 @@ const ProductList: React.FC<{
     onQuickView: (product: Product) => void;
 }> = ({ onNavigate, onProductSelect, onAddToCart, onQuickAddToCart, currency, onQuickView }) => {
     
-    // Mostramos una selección de los productos principales
+    // Selección de productos principales (actualmente vacío)
     const mainProducts = allProducts.slice(0, 12);
 
     return (
         <div className="space-y-24 pb-20 bg-white">
             <HeroBanner onNavigate={onNavigate} />
 
-            {/* SECCIÓN 1: GALERÍA DE PRODUCTOS REALES */}
+            {/* SECCIÓN 1: GALERÍA DE PRODUCTOS */}
             <div className="container mx-auto px-4 md:px-12">
                 <section>
                     <div className="text-center mb-20">
@@ -33,26 +33,32 @@ const ProductList: React.FC<{
                         <div className="h-[2px] w-16 bg-pink-200 mx-auto mt-8"></div>
                     </div>
                     
-                    <div className="grid grid-cols-2 lg:grid-cols-4 gap-8 md:gap-12">
-                        {mainProducts.map(product => (
-                            <ProductCard
-                                key={product.id}
-                                product={product}
-                                currency={currency}
-                                onAddToCart={onAddToCart}
-                                onQuickAddToCart={onQuickAddToCart}
-                                onProductSelect={onProductSelect}
-                                onQuickView={onQuickView}
-                            />
-                        ))}
-                    </div>
+                    {mainProducts.length > 0 ? (
+                        <div className="grid grid-cols-2 lg:grid-cols-4 gap-8 md:gap-12">
+                            {mainProducts.map(product => (
+                                <ProductCard
+                                    key={product.id}
+                                    product={product}
+                                    currency={currency}
+                                    onAddToCart={onAddToCart}
+                                    onQuickAddToCart={onQuickAddToCart}
+                                    onProductSelect={onProductSelect}
+                                    onQuickView={onQuickView}
+                                />
+                            ))}
+                        </div>
+                    ) : (
+                        <div className="text-center py-20 bg-gray-50/50 border border-dashed border-gray-100 rounded-sm">
+                            <p className="text-gray-300 text-[10px] font-black uppercase tracking-[0.4em]">No hay productos destacados actualmente</p>
+                        </div>
+                    )}
 
                     <div className="text-center mt-16">
                         <button 
                             onClick={() => onNavigate('products', 'all')}
                             className="bg-pink-50/10 text-pink-900 border-2 border-pink-900 text-[11px] font-black tracking-[0.4em] px-12 py-5 uppercase hover:bg-pink-900 hover:text-white transition-all rounded-sm shadow-xl"
                         >
-                            Ver Todos los Productos
+                            Ir a la Tienda
                         </button>
                     </div>
                 </section>

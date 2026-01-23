@@ -102,4 +102,36 @@ const ShopPage: React.FC<{
                 </aside>
 
                 <main className="w-full lg:w-3/4">
-                    <div className="flex justify-between items-end mb-10 border-b border-gray
+                    <div className="flex justify-between items-end mb-10 border-b border-gray-50 pb-6">
+                        <div>
+                            <span className="text-pink-600 text-[8px] font-black tracking-[0.5em] uppercase mb-1 block">Oriflame 2026</span>
+                            <h1 className="text-3xl font-black text-black tracking-tighter uppercase italic">{currentCategoryName}</h1>
+                        </div>
+                    </div>
+
+                    {filteredAndSortedProducts.length > 0 ? (
+                        <div className="grid grid-cols-2 md:grid-cols-3 gap-x-6 gap-y-12">
+                            {filteredAndSortedProducts.map(product => (
+                                <ProductCard
+                                    key={product.id}
+                                    product={product}
+                                    currency={currency}
+                                    onAddToCart={onAddToCart}
+                                    onQuickAddToCart={onQuickAddToCart}
+                                    onProductSelect={onProductSelect}
+                                    onQuickView={onQuickView}
+                                />
+                            ))}
+                        </div>
+                    ) : (
+                        <div className="text-center py-32 border border-dashed border-gray-100 rounded-sm">
+                            <p className="text-gray-300 text-[9px] font-black uppercase tracking-[0.4em]">Sin resultados</p>
+                        </div>
+                    )}
+                </main>
+            </div>
+        </div>
+    );
+};
+
+export default ShopPage;
