@@ -54,10 +54,6 @@ const App: React.FC = () => {
     useEffect(() => { window.scrollTo(0, 0); }, [view.current]);
 
     const handleNavigate = useCallback((newView: View, payload?: any) => {
-        if (newView === 'home') {
-            window.location.href = 'https://vellaperfumeria.com';
-            return;
-        }
         setView({ current: newView, payload });
     }, []);
 
@@ -120,7 +116,7 @@ const App: React.FC = () => {
                 />
             )}
             
-            <main className={`flex-grow relative bg-white transition-all duration-300 ${isFullPageMode ? 'h-screen pt-0 overflow-hidden' : 'pt-[192px] pb-32 md:pb-12'}`}>
+            <main className={`flex-grow relative bg-white transition-all duration-300 ${isFullPageMode ? 'h-screen pt-0 overflow-hidden' : 'pt-[208px] pb-32 md:pb-12'}`}>
                 {renderContent()}
 
                 {!isFullPageMode && (

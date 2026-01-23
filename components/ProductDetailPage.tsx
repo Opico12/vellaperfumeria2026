@@ -48,7 +48,6 @@ const ProductDetailPage: React.FC<ProductDetailPageProps> = ({ product, currency
     return (
         <div className="container mx-auto px-4 md:px-12 py-12 animate-fade-in font-sans">
             <div className="grid lg:grid-cols-12 gap-16">
-                {/* Visual - Vibrant Image */}
                 <div className="lg:col-span-7">
                     <div 
                         className="relative bg-white rounded-sm overflow-hidden cursor-zoom-in group aspect-[4/5] flex items-center justify-center p-12 border border-gray-100 shadow-xl"
@@ -57,13 +56,14 @@ const ProductDetailPage: React.FC<ProductDetailPageProps> = ({ product, currency
                         <img 
                             src={product.imageUrl} 
                             alt={product.name} 
-                            className="max-w-full max-h-full object-contain mix-blend-multiply transition-transform duration-1000 group-hover:scale-105" 
+                            className="max-w-full max-h-full object-contain transition-transform duration-1000 group-hover:scale-105" 
+                            onError={(e) => {
+                                (e.target as HTMLImageElement).src = `https://es.oriflame.com/product-images/external/es-ES/${product.id}_1.png`;
+                            }}
                         />
-                        <div className="absolute inset-0 bg-pink-500/5 opacity-0 group-hover:opacity-100 transition-all pointer-events-none"></div>
                     </div>
                 </div>
 
-                {/* Info & Extensive Description */}
                 <div className="lg:col-span-5 flex flex-col text-left">
                     <nav className="flex items-center gap-2 text-[10px] font-black uppercase tracking-widest text-gray-400 mb-8">
                         <button onClick={() => onNavigate('home')} className="hover:text-black transition-colors">Inicio</button>
@@ -92,7 +92,7 @@ const ProductDetailPage: React.FC<ProductDetailPageProps> = ({ product, currency
                         <button
                             ref={btnRef}
                             onClick={() => onAddToCart(product, btnRef.current, null)}
-                            className="w-full bg-pink-50/20 text-pink-800 border-2 border-pink-800 font-black py-7 px-12 text-[1.05rem] uppercase tracking-[0.5em] hover:bg-pink-800 hover:text-white transition-all shadow-2xl active:scale-95"
+                            className="w-full bg-pink-500/10 border-2 border-pink-500 text-pink-600 font-black py-7 px-12 text-[1.05rem] uppercase tracking-[0.5em] hover:bg-pink-600 hover:text-white transition-all shadow-2xl active:scale-95"
                         >
                             Añadir a la Bolsa de Compra
                         </button>

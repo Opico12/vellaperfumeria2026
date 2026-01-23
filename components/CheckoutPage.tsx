@@ -100,7 +100,6 @@ const CheckoutPage: React.FC<CheckoutPageProps> = ({ cartItems, currency, onNavi
             <div className="max-w-6xl mx-auto">
                 <div className="flex flex-col lg:flex-row gap-16">
                     
-                    {/* Columna Izquierda: Formulario de Envío */}
                     <div className="lg:w-7/12">
                         <div className="mb-12">
                             <span className="text-pink-600 text-[10px] font-black tracking-[0.6em] uppercase mb-4 block underline underline-offset-8 decoration-pink-100">Checkout Seguro</span>
@@ -158,15 +157,6 @@ const CheckoutPage: React.FC<CheckoutPageProps> = ({ cartItems, currency, onNavi
                                         className="w-full bg-white border border-gray-200 px-5 py-4 text-xs font-bold focus:border-pink-600 outline-none transition-all uppercase tracking-widest"
                                     />
                                 </div>
-                                <div className="space-y-2 flex items-end">
-                                    <div className="p-4 bg-pink-50 border border-pink-100 rounded-sm w-full">
-                                        <p className="text-[9px] font-black text-pink-600 uppercase tracking-tighter leading-tight">
-                                            {shippingCost === 0 
-                                                ? "¡Envío gratuito aplicado!" 
-                                                : "Envío estándar: 6,00€"}
-                                        </p>
-                                    </div>
-                                </div>
                             </div>
 
                             <div className="space-y-2">
@@ -190,13 +180,9 @@ const CheckoutPage: React.FC<CheckoutPageProps> = ({ cartItems, currency, onNavi
                                <WhatsAppIcon />
                                <span>Confirmar por WhatsApp</span>
                             </button>
-                            <p className="text-center mt-6 text-[9px] font-black text-gray-400 uppercase tracking-widest italic">
-                                Sincronizando con el centro de atención al cliente de Vellaperfumeria...
-                            </p>
                         </div>
                     </div>
 
-                    {/* Columna Derecha: Resumen */}
                     <div className="lg:w-5/12">
                         <div className="sticky top-48">
                             <div className="bg-black text-white p-10 md:p-12 rounded-sm shadow-3xl">
@@ -206,16 +192,11 @@ const CheckoutPage: React.FC<CheckoutPageProps> = ({ cartItems, currency, onNavi
                                     {cartItems.map((item) => (
                                         <div key={item.id} className="flex gap-6 items-center">
                                             <div className="w-16 h-20 bg-white/5 p-2 rounded-sm border border-white/10 flex-shrink-0">
-                                                <img src={item.product.imageUrl} alt={item.product.name} className="w-full h-full object-contain mix-blend-lighten" />
+                                                <img src={item.product.imageUrl} alt={item.product.name} className="w-full h-full object-contain" />
                                             </div>
                                             <div className="flex-grow min-w-0">
                                                 <h4 className="text-[10px] font-black uppercase tracking-widest line-clamp-1">{item.product.name}</h4>
                                                 <p className="text-[9px] text-gray-500 font-bold uppercase mt-1 tracking-tighter">Cant: {item.quantity} x {formatCurrency(item.product.price, currency)}</p>
-                                                {item.selectedVariant && (
-                                                    <p className="text-[8px] text-pink-400 font-black uppercase tracking-widest mt-1">
-                                                        {Object.values(item.selectedVariant)[0]}
-                                                    </p>
-                                                )}
                                             </div>
                                             <div className="text-[11px] font-black tracking-tighter text-white">
                                                 {formatCurrency(item.product.price * item.quantity, currency)}
@@ -239,12 +220,6 @@ const CheckoutPage: React.FC<CheckoutPageProps> = ({ cartItems, currency, onNavi
                                         <span>Total</span>
                                         <span className="text-pink-500">{formatCurrency(total, currency)}</span>
                                     </div>
-                                </div>
-
-                                <div className="mt-12 p-6 bg-white/5 border border-dashed border-white/10 rounded-sm">
-                                    <p className="text-[9px] text-gray-400 font-bold uppercase leading-relaxed tracking-widest text-center">
-                                        Un asesor personal verificará tu pedido y te enviará el enlace de pago seguro a través del chat de WhatsApp.
-                                    </p>
                                 </div>
                             </div>
                         </div>

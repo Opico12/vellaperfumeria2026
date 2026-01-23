@@ -43,7 +43,6 @@ const QuickViewModal: React.FC<QuickViewModalProps> = ({ product, currency, onCl
     }, [onClose]);
     
     useEffect(() => {
-        // Actualizar la imagen si la variante seleccionada tiene una imagen personalizada
         if (product.variants && selectedVariant) {
             for (const type in product.variants) {
                 const val = selectedVariant[type];
@@ -68,14 +67,12 @@ const QuickViewModal: React.FC<QuickViewModalProps> = ({ product, currency, onCl
             <div className="bg-white rounded-sm shadow-3xl w-full max-w-6xl flex flex-col md:flex-row relative animate-modal-in overflow-hidden max-h-[95vh]" onClick={e => e.stopPropagation()}>
                 <button onClick={onClose} className="absolute top-6 right-6 text-black hover:rotate-90 transition-transform z-10"><CloseIcon /></button>
                 
-                {/* Visual Area */}
                 <div className="md:w-1/2 bg-[#F9F9F9] p-8 md:p-16 flex items-center justify-center border-r border-gray-100">
                     <div className="relative w-full aspect-square flex items-center justify-center">
-                         <img src={currentImageUrl} alt={product.name} className="max-h-full max-w-full object-contain mix-blend-multiply transition-all duration-700 ease-in-out transform hover:scale-105" />
+                         <img src={currentImageUrl} alt={product.name} className="max-h-full max-w-full object-contain transition-all duration-700 ease-in-out transform hover:scale-105" />
                     </div>
                 </div>
                 
-                {/* Details Area */}
                 <div className="md:w-1/2 p-8 md:p-12 flex flex-col overflow-y-auto bg-white">
                     <span className="text-pink-600 text-[10px] font-black uppercase tracking-[0.5em] mb-4">{product.brand}</span>
                     <h2 className="text-3xl font-black text-black uppercase tracking-tighter mb-8 leading-none italic">{product.name}</h2>
@@ -116,14 +113,10 @@ const QuickViewModal: React.FC<QuickViewModalProps> = ({ product, currency, onCl
                         <button
                             ref={addToCartBtnRef}
                             onClick={() => { onAddToCart(product, addToCartBtnRef.current, selectedVariant); onClose(); }}
-                            className="w-full bg-black text-white font-black py-6 text-[11px] uppercase tracking-[0.6em] hover:bg-pink-600 transition-all shadow-2xl active:scale-95"
+                            className="w-full bg-pink-500/10 border-2 border-pink-500 text-pink-600 font-black py-6 text-[11px] uppercase tracking-[0.6em] hover:bg-pink-600 hover:text-white transition-all shadow-2xl active:scale-95"
                         >
                             Añadir a la Cesta
                         </button>
-                        <div className="flex justify-center gap-4">
-                             <span className="text-[8px] font-black uppercase tracking-widest text-gray-400">Certificado Estocolmo</span>
-                             <span className="text-[8px] font-black uppercase tracking-widest text-gray-400">Envío 24-48h</span>
-                        </div>
                     </div>
                 </div>
             </div>
