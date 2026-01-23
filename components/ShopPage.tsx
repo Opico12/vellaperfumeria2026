@@ -27,8 +27,10 @@ const ShopPage: React.FC<{
     const [sortOrder, setSortOrder] = useState('menu_order');
     const [searchQuery, setSearchQuery] = useState('');
     
+    const ORCHID_PINK = "#E29CD2";
+    const DARK_ORCHID = "#C576B0";
+
     useEffect(() => {
-        // Si la categoría inicial era 'accessories', la cambiamos a 'all' ya que ya no existe
         if (initialCategory === 'accessories') {
             setActiveCategory('all');
         } else {
@@ -75,7 +77,7 @@ const ShopPage: React.FC<{
                                 placeholder="Ref..."
                                 value={searchQuery}
                                 onChange={(e) => setSearchQuery(e.target.value)}
-                                className="w-full border border-gray-100 p-3 text-[10px] font-bold uppercase tracking-widest focus:border-pink-600 outline-none transition-all rounded-sm"
+                                className="w-full border border-gray-100 p-3 text-[10px] font-bold uppercase tracking-widest outline-none transition-all rounded-sm focus:border-[#E29CD2]"
                             />
                         </div>
 
@@ -88,7 +90,7 @@ const ShopPage: React.FC<{
                                             onClick={() => setActiveCategory(cat.key)}
                                             className={`w-full text-left px-4 py-2 text-[9px] font-black uppercase tracking-[0.2em] transition-all rounded-sm border ${
                                                 activeCategory === cat.key
-                                                    ? 'bg-pink-100/30 text-pink-700 border-pink-700'
+                                                    ? 'bg-[#FAE1EF] text-[#C576B0] border-[#C576B0]'
                                                     : 'text-gray-400 border-transparent hover:text-black hover:bg-gray-50'
                                             }`}
                                         >
@@ -104,7 +106,7 @@ const ShopPage: React.FC<{
                 <main className="w-full lg:w-3/4">
                     <div className="flex justify-between items-end mb-10 border-b border-gray-50 pb-6">
                         <div>
-                            <span className="text-pink-600 text-[8px] font-black tracking-[0.5em] uppercase mb-1 block">Oriflame 2026</span>
+                            <span className="text-[#E29CD2] text-[8px] font-black tracking-[0.5em] uppercase mb-1 block">Oriflame 2026</span>
                             <h1 className="text-3xl font-black text-black tracking-tighter uppercase italic">{currentCategoryName}</h1>
                         </div>
                     </div>

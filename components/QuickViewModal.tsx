@@ -29,7 +29,7 @@ interface QuickViewModalProps {
     onProductSelect: (product: Product) => void;
 }
 
-const QuickViewModal: React.FC<QuickViewModalProps> = ({ product, currency, onClose, onAddToCart, onProductSelect }) => {
+const QuickViewModal: React.FC<QuickViewModalProps> = ({ product, currency, onClose, onAddToCart }) => {
     const addToCartBtnRef = useRef<HTMLButtonElement>(null);
     const [selectedVariant, setSelectedVariant] = useState<Record<string, string> | null>(getDefaultVariant(product));
     const [currentImageUrl, setCurrentImageUrl] = useState(product.imageUrl);
@@ -63,13 +63,18 @@ const QuickViewModal: React.FC<QuickViewModalProps> = ({ product, currency, onCl
     const isDiscounted = product.regularPrice && product.regularPrice > product.price;
 
     return (
-        <div className="fixed inset-0 bg-black/90 backdrop-blur-xl flex items-center justify-center z-[200] p-4" onClick={onClose}>
+        <div className="fixed inset-0 bg-black/95 backdrop-blur-xl flex items-center justify-center z-[600] p-4" onClick={onClose}>
             <div className="bg-white rounded-sm shadow-3xl w-full max-w-6xl flex flex-col md:flex-row relative animate-modal-in overflow-hidden max-h-[95vh]" onClick={e => e.stopPropagation()}>
                 <button onClick={onClose} className="absolute top-6 right-6 text-black hover:rotate-90 transition-transform z-10"><CloseIcon /></button>
                 
                 <div className="md:w-1/2 bg-[#F9F9F9] p-8 md:p-16 flex items-center justify-center border-r border-gray-100">
                     <div className="relative w-full aspect-square flex items-center justify-center">
-                         <img src={currentImageUrl} alt={product.name} className="max-h-full max-w-full object-contain transition-all duration-700 ease-in-out transform hover:scale-105" />
+                         <img 
+                            src={currentImageUrl} 
+                            alt={product.name} 
+                            referrerPolicy="no-referrer"
+                            className="max-h-full max-w-full object-contain transition-all duration-700 ease-in-out transform hover:scale-105" 
+                         />
                     </div>
                 </div>
                 
@@ -83,37 +88,15 @@ const QuickViewModal: React.FC<QuickViewModalProps> = ({ product, currency, onCl
                     </div>
                     
                     <div className="mb-10">
-                        <h4 className="text-[10px] font-black uppercase tracking-widest text-gray-400 mb-4 border-b pb-2">Expertise de Belleza</h4>
+                        <h4 className="text-[10px] font-black uppercase tracking-widest text-gray-400 mb-4 border-b pb-2">Experiencia de Belleza</h4>
                         <p className="text-gray-700 text-base leading-relaxed italic">{product.description}</p>
                     </div>
-
-                    {product.variants && Object.keys(product.variants).map(type => (
-                        <div key={type} className="mb-10">
-                            <h3 className="text-[10px] font-black uppercase tracking-[0.3em] mb-6 flex justify-between items-center">
-                                {type}: <span className="text-pink-600 underline decoration-pink-200">{selectedVariant?.[type]}</span>
-                            </h3>
-                            <div className="flex gap-4 overflow-x-auto pb-4 no-scrollbar snap-x">
-                                {product.variants![type].map(opt => {
-                                    const isSel = selectedVariant?.[type] === opt.value;
-                                    return (
-                                        <button
-                                            key={opt.value}
-                                            onClick={() => handleVariantChange(type, opt.value)}
-                                            className={`flex-shrink-0 w-12 h-12 rounded-full border-4 transition-all snap-start ${isSel ? 'border-black scale-110 shadow-xl' : 'border-white opacity-40 hover:opacity-100 hover:scale-105'}`}
-                                            style={{ backgroundColor: opt.colorCode }}
-                                            title={opt.value}
-                                        />
-                                    );
-                                })}
-                            </div>
-                        </div>
-                    ))}
 
                     <div className="mt-auto pt-8 border-t border-gray-100 flex flex-col gap-4">
                         <button
                             ref={addToCartBtnRef}
                             onClick={() => { onAddToCart(product, addToCartBtnRef.current, selectedVariant); onClose(); }}
-                            className="w-full bg-pink-500/10 border-2 border-pink-500 text-pink-600 font-black py-6 text-[11px] uppercase tracking-[0.6em] hover:bg-pink-600 hover:text-white transition-all shadow-2xl active:scale-95"
+                            className="w-full bg-pink-500/10 border-2 border-pink-700 text-pink-800 font-black py-6 text-[11px] uppercase tracking-[0.6em] hover:bg-pink-600 hover:text-white transition-all shadow-2xl active:scale-95"
                         >
                             Añadir a la Cesta
                         </button>

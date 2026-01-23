@@ -1,27 +1,232 @@
 
 import type { Product } from './types';
 
-/**
- * Catálogo Maestro Bella Perfumería 2026.
- * Usando la ruta directa de Oriflame para máxima visibilidad.
- */
 export const allProducts: Product[] = [
-    { id: 48970, name: "Caja de Regalo Festive Luxury", brand: "Festive", price: 4.50, imageUrl: "https://es.oriflame.com/product-images/external/es-ES/48970_1.png", stock: 100, category: 'accessories', tag: 'SET' },
-    { id: 42503, name: "Perfume Giordani Gold Essenza", brand: "Giordani Gold", price: 45.00, imageUrl: "https://es.oriflame.com/product-images/external/es-ES/42503_1.png", stock: 30, category: 'perfume' },
-    { id: 38601, name: "Aceite Protector Eleo con Aceites Naturales", brand: "Eleo", price: 18.99, imageUrl: "https://es.oriflame.com/product-images/external/es-ES/38601_1.png", stock: 50, category: 'hair' },
-    { id: 46060, name: "Perfume All or Nothing Amplified", brand: "Oriflame Exclusive", price: 62.99, imageUrl: "https://es.oriflame.com/product-images/external/es-ES/46060_1.png", stock: 20, category: 'perfume', tag: 'NOVEDAD' },
-    { id: 38527, name: "Eau de Parfum Ascendant Intense", brand: "Ascendant", price: 29.99, imageUrl: "https://es.oriflame.com/product-images/external/es-ES/38527_1.png", stock: 35, category: 'men' },
-    { id: 40657, name: "The One BB Cream Beautifier Max", brand: "The One", price: 12.99, imageUrl: "https://es.oriflame.com/product-images/external/es-ES/40657_1.png", stock: 60, category: 'makeup' },
-    { id: 48650, name: "Máscara Winter Wonder Lash Waterproof", brand: "The One", price: 10.99, imageUrl: "https://es.oriflame.com/product-images/external/es-ES/48650_1.png", stock: 45, category: 'makeup' },
-    { id: 43456, name: "The One Illuskin Liquid Highlighter", brand: "The One", price: 14.99, imageUrl: "https://es.oriflame.com/product-images/external/es-ES/43456_1.png", stock: 40, category: 'makeup' },
-    { id: 40692, name: "The One Brow Pomade", brand: "The One", price: 11.99, imageUrl: "https://es.oriflame.com/product-images/external/es-ES/40692_1.png", stock: 50, category: 'makeup' },
-    { id: 47718, name: "O Sweet Marshmallow Eau de Toilette", brand: "OnColour", price: 15.99, imageUrl: "https://es.oriflame.com/product-images/external/es-ES/47718_1.png", stock: 100, category: 'perfume', tag: 'NOVEDAD' },
-    { id: 48954, name: "Reloj Glitters of Love Jan & Valentina", brand: "Oriflame Exclusive", price: 34.99, imageUrl: "https://es.oriflame.com/product-images/external/es-ES/48954_1.png", stock: 15, category: 'accessories' },
-    { id: 48101, name: "Crema Noche Reafirmante Regal Velvet", brand: "Royal Velvet", price: 24.99, imageUrl: "https://es.oriflame.com/product-images/external/es-ES/48101_1.png", stock: 30, category: 'skincare' },
-    { id: 36152, name: "Crema Universal Aceite Frambuesa", brand: "Tender Care", price: 7.99, imageUrl: "https://es.oriflame.com/product-images/external/es-ES/36152_1.png", stock: 200, category: 'personal-care' },
-    { id: 45967, name: "Perfume Giordani Gold Man Elixir", brand: "Giordani Gold", price: 35.00, imageUrl: "https://es.oriflame.com/product-images/external/es-ES/45967_1.png", stock: 25, category: 'men' }
+    // --- LÍNEA ALL OR NOTHING ---
+    { 
+        id: 46060, 
+        name: "Perfume All or Nothing Amplified", 
+        brand: "All or Nothing", 
+        price: 62.99, 
+        regularPrice: 85.00, 
+        imageUrl: "https://media-cdn.oriflame.com/productImage?externalMediaId=product-management-media%2FProducts%2F46060%2F46060_1.png&w=600&q=90", 
+        stock: 15, 
+        category: 'perfume', 
+        tag: 'NOVEDAD',
+        description: "Floral Ambarina. Siente el poder de la exclusividad con notas de nardo amplificado."
+    },
+    { 
+        id: 47020, 
+        name: "Crema Corporal Perfumada All or Nothing Amplified", 
+        brand: "All or Nothing", 
+        price: 12.99, 
+        regularPrice: 19.00, 
+        imageUrl: "https://media-cdn.oriflame.com/productImage?externalMediaId=product-management-media%2FProducts%2F47020%2F47020_1.png&w=600&q=90", 
+        stock: 40, 
+        category: 'personal-care',
+        description: "Hidratación de lujo con la vibrante fragancia All or Nothing Amplified."
+    },
+
+    // --- LÍNEA LOVE POTION ---
+    { 
+        id: 46047, 
+        name: "Eau de Parfum Love Potion Cherry on Top", 
+        brand: "Love Potion", 
+        price: 25.99, 
+        regularPrice: 38.00, 
+        imageUrl: "https://media-cdn.oriflame.com/productImage?externalMediaId=product-management-media%2FProducts%2F46047%2F46047_1.png&w=600&q=90", 
+        stock: 30, 
+        category: 'perfume',
+        description: "Aroma frutal ambarino con notas de cereza dulce y chocolate."
+    },
+    { 
+        id: 42806, 
+        name: "Crema de Manos Love Potion", 
+        brand: "Love Potion", 
+        price: 7.99, 
+        regularPrice: 12.00, 
+        imageUrl: "https://media-cdn.oriflame.com/productImage?externalMediaId=product-management-media%2FProducts%2F42806%2F42806_1.png&w=600&q=90", 
+        stock: 80, 
+        category: 'personal-care',
+        description: "Manos suaves y delicadamente perfumadas."
+    },
+    { 
+        id: 48083, 
+        name: "Lote Love Potion (Fragancia + Crema + Caja)", 
+        brand: "Love Potion", 
+        price: 29.99, 
+        regularPrice: 45.00, 
+        imageUrl: "https://media-cdn.oriflame.com/productImage?externalMediaId=product-management-media%2FProducts%2F46047%2F46047_1.png&w=600&q=90", 
+        stock: 12, 
+        category: 'perfume', 
+        tag: 'SET',
+        description: "El regalo perfecto para ella."
+    },
+
+    // --- LÍNEA ELVIE & ECLAT ---
+    { 
+        id: 47499, 
+        name: "Eau de Toilette Elvie Midnight Magic", 
+        brand: "Elvie", 
+        price: 22.99, 
+        regularPrice: 38.00, 
+        imageUrl: "https://media-cdn.oriflame.com/productImage?externalMediaId=product-management-media%2FProducts%2F47499%2F47499_1.png&w=600&q=90", 
+        stock: 45, 
+        category: 'perfume',
+        description: "Magia y misterio en cada gota."
+    },
+    { 
+        id: 42499, 
+        name: "Eau de Toilette Eclat Femme Weekend", 
+        brand: "Eclat", 
+        price: 26.99, 
+        regularPrice: 42.00, 
+        imageUrl: "https://media-cdn.oriflame.com/productImage?externalMediaId=product-management-media%2FProducts%2F42499%2F42499_1.png&w=600&q=90", 
+        stock: 40, 
+        category: 'perfume',
+        description: "Elegancia parisina para tus fines de semana."
+    },
+    { 
+        id: 47014, 
+        name: "Crema Corporal Perfumada Eclat Femme Weekend", 
+        brand: "Eclat", 
+        price: 9.99, 
+        regularPrice: 15.00, 
+        imageUrl: "https://media-cdn.oriflame.com/productImage?externalMediaId=product-management-media%2FProducts%2F47014%2F47014_1.png&w=600&q=90", 
+        stock: 45, 
+        category: 'personal-care',
+        description: "Complemento ideal para tu fragancia Eclat."
+    },
+
+    // --- MAQUILLAJE THE ONE ---
+    { 
+        id: 38863, 
+        name: "Labial Ultra Glossy Unresistable THE ONE", 
+        brand: "THE ONE", 
+        price: 7.99, 
+        regularPrice: 14.00, 
+        imageUrl: "https://media-cdn.oriflame.com/productImage?externalMediaId=product-management-media%2FProducts%2F38863%2F38863_1.png&w=600&q=90", 
+        stock: 100, 
+        category: 'makeup', 
+        tag: 'OFERTA',
+        description: "Brillo máximo y confort total."
+    },
+    { 
+        id: 48650, 
+        name: "Máscara Winter Wanderlust Waterproof", 
+        brand: "THE ONE", 
+        price: 9.99, 
+        regularPrice: 15.00, 
+        imageUrl: "https://media-cdn.oriflame.com/productImage?externalMediaId=product-management-media%2FProducts%2F48650%2F48650_1.png&w=600&q=90", 
+        stock: 100, 
+        category: 'makeup',
+        description: "Resiste a todo con un volumen espectacular."
+    },
+    { 
+        id: 46929, 
+        name: "Sombra de Ojos Color Unlimited Matte Burgundy", 
+        brand: "THE ONE", 
+        price: 7.99, 
+        regularPrice: 16.00, 
+        imageUrl: "https://media-cdn.oriflame.com/productImage?externalMediaId=product-management-media%2FProducts%2F46929%2F46929_1.png&w=600&q=90", 
+        stock: 90, 
+        category: 'makeup',
+        description: "Sombra en stick de larga duración."
+    },
+
+    // --- CUIDADO FACIAL ROYAL VELVET ---
+    { 
+        id: 47005, 
+        name: "Crema de Día reafirmante Royal Velvet FPS 20", 
+        brand: "Royal Velvet", 
+        price: 43.00, 
+        regularPrice: 58.00, 
+        imageUrl: "https://media-cdn.oriflame.com/productImage?externalMediaId=product-management-media%2FProducts%2F47005%2F47005_1.png&w=600&q=90", 
+        stock: 30, 
+        category: 'skincare',
+        description: "Reafirma y protege tu piel a diario."
+    },
+    { 
+        id: 47007, 
+        name: "Contorno de Ojos Reafirmante Royal Velvet", 
+        brand: "Royal Velvet", 
+        price: 30.00, 
+        regularPrice: 42.00, 
+        imageUrl: "https://media-cdn.oriflame.com/productImage?externalMediaId=product-management-media%2FProducts%2F47007%2F47007_1.png&w=600&q=90", 
+        stock: 35, 
+        category: 'skincare',
+        description: "Mirada más joven y firme."
+    },
+    { 
+        id: 48117, 
+        name: "Crema de Noche Reafirmante Royal Velvet Edición Especial", 
+        brand: "Royal Velvet", 
+        price: 23.99, 
+        regularPrice: 43.00, 
+        imageUrl: "https://media-cdn.oriflame.com/productImage?externalMediaId=product-management-media%2FProducts%2F48117%2F48117_1.png&w=600&q=90", 
+        stock: 20, 
+        category: 'skincare',
+        description: "Regeneración nocturna intensa."
+    },
+
+    // --- CUIDADO PERSONAL LOVE NATURE ---
+    { 
+        id: 47201, 
+        name: "Gel de Ducha Love Nature Frambuesa y Menta", 
+        brand: "Love Nature", 
+        price: 6.99, 
+        regularPrice: 12.00, 
+        imageUrl: "https://media-cdn.oriflame.com/productImage?externalMediaId=product-management-media%2FProducts%2F47201%2F47201_1.png&w=600&q=90", 
+        stock: 100, 
+        category: 'personal-care',
+        description: "Energía natural para tu ducha diaria."
+    },
+    { 
+        id: 36152, 
+        name: "Crema Universal con Aceite de Frambuesa", 
+        brand: "Tender Care", 
+        price: 7.99, 
+        regularPrice: 12.00, 
+        imageUrl: "https://media-cdn.oriflame.com/productImage?externalMediaId=product-management-media%2FProducts%2F36152%2F36152_1.png&w=600&q=90", 
+        stock: 120, 
+        category: 'personal-care',
+        description: "Bálsamo multiusos con ingredientes naturales."
+    },
+
+    // --- REGALOS & ACCESORIOS ---
+    { 
+        id: 48975, 
+        name: "Bolsa de Regalo Festive", 
+        brand: "Regalos", 
+        price: 3.99, 
+        regularPrice: 5.00, 
+        imageUrl: "https://media-cdn.oriflame.com/productImage?externalMediaId=product-management-media%2FProducts%2F48975%2F48975_1.png&w=600&q=90", 
+        stock: 100, 
+        category: 'accessories'
+    },
+    { 
+        id: 48970, 
+        name: "Caja de Regalo Festive", 
+        brand: "Regalos", 
+        price: 10.00, 
+        regularPrice: 15.00, 
+        imageUrl: "https://media-cdn.oriflame.com/productImage?externalMediaId=product-management-media%2FProducts%2F48970%2F48970_1.png&w=600&q=90", 
+        stock: 40, 
+        category: 'accessories'
+    },
+    { 
+        id: 48953, 
+        name: "Set de 4 Pares de Pendientes Glitters", 
+        brand: "Accesorios", 
+        price: 11.99, 
+        regularPrice: 18.00, 
+        imageUrl: "https://media-cdn.oriflame.com/productImage?externalMediaId=product-management-media%2FProducts%2F48953%2F48953_1.png&w=600&q=90", 
+        stock: 30, 
+        category: 'accessories',
+        description: "Versatilidad para cualquier ocasión."
+    }
 ];
 
 export const getImg = (id: number | string) => {
-    return `https://es.oriflame.com/product-images/external/es-ES/${id}_1.png`;
+    return `https://media-cdn.oriflame.com/productImage?externalMediaId=product-management-media%2FProducts%2F${id}%2F${id}_1.png&w=600&q=90`;
 };
