@@ -19,6 +19,7 @@ import BlogPostPage from './components/BlogPostPage';
 import QuickViewModal from './components/QuickViewModal';
 import CheckoutPage from './components/CheckoutPage';
 import BottomNavBar from './components/BottomNavBar';
+import FoundationFinderPage from './components/FoundationFinderPage';
 
 type AppView = {
     current: View;
@@ -53,6 +54,10 @@ const App: React.FC = () => {
     useEffect(() => { window.scrollTo(0, 0); }, [view.current]);
 
     const handleNavigate = useCallback((newView: View, payload?: any) => {
+        if (newView === 'home') {
+            window.location.href = 'https://vellaperfumeria.com';
+            return;
+        }
         setView({ current: newView, payload });
     }, []);
 
@@ -92,10 +97,8 @@ const App: React.FC = () => {
                 return <AsistenteIAPage />;
             case 'catalog': 
                 return <CatalogPage />;
-            case 'blog': 
-                return <BlogPage posts={blogPosts} onSelectPost={(p) => handleNavigate('blogPost', p)} />;
-            case 'blogPost': 
-                return <BlogPostPage post={view.payload} allPosts={blogPosts} onSelectPost={(p) => handleNavigate('blogPost', p)} onBack={() => handleNavigate('blog')} />;
+            case 'foundationFinder':
+                return <FoundationFinderPage />;
             case 'checkout': 
                 return <CheckoutPage cartItems={cartItems} currency={currency} onClearCart={() => setCartItems([])} onNavigate={handleNavigate} />;
             default: 
@@ -103,7 +106,7 @@ const App: React.FC = () => {
         }
     };
 
-    const isFullPageMode = view.current === 'catalog';
+    const isFullPageMode = view.current === 'catalog' || view.current === 'foundationFinder';
 
     return (
         <div className="flex flex-col min-h-screen bg-white font-sans selection:bg-[#FAE1EF] selection:text-black">

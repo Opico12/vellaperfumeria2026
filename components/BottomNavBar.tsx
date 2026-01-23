@@ -44,7 +44,7 @@ interface NavItem {
 const BottomNavBar: React.FC<BottomNavBarProps> = ({ onNavigate, currentView, currentCategory }) => {
     
     const navItems: NavItem[] = [
-        { view: 'home', label: 'Inicio', icon: HomeIcon, external: 'https://bellaboriifflame.com' },
+        { view: 'home', label: 'Inicio', icon: HomeIcon, external: 'https://vellaperfumeria.com' },
         { view: 'catalog', label: 'Catálogo', icon: CatalogIcon },
         { view: 'products', label: 'Tienda', icon: ShopIcon, payload: 'all' },
         { view: 'ia', label: 'IA Advisor', icon: IAIcon },
