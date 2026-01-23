@@ -29,11 +29,11 @@ const ProductDetailPage: React.FC<ProductDetailPageProps> = ({ product, currency
                     <div className="w-20 h-20 bg-pink-50 rounded-full mx-auto flex items-center justify-center border border-pink-100">
                         <svg className="w-8 h-8 text-pink-400" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="1.5" d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z" /></svg>
                     </div>
-                    <h2 className="text-xl font-black uppercase tracking-[0.5em] text-pink-300 italic">Preparando tu Experiencia de Lujo...</h2>
+                    <h2 className="text-xl font-black uppercase tracking-[0.5em] text-pink-300">Preparando tu Experiencia de Lujo...</h2>
                 </div>
                 <button 
                     onClick={() => onNavigate('products', 'all')}
-                    className="mt-12 bg-black text-white px-12 py-5 text-[10px] font-black uppercase tracking-[0.4em] hover:bg-pink-600 transition-all shadow-xl"
+                    className="mt-12 bg-pink-50/20 text-pink-800 border-2 border-pink-800 px-12 py-5 text-[10px] font-black uppercase tracking-[0.4em] hover:bg-pink-800 hover:text-white transition-all shadow-xl"
                 >
                     Volver a la Tienda
                 </button>
@@ -72,7 +72,7 @@ const ProductDetailPage: React.FC<ProductDetailPageProps> = ({ product, currency
                     </nav>
 
                     <span className="text-pink-600 text-[12px] font-black tracking-[0.5em] uppercase mb-4 block underline underline-offset-8 decoration-pink-200">{product.brand}</span>
-                    <h1 className="text-4xl md:text-5xl font-black text-black tracking-tighter uppercase italic mb-8 leading-tight">
+                    <h1 className="text-4xl md:text-5xl font-black text-black tracking-tighter uppercase mb-8 leading-tight">
                         {product.name}
                     </h1>
 
@@ -80,10 +80,9 @@ const ProductDetailPage: React.FC<ProductDetailPageProps> = ({ product, currency
                         <span className="text-4xl font-black tracking-tighter text-black">{formatCurrency(product.price, currency)}</span>
                     </div>
 
-                    {/* Descripciones Extensas Formateadas */}
-                    <div className="mb-12 border-l-4 border-black pl-8 py-2 bg-gray-50/30 rounded-r-lg">
+                    <div className="mb-12 py-2">
                         <div className="prose prose-sm max-w-none">
-                            <p className="text-gray-800 text-[15px] leading-[1.8] font-light whitespace-pre-line tracking-wide">
+                            <p className="text-gray-800 text-[1.05rem] leading-[1.8] font-light whitespace-pre-line tracking-wide">
                                 {product.description}
                             </p>
                         </div>
@@ -93,7 +92,7 @@ const ProductDetailPage: React.FC<ProductDetailPageProps> = ({ product, currency
                         <button
                             ref={btnRef}
                             onClick={() => onAddToCart(product, btnRef.current, null)}
-                            className="w-full bg-black text-white font-black py-7 px-12 text-[11px] uppercase tracking-[0.5em] hover:bg-pink-600 transition-all shadow-2xl active:scale-95"
+                            className="w-full bg-pink-50/20 text-pink-800 border-2 border-pink-800 font-black py-7 px-12 text-[1.05rem] uppercase tracking-[0.5em] hover:bg-pink-800 hover:text-white transition-all shadow-2xl active:scale-95"
                         >
                             Añadir a la Bolsa de Compra
                         </button>
@@ -115,7 +114,7 @@ const ProductDetailPage: React.FC<ProductDetailPageProps> = ({ product, currency
             {relatedProducts.length > 0 && (
                 <section className="mt-40">
                     <div className="flex items-center gap-8 mb-20">
-                         <h2 className="text-3xl font-black text-black uppercase tracking-tighter italic shrink-0">Completa tu <span className="text-pink-600">Ritual Personal</span></h2>
+                         <h2 className="text-3xl font-black text-black uppercase tracking-tighter shrink-0">Completa tu <span className="text-pink-600">Ritual Personal</span></h2>
                          <div className="h-[2px] bg-gray-100 flex-grow"></div>
                     </div>
                     <div className="grid grid-cols-2 md:grid-cols-4 gap-8 md:gap-12">

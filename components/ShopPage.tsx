@@ -10,10 +10,8 @@ const categories = [
     { key: 'skincare', name: 'Cuidado Facial' },
     { key: 'makeup', name: 'Maquillaje' },
     { key: 'perfume', name: 'Brumas y Fragancias' },
-    { key: 'hair', name: 'Cabello' },
     { key: 'personal-care', name: 'Lociones y Geles' },
     { key: 'men', name: 'Hombre' },
-    { key: 'accessories', name: 'Accesorios' },
 ];
 
 const ShopPage: React.FC<{
@@ -30,7 +28,12 @@ const ShopPage: React.FC<{
     const [searchQuery, setSearchQuery] = useState('');
     
     useEffect(() => {
-        setActiveCategory(initialCategory);
+        // Si la categoría inicial era 'accessories', la cambiamos a 'all' ya que ya no existe
+        if (initialCategory === 'accessories') {
+            setActiveCategory('all');
+        } else {
+            setActiveCategory(initialCategory);
+        }
     }, [initialCategory]);
 
     const filteredAndSortedProducts = useMemo(() => {
@@ -52,7 +55,6 @@ const ShopPage: React.FC<{
             case 'price-desc':
                 filtered.sort((a, b) => b.price - a.price);
                 break;
-            case 'menu_order':
             default:
                 break;
         }
@@ -64,31 +66,30 @@ const ShopPage: React.FC<{
     return (
         <div className="container mx-auto px-4 md:px-12 py-10">
             <div className="flex flex-col lg:flex-row gap-12">
-                {/* Sidebar Filtros */}
                 <aside className="w-full lg:w-1/4">
                     <div className="sticky top-48 space-y-10">
                         <div>
-                            <h2 className="text-[10px] font-black uppercase tracking-[0.4em] mb-6 border-b pb-4">Buscar Producto</h2>
+                            <h2 className="text-[9px] font-black uppercase tracking-[0.3em] mb-4 border-b pb-3">Buscar</h2>
                             <input 
                                 type="text"
-                                placeholder="Ref o Ingrediente..."
+                                placeholder="Ref..."
                                 value={searchQuery}
                                 onChange={(e) => setSearchQuery(e.target.value)}
-                                className="w-full border-2 border-gray-100 p-4 text-xs font-bold uppercase tracking-widest focus:border-black outline-none transition-all"
+                                className="w-full border border-gray-100 p-3 text-[10px] font-bold uppercase tracking-widest focus:border-pink-600 outline-none transition-all rounded-sm"
                             />
                         </div>
 
                         <div>
-                            <h2 className="text-[10px] font-black uppercase tracking-[0.4em] mb-6 border-b pb-4">Categorías</h2>
-                            <ul className="space-y-2">
+                            <h2 className="text-[9px] font-black uppercase tracking-[0.3em] mb-4 border-b pb-3">Categorías</h2>
+                            <ul className="space-y-1.5">
                                 {categories.map(cat => (
                                     <li key={cat.key}>
                                         <button
                                             onClick={() => setActiveCategory(cat.key)}
-                                            className={`w-full text-left px-4 py-3 text-[9px] font-black uppercase tracking-[0.2em] transition-all border ${
+                                            className={`w-full text-left px-4 py-2 text-[9px] font-black uppercase tracking-[0.2em] transition-all rounded-sm border ${
                                                 activeCategory === cat.key
-                                                    ? 'bg-black text-white border-black'
-                                                    : 'text-gray-400 border-transparent hover:border-gray-100 hover:text-black'
+                                                    ? 'bg-pink-100/30 text-pink-700 border-pink-700'
+                                                    : 'text-gray-400 border-transparent hover:text-black hover:bg-gray-50'
                                             }`}
                                         >
                                             {cat.name}
@@ -100,49 +101,5 @@ const ShopPage: React.FC<{
                     </div>
                 </aside>
 
-                {/* Grid de Productos */}
                 <main className="w-full lg:w-3/4">
-                    <div className="flex justify-between items-end mb-12 border-b border-gray-100 pb-8">
-                        <div>
-                            <span className="text-pink-600 text-[9px] font-black tracking-[0.6em] uppercase mb-2 block">Catálogo Oriflame 2026</span>
-                            <h1 className="text-4xl font-black text-black tracking-tighter uppercase italic">{currentCategoryName}</h1>
-                        </div>
-                        <div className="hidden md:block">
-                            <select 
-                                value={sortOrder}
-                                onChange={(e) => setSortOrder(e.target.value)}
-                                className="border-none text-[9px] font-black uppercase tracking-widest bg-transparent cursor-pointer outline-none"
-                            >
-                                <option value="menu_order">Por Defecto</option>
-                                <option value="price">Precio: Bajo a Alto</option>
-                                <option value="price-desc">Precio: Alto a Bajo</option>
-                            </select>
-                        </div>
-                    </div>
-
-                    {filteredAndSortedProducts.length > 0 ? (
-                        <div className="grid grid-cols-2 md:grid-cols-3 gap-x-8 gap-y-16">
-                            {filteredAndSortedProducts.map(product => (
-                                <ProductCard
-                                    key={product.id}
-                                    product={product}
-                                    currency={currency}
-                                    onAddToCart={onAddToCart}
-                                    onQuickAddToCart={onQuickAddToCart}
-                                    onProductSelect={onProductSelect}
-                                    onQuickView={onQuickView}
-                                />
-                            ))}
-                        </div>
-                    ) : (
-                        <div className="text-center py-40 border-2 border-dashed border-gray-100">
-                            <p className="text-gray-300 text-[10px] font-black uppercase tracking-[0.5em]">No se han encontrado resultados</p>
-                        </div>
-                    )}
-                </main>
-            </div>
-        </div>
-    );
-};
-
-export default ShopPage;
+                    <div className="flex justify-between items-end mb-10 border-b border-gray

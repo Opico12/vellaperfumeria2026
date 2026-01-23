@@ -104,8 +104,8 @@ const AsistenteIAPage: React.FC = () => {
     return (
         <div className="container mx-auto px-4 sm:px-6 lg:px-8 py-12">
             <div className="text-center mb-10">
-                <h1 className="text-4xl font-extrabold text-black tracking-tight uppercase italic leading-none">Asistente de Belleza <br/><span className="text-pink-600">INTELIGENTE</span></h1>
-                <p className="mt-4 text-lg text-gray-400 italic font-light uppercase tracking-widest">Asesoría personalizada en cosmética y bienestar.</p>
+                <h1 className="text-4xl font-extrabold text-black tracking-tight uppercase leading-none">Asistente de Belleza <br/><span className="text-pink-600">INTELIGENTE</span></h1>
+                <p className="mt-4 text-[1rem] text-gray-400 font-bold uppercase tracking-widest">Asesoría personalizada en cosmética y bienestar.</p>
             </div>
 
             <div className="max-w-2xl mx-auto bg-white rounded-sm shadow-2xl border border-gray-100 flex flex-col h-[60vh] overflow-hidden">
@@ -116,7 +116,7 @@ const AsistenteIAPage: React.FC = () => {
                                 <SparklesIcon />
                             </div>
                             <div className="max-w-md p-6 rounded-2xl bg-pink-50 text-black rounded-tl-none border border-pink-100 shadow-sm">
-                                <p className="text-sm italic">"Bienvenido a Bella Perfumería. Soy su asesor de belleza digital. ¿En qué puedo asistirle hoy?"</p>
+                                <p className="text-[1rem] font-bold uppercase text-xs">Bienvenido a Bella Perfumería. Soy su asesor de belleza digital. ¿En qué puedo asistirle hoy?</p>
                             </div>
                         </div>
                     )}
@@ -138,7 +138,7 @@ const AsistenteIAPage: React.FC = () => {
                                             <div className="w-2 h-2 bg-pink-500 rounded-full animate-pulse [animation-delay:0.4s]"></div>
                                         </div>
                                     ) : (
-                                         <p className="whitespace-pre-wrap text-sm leading-relaxed">{msg.text}</p>
+                                         <p className="whitespace-pre-wrap text-[1rem] leading-relaxed">{msg.text}</p>
                                     )}
                                 </div>
                                 {msg.role === 'user' && (
@@ -159,13 +159,13 @@ const AsistenteIAPage: React.FC = () => {
                             value={input}
                             onChange={(e) => setInput(e.target.value)}
                             placeholder="Consulte sus dudas de belleza aquí..."
-                            className="flex-grow px-6 py-4 border border-gray-100 rounded-sm focus:outline-none focus:ring-2 focus:ring-pink-500 text-sm italic"
+                            className="flex-grow px-6 py-4 border border-gray-100 rounded-sm focus:outline-none focus:ring-2 focus:ring-pink-500 text-[1rem] uppercase font-bold"
                             disabled={isProcessing}
                         />
                         <button 
                             type="submit" 
                             disabled={isProcessing || !input.trim()}
-                            className="bg-black text-white font-black rounded-sm px-8 py-4 shadow-xl hover:bg-pink-600 transition-colors disabled:bg-gray-100 uppercase text-[10px] tracking-widest"
+                            className="bg-pink-50/20 text-pink-800 border-2 border-pink-800 font-black rounded-sm px-8 py-4 shadow-xl hover:bg-pink-800 hover:text-white transition-colors disabled:bg-gray-100 uppercase text-[10px] tracking-widest"
                         >
                             ENVIAR
                         </button>
